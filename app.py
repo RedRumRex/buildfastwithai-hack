@@ -13,7 +13,8 @@ import streamlit as st
 from core import actions, llm
 from core.clean import clean
 from core.qa import DataStore, answer
-from core.scoring import RUBRIC, TARGET_INDUSTRIES, score_leads, suggest_action
+from core.scoring import (DEFAULT_WEIGHTS, PRESETS, TARGET_INDUSTRIES, WEIGHT_SPECS, apply_weights,
+                          extract_signals, resolve_weights, rubric, suggest_action, weights_changed)
 
 DATA = Path(__file__).parent / "data"
 TABLES = ["leads", "deals", "activity", "notes"]
@@ -36,9 +37,10 @@ st.markdown("""
 def build(key: str, blobs: tuple):
     dfs = [pd.read_csv(io.BytesIO(b)) for b in blobs]
     res = clean(*dfs)
-    scores = score_leads(res.leads, res.deals, res.activity, res.notes, res.ref_date)
-    store = DataStore(res, scores)
-    return res, scores, store
+    signals = extract_signals(res.leads, res.deals, res.activity, res.notes, res.ref_date)   # slow part, once
+    default_scores = apply_weights(signals)
+    store = DataStore(res, default_scores)
+    return res, signals, default_scores, store
 
 
 def ensure_sample():
@@ -71,8 +73,40 @@ with st.sidebar:
         st.warning("No LLM key set – running on built-in rules & templates. Add `LLM_API_KEY` in `.env` for AI answers.")
 
 key = hashlib.md5(b"".join(blobs)).hexdigest()
-res, scores, store = build(key, blobs)
+res, signals, default_scores, store = build(key, blobs)
+is_sample = src.startswith("Sample")
 ss = st.session_state
+
+# ---------------------------------------------------------------------------
+# Scoring weights (edited in the "How scoring works" tab; the whole app re-ranks live)
+# ---------------------------------------------------------------------------
+EVENT_TYPES = list(DEFAULT_WEIGHTS["event_weights"])
+
+
+def _set_weights(values: dict):
+    w = resolve_weights(values)
+    for k in WEIGHT_SPECS:
+        ss[f"w_{k}"] = float(w[k])
+    for t in EVENT_TYPES:
+        ss[f"ev_{t}"] = float(w["event_weights"][t])
+
+
+if "w_deal_size" not in ss:
+    _set_weights({})
+weights = resolve_weights({**{k: ss[f"w_{k}"] for k in WEIGHT_SPECS},
+                           "event_weights": {t: ss[f"ev_{t}"] for t in EVENT_TYPES}})
+custom = weights_changed(weights)
+wkey = hashlib.md5(repr(sorted(custom.items())).encode()).hexdigest()[:8] if custom else "default"
+scores = default_scores if not custom else apply_weights(signals, weights)   # ≈15 ms
+
+# keep the SQL table used by "Ask your data" in sync with the weights on screen
+if getattr(store, "_weights_key", "default") != wkey:
+    cols = store.con.execute("SELECT * FROM lead_scores LIMIT 0").df().columns
+    store.con.register("_ls", scores[[c for c in cols if c in scores.columns]])
+    store.con.execute("CREATE OR REPLACE TABLE lead_scores AS SELECT * FROM _ls")
+    store.con.unregister("_ls")
+    store._weights_key = wkey
+
 ss.setdefault("explanations", {})
 ss.setdefault("decisions", {})
 ss.setdefault("chat", [])
@@ -181,6 +215,10 @@ with tab_queue:
     removed = len(scores) - len(q)
     q = q.head(int(top_n))
     st.caption(f"{removed:,} leads filtered out · showing the top {len(q)} of the remaining by transparent score")
+    if custom:
+        st.markdown("<span class='chip'>⚙️ Custom scoring weights active</span> "
+                    "<span class='small'>change or reset them in the <b>How scoring works</b> tab</span>",
+                    unsafe_allow_html=True)
 
     done = ss["decisions"]
     n_app = sum(1 for d in done.values() if d["decision"] == "approved")
@@ -189,8 +227,11 @@ with tab_queue:
 
     for i, row in enumerate(q.to_dict("records")):
         lid = row["lead_id"]
-        if lid not in ss["explanations"]:
-            ss["explanations"][lid] = actions.explain(row)
+        # re-explain only when the set of scoring components changes (e.g. a weight switched off),
+        # not on every slider nudge – keeps LLM calls (and rate limits) under control
+        ekey = (lid, tuple(sorted(c_["component"] for c_ in row["components"] if c_["points"])))
+        if ekey not in ss["explanations"]:
+            ss["explanations"][ekey] = actions.explain(row)
         action_default = suggest_action(row)
         state = done.get(lid)
         badge = "✅ " if state and state["decision"] == "approved" else "❌ " if state else ""
@@ -201,7 +242,7 @@ with tab_queue:
             with a:
                 st.markdown(f"**{row['title']}** · {row['industry']} · {row['company_size']:,} employees · "
                             f"last contact {row['days_since_contact']} days ago")
-                st.markdown(f"**Why this lead:** {md(ss['explanations'][lid])}")
+                st.markdown(f"**Why this lead:** {md(ss['explanations'][ekey])}")
                 st.markdown(f"**Suggested action:** {action_default}")
                 if row["merged_from"]:
                     st.markdown(f"<span class='small'>🔗 Combined from duplicate record(s): {row['merged_from']}</span>",
@@ -302,9 +343,64 @@ with tab_audit:
 with tab_how:
     st.subheader("Transparent scoring rubric")
     st.markdown("The **score is computed by explicit rules**, never by the language model. The AI only writes the explanation "
-                "and the email draft, using the facts below. Every point links back to specific rows.")
-    st.table(pd.DataFrame(RUBRIC, columns=["Component", "Rule"]))
+                "and the email draft, using the facts below. Every point links back to specific rows. "
+                "**Adjust the weights below and every tab re-ranks instantly** — the evidence behind each point never changes, "
+                "only how much it counts.")
+
+    pc = st.columns([2, 1, 3])
+    preset = pc[0].selectbox("Start from a preset", list(PRESETS), key="preset")
+    pc[1].button("Apply preset", on_click=_set_weights, args=(PRESETS[preset],), width="stretch")
+    pc[1].button("↺ Reset to default", on_click=_set_weights, args=({},), width="stretch")
+    if custom:
+        pc[2].markdown("**Changed from default:** " + "".join(
+            f"<span class='chip'>{WEIGHT_SPECS[k][0] if k in WEIGHT_SPECS else k}: "
+            f"{v if not isinstance(v, dict) else ', '.join(f'{a}={b:g}' for a, b in v.items())}</span>"
+            for k, v in custom.items()), unsafe_allow_html=True)
+    else:
+        pc[2].caption("Using the default weights.")
+
+    wl, wr = st.columns(2)
+    for i_, (k, (label, lo, hi, help_)) in enumerate(WEIGHT_SPECS.items()):
+        (wl if i_ % 2 == 0 else wr).slider(label, float(lo), float(hi), step=1.0, key=f"w_{k}", help=help_)
+    with st.expander("Engagement event weights (how much each kind of activity counts)"):
+        ec = st.columns(3)
+        for i_, t in enumerate(EVENT_TYPES):
+            ec[i_ % 3].number_input(t.replace("_", " "), 0.0, 20.0, step=1.0, key=f"ev_{t}")
+        st.caption(f"Full engagement points are earned at {weights['engagement_saturation']:g} weighted events in the last 30 days.")
+
+    st.markdown("#### Rubric with the current weights")
+    st.table(pd.DataFrame(rubric(weights), columns=["Component", "Rule"]))
     st.markdown(f"Target industries: {', '.join(sorted(TARGET_INDUSTRIES))}")
+
+    st.markdown("#### Live effect on the ranking")
+    prev = default_scores.set_index("lead_id")
+    top = scores.head(15)[["rank", "lead_id", "name", "company", "score", "top_deal_amount", "is_stale"]].copy()
+    top["default rank"] = top["lead_id"].map(prev["rank"])
+    top["move"] = (top["default rank"] - top["rank"]).map(lambda d: "—" if d == 0 else f"▲ {d}" if d > 0 else f"▼ {-d}")
+    top["default score"] = top["lead_id"].map(prev["score"])
+    st.dataframe(top, hide_index=True, width="stretch",
+                 column_config={"top_deal_amount": st.column_config.NumberColumn("top deal ($)", format="%,.0f")})
+    if is_sample:
+        try:
+            from eval.eval_ranking import load_truth, precision_at_k, truly_hot_ids
+            truth = load_truth(leads=res.leads)
+            if truth is None:
+                st.caption("Ranking evaluation: no planted-lead ground truth for this data "
+                           "(run `python data/plant_hot_leads.py`).")
+            else:
+                true_hot = truly_hot_ids(default_scores, truth)   # checklist facts don't depend on weights
+                m = st.columns(3)
+                p_now = precision_at_k(scores, true_hot, 20)
+                p_def = precision_at_k(default_scores, true_hot, 20)
+                m[0].metric("Truly hot leads in top 20 (precision@20)", f"{p_now:.0%}",
+                            delta=f"{(p_now - p_def) * 100:+.0f} pts vs default" if custom else None,
+                            help="Planted hot leads + organic leads passing the same hot checklist. See eval/eval_ranking.py")
+                m[1].metric("Strict: planted hot leads only", f"{precision_at_k(scores, truth, 20):.0%}")
+                m[2].metric("Decoys in top 20", int(scores.head(20)["lead_id"].isin(truth[truth['label'] == 'decoy']['lead_id']).sum()),
+                            help="Planted leads that look hot on ONE signal only (big stale deal, lost to a competitor, …)")
+        except Exception as e:  # evaluation is optional – never break the demo
+            st.caption(f"Ranking evaluation unavailable: {e}")
+
     st.markdown("**Pipeline:** raw CSVs → clean & de-duplicate → DuckDB → (a) rule-based scoring → ranked queue → human approval → audit log; "
                 "(b) questions → text-to-SQL or notes retrieval → answer with SQL / note-id citations.")
     st.bar_chart(scores["score"].round(-1).value_counts().sort_index(), height=220)

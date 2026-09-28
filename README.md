@@ -70,6 +70,20 @@ Any OpenAI-compatible provider works: **Groq** and **Gemini** have free tiers, a
 | Call-note signals | +8 for a buying signal, −10 for an objection (last 90 days) |
 | Data quality | −15 if stale or unreachable, −5 if no contact in 60+ days |
 
+**Editable weights.** Every number above is a default. In the **⚙️ How scoring works** tab a manager can move the sliders
+(or pick a preset like *Close this quarter*) and the action queue, the "Why?" panels and the `lead_scores` table used by
+*Ask your data* re-rank instantly. Weights only change how much each fact counts; the facts and their source row IDs never change.
+Internally, `extract_signals()` reads the data once (~1 s) and `apply_weights()` turns signals into points (~15 ms).
+
+### Ranking evaluation (precision@20)
+```bash
+python data/plant_hot_leads.py    # plants 30 known hot leads + 16 decoys, writes data/truth_hot_leads.csv (idempotent)
+python eval/eval_ranking.py       # prints the report and writes eval/results_ranking.md
+```
+"Truly hot" = the planted hot leads plus any organic lead that passes the same sales-manager checklist (reachable, contacted
+in 30 days, open deal ≥ $20k in Demo/Proposal/Negotiation closing within 60 days, a demo/meeting/pricing visit, no recent objection).
+The report also shows the strict number (planted leads only) and where each decoy type ranks.
+
 ---
 
 ## 3-minute demo script
