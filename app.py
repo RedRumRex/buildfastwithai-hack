@@ -4,16 +4,18 @@ Run:  streamlit run app.py
 """
 import hashlib
 import io
-import re
+import json
+import zipfile
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
 from core import actions, llm
+from core import filters as nl_filters
 from core.clean import clean
 from core.qa import DataStore, answer
-from core.scoring import (DEFAULT_WEIGHTS, PRESETS, TARGET_INDUSTRIES, WEIGHT_SPECS, apply_weights,
+from core.scoring import (DEFAULT_WEIGHTS, OPEN_STAGES, PRESETS, TARGET_INDUSTRIES, WEIGHT_SPECS, apply_weights,
                           extract_signals, resolve_weights, rubric, suggest_action, weights_changed)
 
 DATA = Path(__file__).parent / "data"
@@ -126,26 +128,77 @@ def source_rows(table: str, ids: list[str]) -> pd.DataFrame:
     return store.run_sql(f"SELECT * FROM {table} WHERE {col} IN ({quoted})")
 
 
-def parse_nl_filter(text: str) -> dict:
-    """Very small natural-language filter parser: 'skip anyone contacted in the last 2 weeks, fintech only, over $20k'."""
-    t = text.lower()
-    f = {}
-    m = re.search(r"(?:last|past)\s+(\d+)\s*(day|week|month)", t)
-    if m and any(w in t for w in ["exclude", "skip", "not contacted", "without", "remove", "except", "haven't", "havent"]):
-        n = int(m.group(1)) * {"day": 1, "week": 7, "month": 30}[m.group(2)]
-        f["exclude_contacted_days"] = n
-    inds = [i for i in sorted(scores["industry"].unique()) if i.lower() in t]
-    if inds:
-        f["industries"] = inds
-    m = re.search(r"(?:over|above|more than|>)\s*\$?\s*(\d+(?:\.\d+)?)\s*(k|m)?", t.replace(",", ""))
-    if m:
-        f["min_deal"] = int(float(m.group(1)) * {"k": 1e3, "m": 1e6}.get(m.group(2) or "", 1))
-    if "stale" in t:
-        f["hide_stale"] = True
-    m = re.search(r"top\s+(\d+)", t)
-    if m:
-        f["top_n"] = int(m.group(1))
-    return f
+@st.cache_data(show_spinner=False, max_entries=256)
+def parse_filter(text: str, industries: tuple, stages: tuple, use_llm: bool) -> tuple[dict, str]:
+    """Plain-English filter -> structured filters. LLM when available (validated), regex rules as fallback.
+    Cached so a Streamlit rerun never re-calls the LLM for the same sentence."""
+    return nl_filters.parse(text, list(industries), list(stages), use_llm=use_llm)
+
+
+WEIGHTS_TAG = json.dumps(custom, sort_keys=True) if custom else "default"   # stored in the audit log
+
+
+def eml(to: str, subject: str, body: str) -> str:
+    """An .eml file opens as an editable, unsent draft in Mail / Outlook / Thunderbird."""
+    return (f"To: {to}\nSubject: {subject}\nX-Unsent: 1\nMIME-Version: 1.0\n"
+            f"Content-Type: text/plain; charset=utf-8\n\n{body}\n")
+
+
+def _approve(row: dict, reviewer: str, weights_tag: str, action: str | None = None, note: str | None = None,
+             details: str = ""):
+    lid = row["lead_id"]
+    act = action if action is not None else ss.get(f"act_{lid}") or suggest_action(row)
+    note = note if note is not None else ss.get(f"note_{lid}", "")
+    subj, body = actions.draft_email(row, act)
+    entry = actions.log_decision(row, "approved", act, reviewer, note, subj, body, details, weights_tag)
+    ss["decisions"][lid] = {**entry, "subject": subj, "body": body, "row": row}
+
+
+def _reject(row: dict, reviewer: str, weights_tag: str, action: str | None = None, note: str | None = None,
+            details: str = ""):
+    lid = row["lead_id"]
+    act = action if action is not None else ss.get(f"act_{lid}") or suggest_action(row)
+    note = note if note is not None else ss.get(f"note_{lid}", "")
+    entry = actions.log_decision(row, "rejected", act, reviewer, note, details=details, weights=weights_tag)
+    ss["decisions"][lid] = {**entry, "row": row}
+
+
+def _bulk(kind: str, rows: list[dict], reviewer: str, weights_tag: str):
+    sel = set(ss.get("bulk_sel", []))
+    todo = [r for r in rows if r["lead_id"] in sel and r["lead_id"] not in ss["decisions"]]
+    note = ss.get("bulk_note", "")
+    for r in todo:
+        fn = _approve if kind == "approve" else _reject
+        fn(r, reviewer, weights_tag, action=suggest_action(r), note=note, details=f"bulk {kind} ({len(todo)} leads)")
+    ss["bulk_sel"] = []
+    ss["bulk_msg"] = f"{'Approved' if kind == 'approve' else 'Rejected'} {len(todo)} lead(s) — each one is logged separately in the audit log."
+
+
+def _save_edit(lid: str, reviewer: str, weights_tag: str):
+    d = ss["decisions"][lid]
+    subj, body = ss.get(f"subj_{lid}", d["subject"]), ss.get(f"body_{lid}", d["body"])
+    changes = []
+    if subj != d["subject"]:
+        changes.append("subject changed")
+    if body != d["body"]:
+        delta = len(body) - len(d["body"])
+        changes.append(f"body changed ({delta:+d} chars)")
+    if not changes:
+        return
+    actions.log_decision(d["row"], "edited", d["action"], reviewer, d.get("reviewer_note", ""), subj, body,
+                         "; ".join(changes), weights_tag)
+    d["subject"], d["body"] = subj, body
+    d["edits"] = d.get("edits", 0) + 1
+
+
+def _undo(lid: str, reviewer: str, weights_tag: str):
+    d = ss["decisions"].pop(lid, None)
+    if d is None:
+        return
+    actions.log_decision(d["row"], "undone", d["action"], reviewer, subject=d.get("subject", ""),
+                         details=f"undid '{d['decision']}'", weights=weights_tag)
+    for k in (f"subj_{lid}", f"body_{lid}"):
+        ss.pop(k, None)
 
 
 # ---------------------------------------------------------------------------
@@ -189,31 +242,42 @@ with tab_health:
 # ---------------------------------------------------------------------------
 with tab_queue:
     st.subheader("Ranked action queue")
+    all_inds = tuple(sorted(scores["industry"].dropna().unique()))
     nl = st.text_input("Refine in plain English", key="nl",
-                       placeholder="e.g. skip anyone contacted in the last 2 weeks, FinTech and Healthcare only, over $20k, top 15")
-    parsed = parse_nl_filter(nl) if nl else {}
+                       placeholder="e.g. skip anyone contacted in the last 2 weeks, FinTech and Healthcare only, "
+                                   "late-stage deals over $20k, top 15")
+    parsed, engine = parse_filter(nl, all_inds, tuple(OPEN_STAGES), llm.available()) if nl.strip() else ({}, None)
 
-    fc = st.columns([1, 1, 2, 1, 1])
-    top_n = fc[0].number_input("Show top", 5, 50, min(50, parsed.get("top_n", 10)), step=5)
-    excl = fc[1].number_input("Skip if contacted in last N days", 0, 90, min(90, parsed.get("exclude_contacted_days", 0)))
-    inds = fc[2].multiselect("Industries", sorted(scores["industry"].unique()), default=parsed.get("industries", []))
-    min_deal = fc[3].number_input("Min deal ($)", 0, 1_000_000, parsed.get("min_deal", 0), step=5000)
-    hide_stale = fc[4].checkbox("Hide stale", value=parsed.get("hide_stale", True))
-    if parsed:
-        st.markdown("Understood: " + "".join(f"<span class='chip'>{k.replace('_', ' ')}: {v}</span>" for k, v in parsed.items()),
-                    unsafe_allow_html=True)
+    fc = st.columns([1, 1, 2, 2, 1, 1])
+    top_n = fc[0].number_input("Show top", 1, 50, int(min(50, max(1, parsed.get("top_n", 10)))), step=5)
+    excl = fc[1].number_input("Skip if contacted in last N days", 0, 365, int(min(365, parsed.get("exclude_contacted_days", 0))))
+    inds = fc[2].multiselect("Industries", all_inds, default=[i for i in parsed.get("industries", []) if i in all_inds])
+    stages = fc[3].multiselect("Deal stage (top open deal)", OPEN_STAGES, default=parsed.get("stages", []))
+    min_deal = fc[4].number_input("Min deal ($)", 0, 100_000_000, int(min(100_000_000, parsed.get("min_deal", 0))), step=5000)
+    hide_stale = fc[5].checkbox("Hide stale", value=parsed.get("hide_stale", True))
+    if nl.strip():
+        if parsed:
+            who = "🤖 AI parser" if engine == "llm" else "📏 rule-based parser"
+            st.markdown(f"<span class='small'>Understood by the {who}:</span> " + "".join(
+                f"<span class='chip'>{k.replace('_', ' ')}: {', '.join(v) if isinstance(v, list) else f'{v:,}' if isinstance(v, int) and not isinstance(v, bool) else v}</span>"
+                for k, v in parsed.items()), unsafe_allow_html=True)
+        else:
+            st.caption("Couldn't turn that into a filter — try e.g. “FinTech only, over $20k, skip anyone contacted in the last 2 weeks”.")
 
     q = scores.copy()
     if excl:
         q = q[q["days_since_contact"] >= excl]
     if inds:
         q = q[q["industry"].isin(inds)]
+    if stages:
+        q = q[q["top_deal_stage"].isin(stages)]
     if min_deal:
         q = q[q["top_deal_amount"] >= min_deal]
     if hide_stale:
         q = q[~q["is_stale"]]
     removed = len(scores) - len(q)
     q = q.head(int(top_n))
+    rows = q.to_dict("records")
     st.caption(f"{removed:,} leads filtered out · showing the top {len(q)} of the remaining by transparent score")
     if custom:
         st.markdown("<span class='chip'>⚙️ Custom scoring weights active</span> "
@@ -221,11 +285,46 @@ with tab_queue:
                     unsafe_allow_html=True)
 
     done = ss["decisions"]
-    n_app = sum(1 for d in done.values() if d["decision"] == "approved")
-    n_rej = sum(1 for d in done.values() if d["decision"] == "rejected")
-    st.progress(min(1.0, (n_app + n_rej) / max(1, len(q))), text=f"Reviewed: {n_app} approved · {n_rej} rejected")
+    shown = [r["lead_id"] for r in rows]
+    n_app = sum(1 for l in shown if l in done and done[l]["decision"] == "approved")
+    n_rej = sum(1 for l in shown if l in done and done[l]["decision"] == "rejected")
+    st.progress((n_app + n_rej) / max(1, len(rows)), text=f"Reviewed {n_app + n_rej} of {len(rows)} shown: {n_app} approved · {n_rej} rejected")
 
-    for i, row in enumerate(q.to_dict("records")):
+    # ---- bulk review -----------------------------------------------------------
+    pending = [r for r in rows if r["lead_id"] not in done]
+    labels = {r["lead_id"]: f"#{int(r['rank'])} · {r['name']} — {r['company']} · score {r['score']}" for r in rows}
+    ss["bulk_sel"] = [x for x in ss.get("bulk_sel", []) if x in {r["lead_id"] for r in pending}]
+    with st.container(border=True):
+        st.markdown("**Bulk review** <span class='small'>— each lead gets the suggested action; every decision is logged individually</span>",
+                    unsafe_allow_html=True)
+        bc = st.columns([5, 1, 1])
+        bc[0].multiselect("Select pending leads", [r["lead_id"] for r in pending], format_func=labels.get,
+                          key="bulk_sel", label_visibility="collapsed", placeholder="Select pending leads…")
+        bc[1].button("Select all", width="stretch", disabled=not pending,
+                     on_click=lambda ids=[r["lead_id"] for r in pending]: ss.update(bulk_sel=ids))
+        bc[2].button("Clear", width="stretch", on_click=lambda: ss.update(bulk_sel=[]))
+        n_sel = len(ss["bulk_sel"])
+        bb = st.columns([3, 1, 1])
+        bb[0].text_input("Note for the bulk decision (optional)", key="bulk_note", label_visibility="collapsed",
+                         placeholder="Note for the bulk decision (optional)")
+        bb[1].button(f"✅ Approve {n_sel}", type="primary", width="stretch", disabled=not n_sel, key="bulk_approve",
+                     on_click=_bulk, args=("approve", rows, reviewer, WEIGHTS_TAG))
+        bb[2].button(f"❌ Reject {n_sel}", width="stretch", disabled=not n_sel, key="bulk_reject",
+                     on_click=_bulk, args=("reject", rows, reviewer, WEIGHTS_TAG))
+    if ss.get("bulk_msg"):
+        st.success(ss.pop("bulk_msg"))
+
+    approved = [d for d in done.values() if d["decision"] == "approved"]
+    if approved:
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+            for d in approved:
+                z.writestr(f"email_{d['lead_id']}.eml", eml(d["row"]["email"], d["subject"], d["body"]))
+        st.download_button(f"⬇️ Download all {len(approved)} approved email drafts (.zip of .eml)", buf.getvalue(),
+                           file_name="leadlens_email_drafts.zip", mime="application/zip", key="dl_all")
+
+    # ---- one card per lead -------------------------------------------------------
+    for i, row in enumerate(rows):
         lid = row["lead_id"]
         # re-explain only when the set of scoring components changes (e.g. a weight switched off),
         # not on every slider nudge – keeps LLM calls (and rate limits) under control
@@ -261,31 +360,30 @@ with tab_queue:
 
             st.markdown("---")
             if state is None:
-                act = st.text_input("Action (edit before approving if needed)", value=action_default, key=f"act_{lid}")
-                note = st.text_input("Reviewer note (optional)", key=f"note_{lid}")
+                st.text_input("Action (edit before approving if needed)", value=action_default, key=f"act_{lid}")
+                st.text_input("Reviewer note (optional)", key=f"note_{lid}")
                 b1, b2, _ = st.columns([1, 1, 4])
-                if b1.button("✅ Approve", key=f"ap_{lid}", type="primary"):
-                    with st.spinner("Drafting outreach…"):
-                        subj, body = actions.draft_email(row, act)
-                    entry = actions.log_decision(row, "approved", act, reviewer, note, subj)
-                    done[lid] = {**entry, "subject": subj, "body": body}
-                    st.rerun()
-                if b2.button("❌ Reject", key=f"rj_{lid}"):
-                    entry = actions.log_decision(row, "rejected", act, reviewer, note)
-                    done[lid] = entry
-                    st.rerun()
+                b1.button("✅ Approve", key=f"ap_{lid}", type="primary", on_click=_approve, args=(row, reviewer, WEIGHTS_TAG))
+                b2.button("❌ Reject", key=f"rj_{lid}", on_click=_reject, args=(row, reviewer, WEIGHTS_TAG))
             else:
-                st.markdown(f"**{state['decision'].title()}** by {state['reviewer']} at {state['timestamp']} — action: _{state['action']}_")
+                bulk = " (bulk)" if str(state.get("details", "")).startswith("bulk") else ""
+                st.markdown(f"**{state['decision'].title()}{bulk}** by {state['reviewer']} at {state['timestamp']} — action: _{md(state['action'])}_")
                 if state["decision"] == "approved":
-                    st.text_input("Email subject", value=state["subject"], key=f"subj_{lid}")
+                    subj = st.text_input("Email subject", value=state["subject"], key=f"subj_{lid}")
                     body = st.text_area("Drafted email (edit freely – nothing is sent automatically)", value=state["body"],
                                         height=200, key=f"body_{lid}")
-                    st.download_button("⬇️ Download draft", f"To: {row['email']}\nSubject: {state['subject']}\n\n{body}",
-                                       file_name=f"email_{lid}.txt", key=f"dl_{lid}")
-                if st.button("↩️ Undo decision", key=f"undo_{lid}"):
-                    actions.log_decision(row, "undone", state["action"], reviewer)
-                    del done[lid]
-                    st.rerun()
+                    dirty = subj != state["subject"] or body != state["body"]
+                    e1, e2, e3 = st.columns([1, 1, 3])
+                    e1.button("💾 Save edits", key=f"save_{lid}", disabled=not dirty, type="primary" if dirty else "secondary",
+                              on_click=_save_edit, args=(lid, reviewer, WEIGHTS_TAG))
+                    e2.download_button("⬇️ Download .eml", eml(row["email"], state["subject"], state["body"]),
+                                       file_name=f"email_{lid}.eml", mime="message/rfc822", key=f"dl_{lid}",
+                                       help="Opens as an unsent draft in Mail / Outlook. Downloads the last SAVED version.")
+                    if dirty:
+                        e3.caption("✏️ Unsaved edits — save them to log the change and include them in the download.")
+                    elif state.get("edits"):
+                        e3.caption(f"Edited {state['edits']}× — every edit is in the audit log.")
+                st.button("↩️ Undo decision", key=f"undo_{lid}", on_click=_undo, args=(lid, reviewer, WEIGHTS_TAG))
 
 # ---------------------------------------------------------------------------
 # 3. Ask your data (analytics agent + RAG)
@@ -329,13 +427,60 @@ with tab_ask:
 # ---------------------------------------------------------------------------
 with tab_audit:
     st.subheader("Every human decision, with the evidence it was based on")
+    st.caption("Approvals, rejections, email edits and undos are appended to the log as they happen — nothing is ever "
+               "overwritten. Each entry keeps the evidence row ids behind the score and the weight profile that ranked it.")
     log = actions.read_audit()
-    if log:
-        df = pd.DataFrame(log).iloc[::-1]
-        st.dataframe(df, hide_index=True, width="stretch")
-        st.download_button("⬇️ Export audit log (CSV)", df.to_csv(index=False), "audit_log.csv")
-    else:
+    if not log:
         st.info("No decisions yet. Approve or reject leads in the Action queue.")
+    else:
+        df = pd.DataFrame(log).iloc[::-1].reset_index(drop=True)
+        df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
+        df["score"] = pd.to_numeric(df["score"], errors="coerce")
+        counts = df["decision"].value_counts()
+        mc = st.columns(5)
+        mc[0].metric("Events", len(df))
+        for col_, (k, lbl) in zip(mc[1:], [("approved", "✅ Approved"), ("rejected", "❌ Rejected"),
+                                           ("edited", "✏️ Edited"), ("undone", "↩️ Undone")]):
+            col_.metric(lbl, int(counts.get(k, 0)))
+
+        fa = st.columns([2, 2, 2, 2])
+        dec_opts = [d for d in ["approved", "rejected", "edited", "undone"] if d in counts] + \
+                   sorted(set(counts.index) - {"approved", "rejected", "edited", "undone"})
+        f_dec = fa[0].multiselect("Decision", dec_opts, key="aud_dec", placeholder="All decisions")
+        f_rev = fa[1].multiselect("Reviewer", sorted(df["reviewer"].dropna().unique()), key="aud_rev", placeholder="All reviewers")
+        f_txt = fa[2].text_input("Search lead / company / text", key="aud_q", placeholder="e.g. L02156 or Slater")
+        dates = df["timestamp"].dropna().dt.date
+        f_dates = fa[3].date_input("Date range", value=(dates.min(), dates.max()), key="aud_dates") if len(dates) else None
+        f_bulk = st.checkbox("Only bulk decisions", key="aud_bulk")
+
+        v = df
+        if f_dec:
+            v = v[v["decision"].isin(f_dec)]
+        if f_rev:
+            v = v[v["reviewer"].isin(f_rev)]
+        if f_txt.strip():
+            needle = f_txt.strip().lower()
+            hay = v[["lead_id", "name", "company", "action", "reviewer_note", "email_subject", "details"]].fillna("").astype(str) \
+                .agg(" ".join, axis=1).str.lower()
+            v = v[hay.str.contains(needle, regex=False)]
+        if isinstance(f_dates, (tuple, list)) and len(f_dates) == 2:
+            d = v["timestamp"].dt.date
+            v = v[(d >= f_dates[0]) & (d <= f_dates[1])]
+        if f_bulk:
+            v = v[v["details"].fillna("").str.startswith("bulk")]
+
+        st.caption(f"Showing {len(v):,} of {len(df):,} events")
+        cols = ["timestamp", "decision", "reviewer", "lead_id", "name", "company", "score", "action", "email_subject",
+                "reviewer_note", "details", "weights", "evidence_ids", "email_body"]
+        st.dataframe(v[[c for c in cols if c in v.columns]], hide_index=True, width="stretch",
+                     column_config={"timestamp": st.column_config.DatetimeColumn(format="YYYY-MM-DD HH:mm:ss"),
+                                    "score": st.column_config.NumberColumn(format="%.1f"),
+                                    "email_body": st.column_config.TextColumn(width="large")})
+        ex = st.columns([1, 1, 3])
+        out = lambda d_: d_.assign(timestamp=d_["timestamp"].dt.strftime("%Y-%m-%dT%H:%M:%S")).to_csv(index=False)
+        ex[0].download_button(f"⬇️ Export filtered ({len(v):,}) CSV", out(v), "audit_log_filtered.csv", mime="text/csv",
+                              key="aud_dl_f", disabled=v.empty)
+        ex[1].download_button(f"⬇️ Export full log ({len(df):,}) CSV", out(df), "audit_log.csv", mime="text/csv", key="aud_dl_all")
 
 # ---------------------------------------------------------------------------
 # 5. How scoring works
