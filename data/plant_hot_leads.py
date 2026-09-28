@@ -170,8 +170,13 @@ class Planter:
 
 def main(n_hot: int = 30, n_decoy_each: int = 4, seed: int = 7):
     dfs = {t: pd.read_csv(DATA / f"{t}.csv", dtype=str) for t in TABLES}
-    if TRUTH.exists():   # remove the previous plants first (idempotent)
-        old = set(pd.read_csv(TRUTH)["lead_id"])
+    if TRUTH.exists():   # remove the previous plants first (idempotent) …
+        prev = pd.read_csv(TRUTH, dtype=str)
+        comp = dfs["leads"].set_index("lead_id")["company"]
+        # … but only rows that really are our plants (same id AND same company). After the data is
+        # regenerated, an old truth id may now belong to a genuine lead – that one must not be touched.
+        old = {l for l, c in zip(prev["lead_id"], prev.get("company", pd.Series(dtype=str)))
+               if l in comp.index and str(comp[l]).strip() == str(c).strip()}
         dfs = {t: df[~df["lead_id"].isin(old)] for t, df in dfs.items()}
     p = Planter(dfs, seed)
     p.hot(n_hot)

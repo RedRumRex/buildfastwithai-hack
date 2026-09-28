@@ -4,14 +4,16 @@ The LLM only writes words here; it never changes a score or takes an action on i
 """
 import csv
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 
 from . import llm
 
-AUDIT_FILE = Path(__file__).resolve().parent.parent / "data" / "audit_log.csv"
+AUDIT_FILE = Path(os.getenv("LEADLENS_AUDIT_FILE") or Path(__file__).resolve().parent.parent / "data" / "audit_log.csv")
+# decision is one of: approved · rejected · edited (email draft changed) · undone
 AUDIT_FIELDS = ["timestamp", "reviewer", "lead_id", "name", "company", "score", "decision",
-                "action", "reviewer_note", "evidence_ids", "email_subject"]
+                "action", "reviewer_note", "evidence_ids", "email_subject", "email_body", "weights", "details"]
 
 
 def evidence_ids(components: list[dict]) -> list[str]:
@@ -82,14 +84,36 @@ def draft_email(row: dict, action: str, sender: str = "Your Account Executive") 
     return subject, body
 
 
-def log_decision(row: dict, decision: str, action: str, reviewer: str, note: str = "", subject: str = "") -> dict:
+def _migrate_header():
+    """Older logs had fewer columns – rewrite them once with the current header so rows stay aligned."""
+    if not AUDIT_FILE.exists() or AUDIT_FILE.stat().st_size == 0:
+        return
+    with AUDIT_FILE.open(newline="") as f:
+        header = next(csv.reader(f), [])
+    if header == AUDIT_FIELDS:
+        return
+    with AUDIT_FILE.open(newline="") as f:
+        rows = list(csv.DictReader(f))
+    with AUDIT_FILE.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=AUDIT_FIELDS, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(rows)
+
+
+def log_decision(row: dict, decision: str, action: str, reviewer: str, note: str = "", subject: str = "",
+                 body: str = "", details: str = "", weights: str = "default") -> dict:
+    """Append one human decision to the audit log. Every approve / reject / edit / undo is recorded
+    with the evidence ids behind the lead's score and the weight profile that produced the ranking."""
     entry = {
         "timestamp": datetime.now().isoformat(timespec="seconds"),
         "reviewer": reviewer, "lead_id": row["lead_id"], "name": row["name"], "company": row["company"],
         "score": row["score"], "decision": decision, "action": action, "reviewer_note": note,
         "evidence_ids": json.dumps(evidence_ids(row["components"])), "email_subject": subject,
+        "email_body": body, "weights": weights, "details": details,
     }
-    new = not AUDIT_FILE.exists()
+    AUDIT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    _migrate_header()
+    new = not AUDIT_FILE.exists() or AUDIT_FILE.stat().st_size == 0
     with AUDIT_FILE.open("a", newline="") as f:
         w = csv.DictWriter(f, fieldnames=AUDIT_FIELDS)
         if new:
@@ -99,7 +123,8 @@ def log_decision(row: dict, decision: str, action: str, reviewer: str, note: str
 
 
 def read_audit() -> list[dict]:
-    if not AUDIT_FILE.exists():
+    if not AUDIT_FILE.exists() or AUDIT_FILE.stat().st_size == 0:
         return []
-    with AUDIT_FILE.open() as f:
+    _migrate_header()
+    with AUDIT_FILE.open(newline="") as f:
         return list(csv.DictReader(f))

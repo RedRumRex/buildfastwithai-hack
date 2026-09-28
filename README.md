@@ -55,7 +55,8 @@ Any OpenAI-compatible provider works: **Groq** and **Gemini** have free tiers, a
 | `core/clean.py` | Entity resolution (same email, or same company + fuzzy or initial name match), field merging, re-linking child records, stale flags, health report, merge log |
 | `core/scoring.py` | Decision agent: 7-component rubric (deal size, 30-day engagement, close urgency, momentum, ICP fit, call-note signals, data quality), plus the suggested next action |
 | `core/qa.py` | Analytics agent: question router, LLM text-to-SQL with a retry-on-error loop, read-only SQL guard, rule-based fallback queries, and TF-IDF retrieval over call notes |
-| `core/actions.py` | Grounded explanations, email drafts, audit trail |
+| `core/actions.py` | Grounded explanations, email drafts, audit trail (approve / reject / edit / undo) |
+| `core/filters.py` | Plain-English queue filters: LLM parser with validated output, rule-based fallback |
 | `core/llm.py` | OpenAI-compatible client wrapper |
 | `app.py` | UI with 5 tabs: Data health · Action queue · Ask your data · Audit log · How scoring works |
 
@@ -91,10 +92,10 @@ The report also shows the strict number (planted leads only) and where each deco
 1. **Data health tab.** "We loaded 2,140 raw CRM records. LeadLens found and merged 137 duplicates, like 'M. Brown @ Bal Ltd' and 'Marc Brown @ Bal Corp', and flagged about 21% as stale." Point at the merge log and its evidence column.
 2. **Action queue tab.** "Here's who to contact this week." Open #1 and read the *Why this lead* line.
 3. Flip **🔍 Why?** to show the actual deal, activity and note rows behind every point. "Nothing here is made up."
-4. Type in the refine box: `skip anyone contacted in the last 2 weeks, FinTech only, over $20k`. The queue re-ranks, and the parsed filters show as chips.
-5. **Approve** one lead, optionally editing the action first. An outreach email is drafted and nothing is sent automatically. **Reject** another.
+4. Type in the refine box: `skip anyone contacted in the last 2 weeks, FinTech only, late-stage deals over $20k`. The queue re-ranks, and the parsed filters show as chips (with whether the AI or the rule-based parser understood it).
+5. **Approve** one lead, optionally editing the action first. An outreach email is drafted and nothing is sent automatically. Edit the draft, **Save edits**, and download it as an `.eml` that opens as an unsent draft in Mail/Outlook. **Reject** another, or tick several leads and use **bulk approve / reject**.
 6. **Ask your data tab.** Click "Which deals over $50k are stuck?" to show the answer, the SQL behind it and the rows. Then click "Who complained about pricing?" to show the answer with note-ID citations.
-7. **Audit log tab.** "Every decision is recorded with who made it, when, and the evidence IDs."
+7. **Audit log tab.** "Every approve, reject, email edit and undo is recorded with who made it, when, the evidence IDs and the weights used." Filter by decision or lead and export the filtered view as CSV.
 8. Closer: **"Every number is traceable, and no action happens without a human."**
 
 ## Using your own data
