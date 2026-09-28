@@ -1,0 +1,1201 @@
+note_id,lead_id,note_date,author,text
+N00001,L00002,2026-06-30,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00002,L00003,2026-08-24,Aarav (AE),Wants to see integration with their existing ERP.
+N00003,L00003,2026-04-10,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00004,L00004,2026-04-28,Sara (SDR),Requested case studies from their industry.
+N00005,L00004,2026-08-18,Rohan (AE),Requested case studies from their industry.
+N00006,L00006,2026-06-22,Rohan (AE),Requested case studies from their industry.
+N00007,L00009,2026-04-03,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00008,L00011,2026-03-23,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00009,L00014,2026-07-26,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00010,L00018,2026-03-15,Meera (SDR),Requested case studies from their industry.
+N00011,L00020,2026-07-04,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00012,L00025,2026-07-11,Sara (SDR),No response after three follow-ups.
+N00013,L00026,2026-06-05,Meera (SDR),"Went with a competitor, might revisit next year."
+N00014,L00030,2026-06-29,Aarav (AE),Asked for a follow-up call with their technical team.
+N00015,L00032,2026-05-14,Meera (SDR),Asked for a follow-up call with their technical team.
+N00016,L00034,2026-08-11,Meera (SDR),Asked for a follow-up call with their technical team.
+N00017,L00034,2026-08-07,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00018,L00042,2026-09-22,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00019,L00042,2026-06-11,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00020,L00044,2026-08-04,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00021,L00045,2026-05-20,Sara (SDR),No response after three follow-ups.
+N00022,L00045,2026-07-04,Aarav (AE),Asked for a follow-up call with their technical team.
+N00023,L00047,2026-07-01,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00024,L00048,2026-05-31,Rohan (AE),"Went with a competitor, might revisit next year."
+N00025,L00048,2026-04-18,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00026,L00050,2026-08-15,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N00027,L00051,2026-03-11,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00028,L00053,2026-09-06,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00029,L00054,2026-03-17,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00030,L00058,2026-04-18,Rohan (AE),Requested case studies from their industry.
+N00031,L00060,2026-06-18,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00032,L00060,2026-05-26,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00033,L00063,2026-06-25,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00034,L00065,2026-03-15,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00035,L00065,2026-09-07,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00036,L00068,2026-05-04,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00037,L00071,2026-06-22,Rohan (AE),Requested case studies from their industry.
+N00038,L00071,2026-05-09,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00039,L00073,2026-06-17,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00040,L00073,2026-07-12,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00041,L00077,2026-09-11,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00042,L00079,2026-04-21,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00043,L00080,2026-09-11,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00044,L00080,2026-09-20,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00045,L00084,2026-06-02,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00046,L00086,2026-06-09,Rohan (AE),Project put on hold due to internal reorganisation.
+N00047,L00086,2026-06-02,Rohan (AE),Wants to see integration with their existing ERP.
+N00048,L00090,2026-03-24,Rohan (AE),Asked for a follow-up call with their technical team.
+N00049,L00090,2026-07-17,Sara (SDR),Project put on hold due to internal reorganisation.
+N00050,L00093,2026-03-27,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00051,L00093,2026-05-26,Rohan (AE),Project put on hold due to internal reorganisation.
+N00052,L00095,2026-09-15,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00053,L00096,2026-08-03,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00054,L00099,2026-09-26,Aarav (AE),"Went with a competitor, might revisit next year."
+N00055,L00100,2026-07-21,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00056,L00101,2026-06-07,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00057,L00101,2026-06-10,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00058,L00102,2026-08-21,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00059,L00103,2026-09-04,Sara (SDR),Requested case studies from their industry.
+N00060,L00112,2026-09-23,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00061,L00112,2026-08-15,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00062,L00113,2026-07-29,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00063,L00118,2026-08-30,Sara (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00064,L00119,2026-09-02,Sara (SDR),Wants to see integration with their existing ERP.
+N00065,L00119,2026-07-29,Rohan (AE),"Went with a competitor, might revisit next year."
+N00066,L00120,2026-05-26,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00067,L00122,2026-06-17,Sara (SDR),Project put on hold due to internal reorganisation.
+N00068,L00124,2026-09-01,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00069,L00124,2026-06-29,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00070,L00126,2026-08-10,Rohan (AE),Requested case studies from their industry.
+N00071,L00126,2026-06-05,Sara (SDR),Asked for a follow-up call with their technical team.
+N00072,L00132,2026-06-19,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00073,L00132,2026-08-16,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00074,L00135,2026-04-22,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00075,L00135,2026-09-11,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00076,L00136,2026-06-21,Meera (SDR),Requested case studies from their industry.
+N00077,L00137,2026-05-24,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00078,L00137,2026-06-11,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00079,L00138,2026-04-24,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00080,L00138,2026-07-30,Meera (SDR),Asked for a follow-up call with their technical team.
+N00081,L00140,2026-04-05,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00082,L00141,2026-09-04,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00083,L00141,2026-06-14,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00084,L00144,2026-06-29,Aarav (AE),Asked for a follow-up call with their technical team.
+N00085,L00144,2026-08-06,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00086,L00146,2026-09-11,Sara (SDR),Wants to see integration with their existing ERP.
+N00087,L00150,2026-03-31,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00088,L00153,2026-07-14,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00089,L00153,2026-07-15,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00090,L00154,2026-06-18,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00091,L00154,2026-05-26,Aarav (AE),Asked for a follow-up call with their technical team.
+N00092,L00158,2026-05-06,Aarav (AE),Asked for a follow-up call with their technical team.
+N00093,L00159,2026-08-18,Sara (SDR),Requested case studies from their industry.
+N00094,L00160,2026-08-10,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00095,L00161,2026-05-06,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00096,L00161,2026-07-31,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00097,L00162,2026-03-20,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00098,L00165,2026-08-24,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00099,L00167,2026-08-28,Sara (SDR),Project put on hold due to internal reorganisation.
+N00100,L00168,2026-05-31,Aarav (AE),Requested case studies from their industry.
+N00101,L00169,2026-05-08,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00102,L00169,2026-06-02,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00103,L00171,2026-06-06,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00104,L00171,2026-05-15,Aarav (AE),Wants to see integration with their existing ERP.
+N00105,L00172,2026-05-17,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00106,L00173,2026-08-12,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00107,L00173,2026-05-12,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00108,L00174,2026-04-16,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00109,L00175,2026-03-17,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00110,L00180,2026-06-28,Rohan (AE),Wants to see integration with their existing ERP.
+N00111,L00181,2026-04-14,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00112,L00183,2026-05-04,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00113,L00184,2026-04-13,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00114,L00184,2026-07-16,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00115,L00185,2026-06-05,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00116,L00186,2026-05-21,Rohan (AE),Requested case studies from their industry.
+N00117,L00190,2026-05-25,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00118,L00192,2026-03-17,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00119,L00194,2026-09-02,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00120,L00196,2026-07-26,Sara (SDR),Wants to see integration with their existing ERP.
+N00121,L00197,2026-04-16,Rohan (AE),Project put on hold due to internal reorganisation.
+N00122,L00199,2026-07-28,Sara (SDR),No response after three follow-ups.
+N00123,L00200,2026-09-23,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00124,L00202,2026-03-14,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00125,L00204,2026-06-02,Meera (SDR),Project put on hold due to internal reorganisation.
+N00126,L00212,2026-09-08,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00127,L00215,2026-08-15,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00128,L00215,2026-05-30,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00129,L00216,2026-09-09,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00130,L00219,2026-04-06,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00131,L00222,2026-08-18,Sara (SDR),Requested case studies from their industry.
+N00132,L00222,2026-03-14,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00133,L00225,2026-04-16,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00134,L00225,2026-06-29,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00135,L00230,2026-06-02,Meera (SDR),Asked for a follow-up call with their technical team.
+N00136,L00230,2026-07-21,Sara (SDR),Requested case studies from their industry.
+N00137,L00233,2026-04-26,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00138,L00234,2026-08-04,Aarav (AE),Requested case studies from their industry.
+N00139,L00234,2026-09-04,Rohan (AE),Asked for a follow-up call with their technical team.
+N00140,L00241,2026-07-05,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00141,L00242,2026-05-19,Aarav (AE),No response after three follow-ups.
+N00142,L00242,2026-07-21,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00143,L00245,2026-07-17,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00144,L00245,2026-05-12,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00145,L00247,2026-08-13,Sara (SDR),Requested case studies from their industry.
+N00146,L00251,2026-05-23,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00147,L00251,2026-05-07,Aarav (AE),No response after three follow-ups.
+N00148,L00253,2026-07-15,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00149,L00253,2026-07-06,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00150,L00257,2026-04-17,Sara (SDR),Project put on hold due to internal reorganisation.
+N00151,L00257,2026-04-03,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00152,L00260,2026-05-06,Aarav (AE),Requested case studies from their industry.
+N00153,L00262,2026-08-10,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00154,L00267,2026-04-02,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00155,L00269,2026-07-20,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00156,L00271,2026-08-17,Rohan (AE),Asked for a follow-up call with their technical team.
+N00157,L00273,2026-09-13,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00158,L00274,2026-09-19,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00159,L00274,2026-04-03,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00160,L00275,2026-03-13,Aarav (AE),Asked for a follow-up call with their technical team.
+N00161,L00276,2026-08-23,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00162,L00277,2026-03-11,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00163,L00279,2026-03-12,Meera (SDR),Project put on hold due to internal reorganisation.
+N00164,L00281,2026-06-27,Rohan (AE),Requested case studies from their industry.
+N00165,L00282,2026-06-20,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00166,L00284,2026-05-21,Sara (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00167,L00285,2026-05-19,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00168,L00286,2026-07-01,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00169,L00287,2026-07-25,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00170,L00288,2026-04-30,Rohan (AE),Asked for a follow-up call with their technical team.
+N00171,L00288,2026-06-02,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00172,L00291,2026-03-20,Sara (SDR),Requested case studies from their industry.
+N00173,L00294,2026-09-10,Aarav (AE),Asked for a follow-up call with their technical team.
+N00174,L00295,2026-04-14,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00175,L00298,2026-08-12,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00176,L00298,2026-04-14,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00177,L00299,2026-05-31,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00178,L00299,2026-08-30,Sara (SDR),Wants to see integration with their existing ERP.
+N00179,L00303,2026-05-10,Aarav (AE),Project put on hold due to internal reorganisation.
+N00180,L00306,2026-06-12,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00181,L00307,2026-04-17,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00182,L00307,2026-04-01,Meera (SDR),Asked for a follow-up call with their technical team.
+N00183,L00308,2026-09-03,Sara (SDR),Wants to see integration with their existing ERP.
+N00184,L00309,2026-04-07,Aarav (AE),Asked for a follow-up call with their technical team.
+N00185,L00309,2026-09-06,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00186,L00310,2026-04-02,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00187,L00310,2026-09-17,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00188,L00311,2026-06-11,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00189,L00312,2026-08-22,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00190,L00316,2026-05-05,Aarav (AE),Requested case studies from their industry.
+N00191,L00316,2026-09-03,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00192,L00318,2026-05-16,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00193,L00320,2026-03-15,Rohan (AE),No response after three follow-ups.
+N00194,L00322,2026-04-02,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00195,L00323,2026-05-22,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00196,L00329,2026-05-18,Sara (SDR),Requested case studies from their industry.
+N00197,L00330,2026-08-05,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00198,L00330,2026-09-18,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00199,L00332,2026-04-18,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00200,L00333,2026-08-04,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00201,L00334,2026-03-19,Sara (SDR),Requested case studies from their industry.
+N00202,L00335,2026-09-08,Sara (SDR),Requested case studies from their industry.
+N00203,L00339,2026-09-02,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00204,L00340,2026-07-30,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00205,L00340,2026-04-13,Meera (SDR),Wants to see integration with their existing ERP.
+N00206,L00342,2026-04-11,Rohan (AE),Project put on hold due to internal reorganisation.
+N00207,L00343,2026-03-18,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00208,L00345,2026-08-18,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00209,L00346,2026-06-26,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00210,L00352,2026-04-25,Meera (SDR),Wants to see integration with their existing ERP.
+N00211,L00353,2026-07-20,Aarav (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00212,L00353,2026-03-18,Rohan (AE),Wants to see integration with their existing ERP.
+N00213,L00357,2026-06-27,Sara (SDR),Requested case studies from their industry.
+N00214,L00360,2026-08-04,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00215,L00362,2026-06-30,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00216,L00362,2026-08-04,Meera (SDR),Project put on hold due to internal reorganisation.
+N00217,L00363,2026-08-25,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00218,L00363,2026-05-02,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00219,L00364,2026-06-24,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00220,L00366,2026-06-18,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00221,L00372,2026-05-22,Meera (SDR),"Went with a competitor, might revisit next year."
+N00222,L00373,2026-07-24,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00223,L00374,2026-05-03,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00224,L00380,2026-09-06,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00225,L00382,2026-08-18,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00226,L00383,2026-05-08,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00227,L00386,2026-08-24,Rohan (AE),No response after three follow-ups.
+N00228,L00387,2026-04-27,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00229,L00388,2026-04-03,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00230,L00390,2026-06-04,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00231,L00392,2026-09-11,Sara (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00232,L00392,2026-07-29,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00233,L00396,2026-08-10,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00234,L00398,2026-06-22,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00235,L00398,2026-05-12,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00236,L00400,2026-07-18,Aarav (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00237,L00401,2026-04-27,Aarav (AE),Wants to see integration with their existing ERP.
+N00238,L00401,2026-07-28,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00239,L00402,2026-03-26,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00240,L00405,2026-03-11,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00241,L00406,2026-04-26,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00242,L00412,2026-07-17,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00243,L00412,2026-08-15,Meera (SDR),Requested case studies from their industry.
+N00244,L00415,2026-08-07,Rohan (AE),"Went with a competitor, might revisit next year."
+N00245,L00415,2026-08-02,Rohan (AE),Project put on hold due to internal reorganisation.
+N00246,L00417,2026-03-13,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00247,L00421,2026-08-16,Meera (SDR),Asked for a follow-up call with their technical team.
+N00248,L00423,2026-04-07,Aarav (AE),Asked for a follow-up call with their technical team.
+N00249,L00426,2026-04-01,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00250,L00426,2026-08-17,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00251,L00429,2026-05-08,Meera (SDR),"Went with a competitor, might revisit next year."
+N00252,L00431,2026-06-25,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00253,L00431,2026-04-23,Aarav (AE),No response after three follow-ups.
+N00254,L00432,2026-03-20,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00255,L00434,2026-03-31,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00256,L00437,2026-08-09,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00257,L00437,2026-05-06,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00258,L00440,2026-06-02,Rohan (AE),Wants to see integration with their existing ERP.
+N00259,L00443,2026-05-09,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00260,L00443,2026-04-14,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00261,L00444,2026-05-03,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00262,L00444,2026-06-01,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00263,L00445,2026-06-24,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00264,L00448,2026-06-13,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00265,L00450,2026-06-11,Aarav (AE),Asked for a follow-up call with their technical team.
+N00266,L00450,2026-09-14,Rohan (AE),Project put on hold due to internal reorganisation.
+N00267,L00451,2026-08-06,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00268,L00452,2026-07-05,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00269,L00453,2026-03-25,Meera (SDR),Requested case studies from their industry.
+N00270,L00456,2026-09-11,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00271,L00457,2026-03-28,Rohan (AE),"Went with a competitor, might revisit next year."
+N00272,L00459,2026-06-13,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00273,L00462,2026-09-07,Meera (SDR),"Went with a competitor, might revisit next year."
+N00274,L00462,2026-08-16,Sara (SDR),No response after three follow-ups.
+N00275,L00464,2026-06-07,Sara (SDR),Wants to see integration with their existing ERP.
+N00276,L00464,2026-08-16,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00277,L00466,2026-03-22,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00278,L00471,2026-07-14,Aarav (AE),No response after three follow-ups.
+N00279,L00472,2026-08-25,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00280,L00472,2026-05-26,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00281,L00474,2026-09-09,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00282,L00477,2026-09-08,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00283,L00477,2026-09-19,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00284,L00479,2026-07-21,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N00285,L00480,2026-07-18,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00286,L00481,2026-09-24,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00287,L00482,2026-05-09,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00288,L00482,2026-09-23,Sara (SDR),Wants to see integration with their existing ERP.
+N00289,L00484,2026-07-21,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00290,L00486,2026-08-27,Rohan (AE),Requested case studies from their industry.
+N00291,L00490,2026-08-28,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00292,L00491,2026-06-07,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00293,L00493,2026-04-22,Meera (SDR),No response after three follow-ups.
+N00294,L00494,2026-06-11,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00295,L00498,2026-08-26,Aarav (AE),Wants to see integration with their existing ERP.
+N00296,L00499,2026-09-25,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00297,L00500,2026-07-10,Rohan (AE),Requested case studies from their industry.
+N00298,L00501,2026-06-07,Aarav (AE),Asked for a follow-up call with their technical team.
+N00299,L00502,2026-03-14,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00300,L00502,2026-09-17,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00301,L00503,2026-04-23,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00302,L00503,2026-04-28,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00303,L00506,2026-05-20,Aarav (AE),Requested case studies from their industry.
+N00304,L00506,2026-04-20,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00305,L00507,2026-03-31,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00306,L00507,2026-07-10,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00307,L00510,2026-07-21,Meera (SDR),No response after three follow-ups.
+N00308,L00513,2026-08-13,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00309,L00522,2026-08-14,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00310,L00524,2026-03-22,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00311,L00527,2026-05-20,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00312,L00531,2026-07-31,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00313,L00534,2026-06-28,Sara (SDR),Project put on hold due to internal reorganisation.
+N00314,L00534,2026-05-06,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00315,L00535,2026-03-29,Sara (SDR),Requested case studies from their industry.
+N00316,L00536,2026-08-19,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00317,L00537,2026-06-16,Aarav (AE),Asked for a follow-up call with their technical team.
+N00318,L00539,2026-08-29,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00319,L00539,2026-09-26,Meera (SDR),Asked for a follow-up call with their technical team.
+N00320,L00540,2026-04-12,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00321,L00540,2026-08-02,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00322,L00542,2026-04-30,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00323,L00543,2026-05-23,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00324,L00543,2026-07-01,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00325,L00545,2026-09-14,Aarav (AE),Asked for a follow-up call with their technical team.
+N00326,L00546,2026-08-10,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00327,L00550,2026-07-13,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00328,L00555,2026-09-14,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00329,L00561,2026-03-15,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00330,L00564,2026-09-23,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00331,L00564,2026-09-03,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00332,L00565,2026-08-27,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00333,L00565,2026-06-23,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00334,L00566,2026-08-07,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00335,L00568,2026-08-12,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00336,L00568,2026-07-25,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00337,L00571,2026-05-07,Sara (SDR),Wants to see integration with their existing ERP.
+N00338,L00575,2026-07-05,Aarav (AE),No response after three follow-ups.
+N00339,L00576,2026-05-23,Rohan (AE),Requested case studies from their industry.
+N00340,L00576,2026-08-23,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00341,L00578,2026-03-15,Aarav (AE),Requested case studies from their industry.
+N00342,L00580,2026-07-25,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00343,L00584,2026-06-15,Aarav (AE),Project put on hold due to internal reorganisation.
+N00344,L00586,2026-03-30,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00345,L00588,2026-06-17,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00346,L00588,2026-04-26,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00347,L00589,2026-04-08,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00348,L00589,2026-04-14,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00349,L00594,2026-07-20,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N00350,L00596,2026-07-11,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00351,L00602,2026-07-24,Meera (SDR),"Went with a competitor, might revisit next year."
+N00352,L00602,2026-06-03,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00353,L00603,2026-05-13,Aarav (AE),"Went with a competitor, might revisit next year."
+N00354,L00603,2026-07-13,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00355,L00604,2026-07-23,Meera (SDR),Requested case studies from their industry.
+N00356,L00604,2026-03-14,Sara (SDR),Requested case studies from their industry.
+N00357,L00605,2026-04-21,Aarav (AE),Asked for a follow-up call with their technical team.
+N00358,L00605,2026-07-02,Meera (SDR),Wants to see integration with their existing ERP.
+N00359,L00607,2026-03-27,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00360,L00608,2026-09-23,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00361,L00608,2026-08-15,Sara (SDR),Project put on hold due to internal reorganisation.
+N00362,L00610,2026-03-25,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00363,L00611,2026-06-09,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00364,L00615,2026-06-09,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00365,L00617,2026-07-09,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00366,L00617,2026-06-11,Rohan (AE),Asked for a follow-up call with their technical team.
+N00367,L00618,2026-07-04,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00368,L00618,2026-09-16,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00369,L00620,2026-05-09,Sara (SDR),"Went with a competitor, might revisit next year."
+N00370,L00624,2026-09-21,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00371,L00625,2026-09-15,Meera (SDR),Asked for a follow-up call with their technical team.
+N00372,L00625,2026-07-04,Meera (SDR),"Went with a competitor, might revisit next year."
+N00373,L00628,2026-08-06,Aarav (AE),Wants to see integration with their existing ERP.
+N00374,L00629,2026-08-31,Aarav (AE),No response after three follow-ups.
+N00375,L00629,2026-04-01,Sara (SDR),Project put on hold due to internal reorganisation.
+N00376,L00630,2026-09-11,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00377,L00632,2026-04-24,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00378,L00635,2026-08-06,Sara (SDR),Asked for a follow-up call with their technical team.
+N00379,L00637,2026-03-29,Rohan (AE),"Went with a competitor, might revisit next year."
+N00380,L00639,2026-08-23,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00381,L00640,2026-09-11,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00382,L00642,2026-09-18,Rohan (AE),Requested case studies from their industry.
+N00383,L00644,2026-06-20,Aarav (AE),Requested case studies from their industry.
+N00384,L00644,2026-06-03,Meera (SDR),Requested case studies from their industry.
+N00385,L00646,2026-05-29,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00386,L00649,2026-08-19,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00387,L00650,2026-05-19,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00388,L00652,2026-06-05,Meera (SDR),Wants to see integration with their existing ERP.
+N00389,L00652,2026-03-20,Sara (SDR),Wants to see integration with their existing ERP.
+N00390,L00653,2026-06-18,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00391,L00655,2026-07-10,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00392,L00656,2026-07-05,Sara (SDR),Asked for a follow-up call with their technical team.
+N00393,L00656,2026-04-06,Rohan (AE),Project put on hold due to internal reorganisation.
+N00394,L00658,2026-07-25,Sara (SDR),Wants to see integration with their existing ERP.
+N00395,L00660,2026-07-12,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00396,L00661,2026-08-08,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00397,L00663,2026-03-10,Meera (SDR),Wants to see integration with their existing ERP.
+N00398,L00667,2026-07-31,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00399,L00668,2026-03-16,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00400,L00670,2026-04-30,Meera (SDR),Project put on hold due to internal reorganisation.
+N00401,L00671,2026-07-28,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00402,L00671,2026-08-14,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00403,L00673,2026-07-22,Sara (SDR),Wants to see integration with their existing ERP.
+N00404,L00674,2026-04-23,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00405,L00674,2026-03-24,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00406,L00677,2026-07-27,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00407,L00678,2026-06-28,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00408,L00678,2026-04-13,Rohan (AE),Requested case studies from their industry.
+N00409,L00679,2026-04-10,Sara (SDR),Requested case studies from their industry.
+N00410,L00679,2026-07-09,Rohan (AE),Requested case studies from their industry.
+N00411,L00681,2026-03-14,Rohan (AE),Project put on hold due to internal reorganisation.
+N00412,L00681,2026-07-11,Sara (SDR),Project put on hold due to internal reorganisation.
+N00413,L00688,2026-08-06,Rohan (AE),Requested case studies from their industry.
+N00414,L00688,2026-07-10,Sara (SDR),Wants to see integration with their existing ERP.
+N00415,L00689,2026-06-02,Meera (SDR),Wants to see integration with their existing ERP.
+N00416,L00692,2026-06-15,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00417,L00694,2026-07-28,Sara (SDR),"Went with a competitor, might revisit next year."
+N00418,L00695,2026-08-02,Aarav (AE),Asked for a follow-up call with their technical team.
+N00419,L00697,2026-03-12,Aarav (AE),Wants to see integration with their existing ERP.
+N00420,L00698,2026-06-17,Sara (SDR),Wants to see integration with their existing ERP.
+N00421,L00698,2026-06-18,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00422,L00699,2026-05-31,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00423,L00700,2026-05-08,Sara (SDR),Wants to see integration with their existing ERP.
+N00424,L00701,2026-06-18,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00425,L00701,2026-05-17,Rohan (AE),Wants to see integration with their existing ERP.
+N00426,L00703,2026-08-13,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00427,L00703,2026-04-27,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00428,L00705,2026-06-05,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00429,L00706,2026-05-27,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00430,L00707,2026-08-10,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00431,L00710,2026-04-25,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00432,L00712,2026-04-09,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00433,L00713,2026-07-12,Rohan (AE),"Went with a competitor, might revisit next year."
+N00434,L00715,2026-07-06,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00435,L00716,2026-04-02,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00436,L00718,2026-07-12,Sara (SDR),Wants to see integration with their existing ERP.
+N00437,L00719,2026-05-01,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00438,L00719,2026-03-17,Sara (SDR),Wants to see integration with their existing ERP.
+N00439,L00720,2026-05-27,Aarav (AE),No response after three follow-ups.
+N00440,L00721,2026-06-24,Meera (SDR),"Went with a competitor, might revisit next year."
+N00441,L00721,2026-07-20,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00442,L00722,2026-08-08,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00443,L00727,2026-04-18,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00444,L00728,2026-05-20,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00445,L00731,2026-06-04,Meera (SDR),Project put on hold due to internal reorganisation.
+N00446,L00732,2026-03-29,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00447,L00733,2026-04-22,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00448,L00733,2026-04-22,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00449,L00734,2026-04-18,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00450,L00735,2026-08-14,Aarav (AE),Asked for a follow-up call with their technical team.
+N00451,L00735,2026-08-04,Sara (SDR),Requested case studies from their industry.
+N00452,L00737,2026-08-19,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00453,L00742,2026-03-11,Rohan (AE),Project put on hold due to internal reorganisation.
+N00454,L00743,2026-06-09,Aarav (AE),Wants to see integration with their existing ERP.
+N00455,L00750,2026-09-19,Aarav (AE),No response after three follow-ups.
+N00456,L00750,2026-04-01,Rohan (AE),Wants to see integration with their existing ERP.
+N00457,L00752,2026-08-27,Rohan (AE),"Went with a competitor, might revisit next year."
+N00458,L00752,2026-06-12,Aarav (AE),No response after three follow-ups.
+N00459,L00754,2026-08-30,Aarav (AE),No response after three follow-ups.
+N00460,L00755,2026-03-21,Meera (SDR),Asked for a follow-up call with their technical team.
+N00461,L00756,2026-03-22,Aarav (AE),Asked for a follow-up call with their technical team.
+N00462,L00756,2026-04-20,Aarav (AE),Asked for a follow-up call with their technical team.
+N00463,L00758,2026-04-15,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00464,L00761,2026-07-11,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00465,L00762,2026-09-07,Sara (SDR),Project put on hold due to internal reorganisation.
+N00466,L00762,2026-03-17,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00467,L00765,2026-04-20,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00468,L00765,2026-07-12,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00469,L00767,2026-05-23,Meera (SDR),"Went with a competitor, might revisit next year."
+N00470,L00768,2026-08-28,Rohan (AE),Requested case studies from their industry.
+N00471,L00768,2026-04-18,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00472,L00769,2026-03-20,Meera (SDR),No response after three follow-ups.
+N00473,L00777,2026-05-23,Aarav (AE),No response after three follow-ups.
+N00474,L00778,2026-07-04,Rohan (AE),No response after three follow-ups.
+N00475,L00778,2026-09-02,Sara (SDR),Project put on hold due to internal reorganisation.
+N00476,L00780,2026-07-03,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00477,L00783,2026-05-05,Meera (SDR),No response after three follow-ups.
+N00478,L00784,2026-07-28,Aarav (AE),Wants to see integration with their existing ERP.
+N00479,L00786,2026-04-20,Rohan (AE),Requested case studies from their industry.
+N00480,L00787,2026-07-03,Sara (SDR),Project put on hold due to internal reorganisation.
+N00481,L00787,2026-09-16,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00482,L00790,2026-05-18,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00483,L00794,2026-04-24,Aarav (AE),"Went with a competitor, might revisit next year."
+N00484,L00794,2026-08-03,Sara (SDR),Wants to see integration with their existing ERP.
+N00485,L00795,2026-06-24,Sara (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00486,L00797,2026-09-11,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00487,L00800,2026-09-21,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00488,L00803,2026-05-08,Aarav (AE),"Went with a competitor, might revisit next year."
+N00489,L00806,2026-07-18,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00490,L00808,2026-08-08,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00491,L00808,2026-09-24,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00492,L00809,2026-07-25,Sara (SDR),Requested case studies from their industry.
+N00493,L00810,2026-07-19,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00494,L00817,2026-09-12,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00495,L00818,2026-07-23,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00496,L00820,2026-07-10,Meera (SDR),"Went with a competitor, might revisit next year."
+N00497,L00821,2026-06-15,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00498,L00821,2026-04-06,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00499,L00822,2026-06-13,Rohan (AE),Asked for a follow-up call with their technical team.
+N00500,L00823,2026-09-11,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00501,L00823,2026-03-29,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00502,L00825,2026-06-21,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00503,L00827,2026-08-10,Meera (SDR),Project put on hold due to internal reorganisation.
+N00504,L00831,2026-07-27,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00505,L00832,2026-05-20,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00506,L00836,2026-03-24,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00507,L00838,2026-03-24,Rohan (AE),"Went with a competitor, might revisit next year."
+N00508,L00838,2026-09-09,Sara (SDR),Asked for a follow-up call with their technical team.
+N00509,L00839,2026-06-04,Sara (SDR),Requested case studies from their industry.
+N00510,L00840,2026-08-10,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00511,L00840,2026-08-26,Aarav (AE),No response after three follow-ups.
+N00512,L00849,2026-05-08,Rohan (AE),Asked for a follow-up call with their technical team.
+N00513,L00850,2026-06-10,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00514,L00852,2026-08-25,Rohan (AE),Requested case studies from their industry.
+N00515,L00853,2026-04-15,Meera (SDR),Asked for a follow-up call with their technical team.
+N00516,L00853,2026-04-10,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00517,L00858,2026-04-12,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00518,L00859,2026-07-03,Sara (SDR),Asked for a follow-up call with their technical team.
+N00519,L00862,2026-03-15,Sara (SDR),Requested case studies from their industry.
+N00520,L00864,2026-08-22,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00521,L00865,2026-08-29,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00522,L00866,2026-08-10,Aarav (AE),No response after three follow-ups.
+N00523,L00867,2026-04-06,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00524,L00867,2026-04-22,Meera (SDR),Requested case studies from their industry.
+N00525,L00870,2026-09-13,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00526,L00870,2026-04-20,Sara (SDR),Asked for a follow-up call with their technical team.
+N00527,L00875,2026-04-14,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00528,L00875,2026-06-29,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00529,L00876,2026-04-21,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00530,L00877,2026-08-09,Meera (SDR),Project put on hold due to internal reorganisation.
+N00531,L00878,2026-06-05,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00532,L00880,2026-03-11,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00533,L00881,2026-08-21,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00534,L00883,2026-03-31,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00535,L00885,2026-08-04,Aarav (AE),No response after three follow-ups.
+N00536,L00885,2026-08-29,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00537,L00886,2026-04-20,Sara (SDR),No response after three follow-ups.
+N00538,L00889,2026-08-28,Aarav (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00539,L00895,2026-06-02,Meera (SDR),Requested case studies from their industry.
+N00540,L00899,2026-05-17,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00541,L00900,2026-06-15,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00542,L00902,2026-07-15,Sara (SDR),Asked for a follow-up call with their technical team.
+N00543,L00902,2026-06-04,Aarav (AE),No response after three follow-ups.
+N00544,L00905,2026-09-21,Rohan (AE),Wants to see integration with their existing ERP.
+N00545,L00907,2026-04-18,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00546,L00908,2026-07-22,Rohan (AE),"Went with a competitor, might revisit next year."
+N00547,L00909,2026-08-05,Sara (SDR),Wants to see integration with their existing ERP.
+N00548,L00910,2026-05-12,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00549,L00913,2026-09-09,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00550,L00913,2026-06-06,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00551,L00917,2026-06-23,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00552,L00917,2026-04-02,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00553,L00919,2026-05-16,Aarav (AE),No response after three follow-ups.
+N00554,L00919,2026-07-05,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00555,L00922,2026-04-10,Sara (SDR),Asked for a follow-up call with their technical team.
+N00556,L00922,2026-09-19,Sara (SDR),Asked for a follow-up call with their technical team.
+N00557,L00924,2026-07-09,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00558,L00926,2026-08-07,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00559,L00928,2026-06-29,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00560,L00932,2026-09-13,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00561,L00932,2026-04-14,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00562,L00934,2026-05-13,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00563,L00935,2026-08-18,Rohan (AE),Requested case studies from their industry.
+N00564,L00935,2026-08-18,Meera (SDR),Requested case studies from their industry.
+N00565,L00936,2026-09-08,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00566,L00937,2026-06-01,Meera (SDR),Wants to see integration with their existing ERP.
+N00567,L00937,2026-03-28,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00568,L00940,2026-07-29,Sara (SDR),Requested case studies from their industry.
+N00569,L00940,2026-09-12,Meera (SDR),Requested case studies from their industry.
+N00570,L00943,2026-04-20,Meera (SDR),"Went with a competitor, might revisit next year."
+N00571,L00943,2026-03-23,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00572,L00945,2026-04-19,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00573,L00945,2026-05-16,Rohan (AE),No response after three follow-ups.
+N00574,L00947,2026-07-21,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00575,L00949,2026-04-06,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00576,L00951,2026-07-12,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00577,L00952,2026-06-26,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00578,L00955,2026-08-12,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00579,L00956,2026-09-06,Rohan (AE),Requested case studies from their industry.
+N00580,L00957,2026-05-23,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00581,L00958,2026-06-02,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00582,L00958,2026-05-06,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00583,L00966,2026-09-18,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00584,L00966,2026-04-03,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00585,L00969,2026-05-17,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00586,L00969,2026-08-05,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00587,L00970,2026-08-19,Meera (SDR),Project put on hold due to internal reorganisation.
+N00588,L00970,2026-08-15,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00589,L00972,2026-05-15,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00590,L00975,2026-06-16,Rohan (AE),Wants to see integration with their existing ERP.
+N00591,L00975,2026-08-29,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00592,L00976,2026-07-05,Rohan (AE),"Went with a competitor, might revisit next year."
+N00593,L00976,2026-07-25,Meera (SDR),Asked for a follow-up call with their technical team.
+N00594,L00978,2026-07-12,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00595,L00982,2026-09-08,Aarav (AE),Requested case studies from their industry.
+N00596,L00988,2026-09-15,Rohan (AE),Requested case studies from their industry.
+N00597,L00991,2026-09-18,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00598,L00991,2026-06-13,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00599,L00995,2026-07-05,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00600,L00995,2026-03-16,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00601,L00996,2026-06-15,Rohan (AE),Wants to see integration with their existing ERP.
+N00602,L00996,2026-08-12,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00603,L00997,2026-08-28,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00604,L00997,2026-07-02,Aarav (AE),Requested case studies from their industry.
+N00605,L00998,2026-06-02,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00606,L00998,2026-09-07,Sara (SDR),Project put on hold due to internal reorganisation.
+N00607,L00999,2026-08-24,Meera (SDR),No response after three follow-ups.
+N00608,L01000,2026-06-05,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00609,L01003,2026-04-06,Sara (SDR),Requested case studies from their industry.
+N00610,L01004,2026-06-25,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00611,L01005,2026-08-02,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00612,L01006,2026-08-08,Sara (SDR),Project put on hold due to internal reorganisation.
+N00613,L01007,2026-04-17,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00614,L01007,2026-05-16,Sara (SDR),Wants to see integration with their existing ERP.
+N00615,L01009,2026-06-24,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00616,L01010,2026-08-21,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00617,L01011,2026-04-11,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00618,L01013,2026-07-28,Meera (SDR),Wants to see integration with their existing ERP.
+N00619,L01015,2026-05-29,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00620,L01015,2026-05-22,Meera (SDR),Project put on hold due to internal reorganisation.
+N00621,L01016,2026-03-25,Rohan (AE),Asked for a follow-up call with their technical team.
+N00622,L01017,2026-06-12,Meera (SDR),Asked for a follow-up call with their technical team.
+N00623,L01018,2026-06-17,Meera (SDR),"Went with a competitor, might revisit next year."
+N00624,L01018,2026-09-19,Sara (SDR),"Went with a competitor, might revisit next year."
+N00625,L01023,2026-04-09,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00626,L01023,2026-09-20,Aarav (AE),Asked for a follow-up call with their technical team.
+N00627,L01026,2026-06-18,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00628,L01026,2026-07-20,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00629,L01028,2026-08-23,Sara (SDR),Wants to see integration with their existing ERP.
+N00630,L01029,2026-03-29,Sara (SDR),Requested case studies from their industry.
+N00631,L01030,2026-07-08,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00632,L01031,2026-06-18,Meera (SDR),"Went with a competitor, might revisit next year."
+N00633,L01034,2026-04-09,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00634,L01038,2026-03-12,Rohan (AE),Asked for a follow-up call with their technical team.
+N00635,L01038,2026-08-30,Meera (SDR),"Went with a competitor, might revisit next year."
+N00636,L01040,2026-03-22,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00637,L01040,2026-08-19,Sara (SDR),Wants to see integration with their existing ERP.
+N00638,L01045,2026-08-23,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00639,L01046,2026-04-30,Aarav (AE),Asked for a follow-up call with their technical team.
+N00640,L01046,2026-06-16,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00641,L01050,2026-05-19,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00642,L01050,2026-06-01,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00643,L01052,2026-05-01,Aarav (AE),Project put on hold due to internal reorganisation.
+N00644,L01052,2026-06-13,Sara (SDR),Wants to see integration with their existing ERP.
+N00645,L01053,2026-06-22,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00646,L01059,2026-07-20,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00647,L01059,2026-08-18,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00648,L01060,2026-08-07,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00649,L01064,2026-08-10,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00650,L01066,2026-05-27,Meera (SDR),Project put on hold due to internal reorganisation.
+N00651,L01066,2026-03-23,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N00652,L01067,2026-07-05,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00653,L01070,2026-07-05,Aarav (AE),Project put on hold due to internal reorganisation.
+N00654,L01072,2026-07-12,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00655,L01074,2026-06-09,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00656,L01076,2026-04-25,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N00657,L01077,2026-07-22,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00658,L01078,2026-08-03,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00659,L01081,2026-06-13,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00660,L01083,2026-04-14,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00661,L01083,2026-04-03,Aarav (AE),"Went with a competitor, might revisit next year."
+N00662,L01086,2026-06-12,Aarav (AE),Asked for a follow-up call with their technical team.
+N00663,L01089,2026-07-13,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00664,L01089,2026-07-06,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00665,L01090,2026-05-17,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00666,L01092,2026-06-20,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00667,L01092,2026-09-24,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00668,L01093,2026-05-26,Meera (SDR),Wants to see integration with their existing ERP.
+N00669,L01095,2026-09-25,Sara (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00670,L01095,2026-06-23,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00671,L01096,2026-03-14,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00672,L01098,2026-04-27,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00673,L01101,2026-04-23,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00674,L01101,2026-08-30,Sara (SDR),Wants to see integration with their existing ERP.
+N00675,L01107,2026-07-22,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00676,L01109,2026-08-27,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00677,L01110,2026-08-31,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00678,L01111,2026-03-23,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00679,L01112,2026-06-22,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00680,L01113,2026-04-29,Aarav (AE),Asked for a follow-up call with their technical team.
+N00681,L01114,2026-04-11,Aarav (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00682,L01115,2026-03-23,Aarav (AE),Requested case studies from their industry.
+N00683,L01118,2026-08-28,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00684,L01118,2026-06-09,Sara (SDR),Asked for a follow-up call with their technical team.
+N00685,L01119,2026-06-27,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00686,L01124,2026-06-18,Meera (SDR),Requested case studies from their industry.
+N00687,L01124,2026-04-14,Rohan (AE),Requested case studies from their industry.
+N00688,L01126,2026-05-21,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00689,L01127,2026-06-07,Rohan (AE),"Went with a competitor, might revisit next year."
+N00690,L01129,2026-08-08,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00691,L01131,2026-07-02,Meera (SDR),Asked for a follow-up call with their technical team.
+N00692,L01131,2026-06-13,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00693,L01137,2026-06-04,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00694,L01137,2026-04-22,Rohan (AE),"Went with a competitor, might revisit next year."
+N00695,L01138,2026-07-21,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00696,L01138,2026-07-09,Aarav (AE),Asked for a follow-up call with their technical team.
+N00697,L01139,2026-08-21,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00698,L01140,2026-03-11,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00699,L01146,2026-05-31,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00700,L01149,2026-04-11,Sara (SDR),Project put on hold due to internal reorganisation.
+N00701,L01152,2026-09-19,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00702,L01152,2026-03-14,Aarav (AE),Asked for a follow-up call with their technical team.
+N00703,L01154,2026-07-30,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00704,L01155,2026-08-27,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00705,L01155,2026-08-18,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00706,L01156,2026-09-04,Meera (SDR),Project put on hold due to internal reorganisation.
+N00707,L01157,2026-06-27,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00708,L01159,2026-04-07,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00709,L01161,2026-07-06,Meera (SDR),"Went with a competitor, might revisit next year."
+N00710,L01163,2026-04-23,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00711,L01163,2026-03-13,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00712,L01164,2026-08-23,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00713,L01164,2026-07-26,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00714,L01166,2026-08-04,Rohan (AE),Project put on hold due to internal reorganisation.
+N00715,L01166,2026-09-13,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00716,L01167,2026-09-14,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00717,L01169,2026-05-01,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N00718,L01169,2026-03-20,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00719,L01171,2026-03-21,Meera (SDR),Requested case studies from their industry.
+N00720,L01172,2026-03-18,Aarav (AE),Wants to see integration with their existing ERP.
+N00721,L01172,2026-03-26,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00722,L01176,2026-06-07,Meera (SDR),Asked for a follow-up call with their technical team.
+N00723,L01177,2026-06-22,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00724,L01179,2026-09-20,Aarav (AE),Requested case studies from their industry.
+N00725,L01181,2026-06-16,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00726,L01181,2026-08-22,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00727,L01183,2026-07-19,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00728,L01186,2026-05-16,Sara (SDR),Requested case studies from their industry.
+N00729,L01189,2026-04-10,Meera (SDR),"Went with a competitor, might revisit next year."
+N00730,L01191,2026-07-31,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00731,L01191,2026-04-20,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00732,L01192,2026-04-15,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00733,L01192,2026-04-07,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00734,L01195,2026-07-28,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00735,L01196,2026-08-01,Meera (SDR),Asked for a follow-up call with their technical team.
+N00736,L01196,2026-06-20,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00737,L01197,2026-09-13,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00738,L01199,2026-08-14,Meera (SDR),Asked for a follow-up call with their technical team.
+N00739,L01199,2026-06-30,Rohan (AE),Requested case studies from their industry.
+N00740,L01200,2026-08-29,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00741,L01201,2026-07-09,Sara (SDR),Asked for a follow-up call with their technical team.
+N00742,L01202,2026-06-25,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00743,L01209,2026-06-02,Rohan (AE),Asked for a follow-up call with their technical team.
+N00744,L01209,2026-08-23,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00745,L01215,2026-04-03,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00746,L01217,2026-03-15,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00747,L01224,2026-08-28,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00748,L01225,2026-05-23,Sara (SDR),Requested case studies from their industry.
+N00749,L01226,2026-08-17,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00750,L01228,2026-08-13,Aarav (AE),Requested case studies from their industry.
+N00751,L01228,2026-06-12,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00752,L01230,2026-03-27,Rohan (AE),Asked for a follow-up call with their technical team.
+N00753,L01231,2026-06-17,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00754,L01231,2026-05-01,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00755,L01233,2026-03-23,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00756,L01233,2026-03-18,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00757,L01234,2026-06-09,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00758,L01238,2026-03-13,Rohan (AE),Project put on hold due to internal reorganisation.
+N00759,L01239,2026-06-07,Sara (SDR),Project put on hold due to internal reorganisation.
+N00760,L01240,2026-05-22,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00761,L01240,2026-05-06,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00762,L01242,2026-03-12,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00763,L01244,2026-09-25,Rohan (AE),Asked for a follow-up call with their technical team.
+N00764,L01245,2026-06-02,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00765,L01247,2026-05-22,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00766,L01251,2026-09-25,Sara (SDR),Requested case studies from their industry.
+N00767,L01256,2026-08-21,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00768,L01257,2026-09-19,Meera (SDR),Requested case studies from their industry.
+N00769,L01257,2026-08-29,Meera (SDR),Requested case studies from their industry.
+N00770,L01259,2026-07-21,Sara (SDR),"Went with a competitor, might revisit next year."
+N00771,L01259,2026-06-22,Meera (SDR),No response after three follow-ups.
+N00772,L01261,2026-07-21,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N00773,L01262,2026-04-27,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00774,L01263,2026-03-24,Rohan (AE),Requested case studies from their industry.
+N00775,L01263,2026-07-30,Rohan (AE),Project put on hold due to internal reorganisation.
+N00776,L01265,2026-04-25,Aarav (AE),Wants to see integration with their existing ERP.
+N00777,L01265,2026-07-31,Rohan (AE),Asked for a follow-up call with their technical team.
+N00778,L01267,2026-04-13,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00779,L01267,2026-09-25,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00780,L01270,2026-03-14,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00781,L01270,2026-04-24,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00782,L01271,2026-04-23,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00783,L01272,2026-03-18,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00784,L01275,2026-04-13,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00785,L01275,2026-03-30,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00786,L01278,2026-06-27,Rohan (AE),"Went with a competitor, might revisit next year."
+N00787,L01278,2026-03-27,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00788,L01279,2026-09-04,Meera (SDR),Project put on hold due to internal reorganisation.
+N00789,L01279,2026-06-14,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00790,L01283,2026-06-23,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00791,L01284,2026-05-03,Meera (SDR),Wants to see integration with their existing ERP.
+N00792,L01285,2026-09-26,Sara (SDR),Project put on hold due to internal reorganisation.
+N00793,L01288,2026-04-08,Sara (SDR),Asked for a follow-up call with their technical team.
+N00794,L01288,2026-08-03,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00795,L01289,2026-05-07,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00796,L01289,2026-07-08,Rohan (AE),Project put on hold due to internal reorganisation.
+N00797,L01292,2026-04-02,Sara (SDR),Project put on hold due to internal reorganisation.
+N00798,L01294,2026-04-11,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00799,L01295,2026-07-24,Aarav (AE),Wants to see integration with their existing ERP.
+N00800,L01295,2026-05-15,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00801,L01296,2026-03-28,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00802,L01299,2026-07-22,Rohan (AE),Project put on hold due to internal reorganisation.
+N00803,L01299,2026-06-20,Aarav (AE),No response after three follow-ups.
+N00804,L01308,2026-05-18,Rohan (AE),Asked for a follow-up call with their technical team.
+N00805,L01310,2026-03-30,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00806,L01310,2026-05-17,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00807,L01314,2026-05-28,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00808,L01314,2026-08-04,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00809,L01315,2026-04-18,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00810,L01319,2026-04-25,Sara (SDR),Requested case studies from their industry.
+N00811,L01319,2026-05-19,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00812,L01324,2026-09-14,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00813,L01326,2026-03-27,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00814,L01326,2026-04-25,Sara (SDR),Asked for a follow-up call with their technical team.
+N00815,L01329,2026-05-28,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00816,L01333,2026-09-23,Meera (SDR),Asked for a follow-up call with their technical team.
+N00817,L01333,2026-08-23,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00818,L01334,2026-05-11,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00819,L01336,2026-08-04,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00820,L01337,2026-03-21,Sara (SDR),Project put on hold due to internal reorganisation.
+N00821,L01338,2026-09-03,Sara (SDR),"Went with a competitor, might revisit next year."
+N00822,L01338,2026-06-30,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N00823,L01339,2026-09-14,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00824,L01345,2026-06-15,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00825,L01346,2026-09-13,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00826,L01347,2026-08-24,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00827,L01350,2026-04-17,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00828,L01352,2026-03-17,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00829,L01352,2026-04-17,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00830,L01353,2026-06-22,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00831,L01356,2026-04-30,Rohan (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00832,L01356,2026-03-26,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00833,L01358,2026-08-20,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00834,L01361,2026-06-04,Rohan (AE),Wants to see integration with their existing ERP.
+N00835,L01362,2026-07-21,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00836,L01363,2026-07-10,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00837,L01368,2026-05-19,Sara (SDR),No response after three follow-ups.
+N00838,L01369,2026-04-23,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00839,L01370,2026-05-07,Rohan (AE),Requested case studies from their industry.
+N00840,L01371,2026-03-12,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00841,L01371,2026-05-22,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00842,L01381,2026-08-28,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00843,L01384,2026-04-06,Meera (SDR),No response after three follow-ups.
+N00844,L01386,2026-07-30,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00845,L01387,2026-04-26,Sara (SDR),No response after three follow-ups.
+N00846,L01388,2026-04-07,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00847,L01389,2026-04-25,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00848,L01390,2026-09-26,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00849,L01391,2026-06-27,Meera (SDR),Wants to see integration with their existing ERP.
+N00850,L01391,2026-08-17,Aarav (AE),Project put on hold due to internal reorganisation.
+N00851,L01395,2026-05-07,Rohan (AE),Project put on hold due to internal reorganisation.
+N00852,L01400,2026-04-25,Rohan (AE),"Went with a competitor, might revisit next year."
+N00853,L01405,2026-07-23,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00854,L01405,2026-04-29,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00855,L01406,2026-07-16,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00856,L01407,2026-04-19,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00857,L01407,2026-05-05,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00858,L01408,2026-04-19,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00859,L01410,2026-06-01,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00860,L01410,2026-08-01,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00861,L01412,2026-04-09,Sara (SDR),Requested case studies from their industry.
+N00862,L01412,2026-05-27,Meera (SDR),Asked for a follow-up call with their technical team.
+N00863,L01415,2026-08-15,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00864,L01421,2026-05-04,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00865,L01424,2026-09-17,Sara (SDR),Wants to see integration with their existing ERP.
+N00866,L01424,2026-04-19,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00867,L01425,2026-09-03,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00868,L01425,2026-06-27,Aarav (AE),Wants to see integration with their existing ERP.
+N00869,L01426,2026-05-13,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00870,L01427,2026-03-18,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00871,L01428,2026-08-25,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00872,L01429,2026-06-24,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00873,L01431,2026-03-18,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00874,L01433,2026-07-28,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00875,L01436,2026-06-25,Aarav (AE),Wants to see integration with their existing ERP.
+N00876,L01436,2026-09-14,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00877,L01437,2026-08-08,Sara (SDR),Requested case studies from their industry.
+N00878,L01440,2026-04-27,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00879,L01444,2026-06-06,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00880,L01445,2026-05-07,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00881,L01446,2026-07-05,Rohan (AE),Wants to see integration with their existing ERP.
+N00882,L01447,2026-05-23,Sara (SDR),Requested case studies from their industry.
+N00883,L01447,2026-06-08,Aarav (AE),No response after three follow-ups.
+N00884,L01448,2026-09-13,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00885,L01448,2026-06-28,Rohan (AE),Requested case studies from their industry.
+N00886,L01450,2026-07-23,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00887,L01452,2026-04-01,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00888,L01453,2026-04-29,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N00889,L01456,2026-07-13,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00890,L01457,2026-07-22,Meera (SDR),No response after three follow-ups.
+N00891,L01457,2026-06-03,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N00892,L01458,2026-04-12,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00893,L01460,2026-08-01,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00894,L01460,2026-08-26,Rohan (AE),Wants to see integration with their existing ERP.
+N00895,L01462,2026-08-10,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00896,L01462,2026-04-16,Rohan (AE),No response after three follow-ups.
+N00897,L01464,2026-04-06,Rohan (AE),Requested case studies from their industry.
+N00898,L01468,2026-05-09,Aarav (AE),Asked for a follow-up call with their technical team.
+N00899,L01468,2026-07-27,Rohan (AE),Project put on hold due to internal reorganisation.
+N00900,L01470,2026-04-14,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00901,L01471,2026-06-04,Rohan (AE),Asked for a follow-up call with their technical team.
+N00902,L01472,2026-03-28,Sara (SDR),No response after three follow-ups.
+N00903,L01472,2026-03-23,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N00904,L01475,2026-05-14,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00905,L01477,2026-05-23,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N00906,L01485,2026-03-16,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N00907,L01488,2026-03-11,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00908,L01489,2026-04-06,Meera (SDR),No response after three follow-ups.
+N00909,L01489,2026-09-08,Meera (SDR),Wants to see integration with their existing ERP.
+N00910,L01490,2026-08-30,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00911,L01497,2026-05-06,Sara (SDR),No response after three follow-ups.
+N00912,L01499,2026-03-27,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00913,L01500,2026-09-10,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00914,L01500,2026-07-18,Aarav (AE),Project put on hold due to internal reorganisation.
+N00915,L01502,2026-04-11,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00916,L01502,2026-08-03,Sara (SDR),Wants to see integration with their existing ERP.
+N00917,L01503,2026-03-11,Meera (SDR),Requested case studies from their industry.
+N00918,L01508,2026-06-02,Aarav (AE),"Went with a competitor, might revisit next year."
+N00919,L01514,2026-06-01,Aarav (AE),Asked for a follow-up call with their technical team.
+N00920,L01517,2026-08-30,Sara (SDR),Project put on hold due to internal reorganisation.
+N00921,L01519,2026-07-09,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00922,L01519,2026-09-22,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00923,L01522,2026-04-27,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00924,L01523,2026-04-18,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00925,L01525,2026-09-26,Rohan (AE),Requested case studies from their industry.
+N00926,L01527,2026-09-21,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00927,L01530,2026-06-17,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00928,L01533,2026-09-07,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00929,L01533,2026-08-07,Rohan (AE),Asked for a follow-up call with their technical team.
+N00930,L01534,2026-06-07,Sara (SDR),"Client worried about price, says budget is tight this year."
+N00931,L01535,2026-07-10,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N00932,L01539,2026-03-20,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N00933,L01540,2026-08-23,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00934,L01542,2026-09-10,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00935,L01544,2026-07-11,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N00936,L01545,2026-03-21,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00937,L01546,2026-08-21,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00938,L01546,2026-09-14,Rohan (AE),Wants to see integration with their existing ERP.
+N00939,L01550,2026-07-24,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00940,L01551,2026-08-28,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00941,L01552,2026-08-26,Meera (SDR),Requested case studies from their industry.
+N00942,L01552,2026-09-22,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00943,L01556,2026-06-12,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00944,L01560,2026-03-20,Sara (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00945,L01561,2026-09-15,Rohan (AE),Asked for a follow-up call with their technical team.
+N00946,L01562,2026-06-20,Sara (SDR),Wants to see integration with their existing ERP.
+N00947,L01565,2026-04-18,Meera (SDR),Asked for a follow-up call with their technical team.
+N00948,L01565,2026-04-13,Rohan (AE),Project put on hold due to internal reorganisation.
+N00949,L01569,2026-06-12,Rohan (AE),Asked for a follow-up call with their technical team.
+N00950,L01569,2026-07-23,Rohan (AE),Asked for a follow-up call with their technical team.
+N00951,L01573,2026-08-27,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00952,L01576,2026-05-30,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00953,L01581,2026-03-14,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00954,L01583,2026-07-14,Meera (SDR),Wants to see integration with their existing ERP.
+N00955,L01583,2026-03-14,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00956,L01585,2026-08-09,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00957,L01586,2026-07-29,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00958,L01587,2026-08-06,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00959,L01587,2026-07-25,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N00960,L01590,2026-08-16,Meera (SDR),Asked for a follow-up call with their technical team.
+N00961,L01593,2026-04-08,Rohan (AE),No response after three follow-ups.
+N00962,L01601,2026-04-17,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N00963,L01602,2026-06-25,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N00964,L01602,2026-09-01,Rohan (AE),"Client worried about price, says budget is tight this year."
+N00965,L01603,2026-03-13,Aarav (AE),Wants to see integration with their existing ERP.
+N00966,L01605,2026-07-19,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N00967,L01606,2026-03-26,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00968,L01607,2026-04-26,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N00969,L01608,2026-04-24,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00970,L01610,2026-04-25,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N00971,L01611,2026-07-13,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00972,L01611,2026-06-01,Sara (SDR),"Very interested after the demo, asked about onboarding timelines."
+N00973,L01612,2026-07-03,Sara (SDR),Asked for a follow-up call with their technical team.
+N00974,L01613,2026-04-19,Meera (SDR),Asked for a follow-up call with their technical team.
+N00975,L01614,2026-06-21,Meera (SDR),Requested case studies from their industry.
+N00976,L01614,2026-06-05,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00977,L01615,2026-07-09,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00978,L01615,2026-06-01,Rohan (AE),"Went with a competitor, might revisit next year."
+N00979,L01621,2026-08-10,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N00980,L01623,2026-06-22,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N00981,L01624,2026-08-07,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00982,L01628,2026-08-23,Rohan (AE),No response after three follow-ups.
+N00983,L01630,2026-07-22,Meera (SDR),Asked for a follow-up call with their technical team.
+N00984,L01632,2026-05-19,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00985,L01635,2026-05-05,Meera (SDR),Requested case studies from their industry.
+N00986,L01635,2026-07-15,Rohan (AE),No response after three follow-ups.
+N00987,L01637,2026-08-19,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00988,L01637,2026-07-12,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N00989,L01638,2026-07-06,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N00990,L01639,2026-09-18,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N00991,L01639,2026-05-10,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N00992,L01642,2026-08-02,Meera (SDR),Project put on hold due to internal reorganisation.
+N00993,L01643,2026-03-23,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00994,L01646,2026-08-07,Rohan (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N00995,L01647,2026-04-02,Meera (SDR),Wants to see integration with their existing ERP.
+N00996,L01647,2026-05-25,Meera (SDR),"Client worried about price, says budget is tight this year."
+N00997,L01648,2026-06-26,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N00998,L01649,2026-03-22,Aarav (AE),"Client worried about price, says budget is tight this year."
+N00999,L01650,2026-04-09,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N01000,L01652,2026-04-18,Meera (SDR),"Client worried about price, says budget is tight this year."
+N01001,L01653,2026-07-09,Rohan (AE),Requested case studies from their industry.
+N01002,L01658,2026-04-24,Meera (SDR),No response after three follow-ups.
+N01003,L01662,2026-03-10,Rohan (AE),Project put on hold due to internal reorganisation.
+N01004,L01665,2026-05-26,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N01005,L01666,2026-03-11,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01006,L01667,2026-09-26,Meera (SDR),Project put on hold due to internal reorganisation.
+N01007,L01668,2026-03-30,Sara (SDR),Asked for a follow-up call with their technical team.
+N01008,L01668,2026-04-09,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01009,L01669,2026-04-11,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01010,L01670,2026-03-19,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N01011,L01670,2026-06-22,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N01012,L01672,2026-03-22,Sara (SDR),Asked for a follow-up call with their technical team.
+N01013,L01672,2026-07-18,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N01014,L01673,2026-09-01,Aarav (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N01015,L01673,2026-03-17,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N01016,L01675,2026-09-01,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N01017,L01675,2026-04-11,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N01018,L01676,2026-07-29,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N01019,L01677,2026-08-20,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N01020,L01679,2026-09-11,Sara (SDR),Requested case studies from their industry.
+N01021,L01682,2026-05-19,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N01022,L01682,2026-07-10,Meera (SDR),"Client worried about price, says budget is tight this year."
+N01023,L01683,2026-07-02,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01024,L01683,2026-07-14,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N01025,L01690,2026-08-13,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N01026,L01693,2026-07-03,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01027,L01694,2026-06-21,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01028,L01694,2026-09-12,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N01029,L01695,2026-06-09,Sara (SDR),"Client worried about price, says budget is tight this year."
+N01030,L01695,2026-05-02,Rohan (AE),"Client worried about price, says budget is tight this year."
+N01031,L01697,2026-09-14,Sara (SDR),Asked for a follow-up call with their technical team.
+N01032,L01699,2026-06-20,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N01033,L01699,2026-08-30,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N01034,L01700,2026-03-18,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N01035,L01704,2026-06-19,Aarav (AE),"Client worried about price, says budget is tight this year."
+N01036,L01704,2026-09-09,Meera (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N01037,L01707,2026-05-08,Aarav (AE),Asked for a follow-up call with their technical team.
+N01038,L01708,2026-04-15,Meera (SDR),Wants to see integration with their existing ERP.
+N01039,L01708,2026-09-02,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N01040,L01710,2026-04-25,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01041,L01710,2026-09-26,Aarav (AE),Asked for a follow-up call with their technical team.
+N01042,L01713,2026-08-31,Aarav (AE),Project put on hold due to internal reorganisation.
+N01043,L01714,2026-07-07,Meera (SDR),Requested case studies from their industry.
+N01044,L01715,2026-09-04,Rohan (AE),Requested case studies from their industry.
+N01045,L01718,2026-06-15,Sara (SDR),No response after three follow-ups.
+N01046,L01720,2026-08-05,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N01047,L01725,2026-03-20,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01048,L01729,2026-05-24,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01049,L01729,2026-09-03,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N01050,L01730,2026-07-02,Aarav (AE),Wants to see integration with their existing ERP.
+N01051,L01731,2026-05-29,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N01052,L01732,2026-08-13,Aarav (AE),"Renewal coming up, happy with the product and wants to add seats."
+N01053,L01732,2026-08-08,Rohan (AE),"Client worried about price, says budget is tight this year."
+N01054,L01733,2026-08-06,Rohan (AE),"Current contract with competitor ends soon, actively evaluating us."
+N01055,L01734,2026-04-28,Sara (SDR),Asked for a follow-up call with their technical team.
+N01056,L01735,2026-03-20,Rohan (AE),Wants to see integration with their existing ERP.
+N01057,L01737,2026-08-28,Sara (SDR),Requested case studies from their industry.
+N01058,L01740,2026-07-05,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01059,L01741,2026-06-29,Aarav (AE),"Went with a competitor, might revisit next year."
+N01060,L01743,2026-04-09,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N01061,L01744,2026-07-06,Sara (SDR),Asked for a follow-up call with their technical team.
+N01062,L01744,2026-06-09,Meera (SDR),Asked for a follow-up call with their technical team.
+N01063,L01746,2026-09-06,Meera (SDR),No response after three follow-ups.
+N01064,L01747,2026-04-15,Meera (SDR),No response after three follow-ups.
+N01065,L01749,2026-06-01,Meera (SDR),Asked for a follow-up call with their technical team.
+N01066,L01753,2026-03-15,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01067,L01759,2026-04-05,Sara (SDR),Wants to see integration with their existing ERP.
+N01068,L01760,2026-03-22,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N01069,L01767,2026-07-18,Aarav (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N01070,L01769,2026-03-22,Aarav (AE),"Current contract with competitor ends soon, actively evaluating us."
+N01071,L01769,2026-03-24,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01072,L01771,2026-06-07,Sara (SDR),Wants to see integration with their existing ERP.
+N01073,L01772,2026-09-02,Rohan (AE),"Pricing concerns raised again, asked for a steep discount."
+N01074,L01780,2026-03-25,Sara (SDR),Asked for a follow-up call with their technical team.
+N01075,L01780,2026-06-27,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N01076,L01782,2026-09-04,Sara (SDR),Project put on hold due to internal reorganisation.
+N01077,L01784,2026-09-13,Sara (SDR),Project put on hold due to internal reorganisation.
+N01078,L01784,2026-08-12,Meera (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N01079,L01787,2026-03-25,Meera (SDR),"Went with a competitor, might revisit next year."
+N01080,L01787,2026-04-08,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01081,L01789,2026-05-03,Rohan (AE),"Went with a competitor, might revisit next year."
+N01082,L01789,2026-07-30,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01083,L01791,2026-09-14,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N01084,L01791,2026-09-02,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N01085,L01792,2026-06-14,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N01086,L01792,2026-07-31,Meera (SDR),No response after three follow-ups.
+N01087,L01793,2026-06-23,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01088,L01793,2026-03-28,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01089,L01800,2026-09-13,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N01090,L01800,2026-06-10,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01091,L01801,2026-06-04,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01092,L01801,2026-08-28,Meera (SDR),"Evaluating three vendors, we are on the shortlist."
+N01093,L01802,2026-09-09,Rohan (AE),Requested case studies from their industry.
+N01094,L01804,2026-04-09,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01095,L01804,2026-05-07,Rohan (AE),"Went with a competitor, might revisit next year."
+N01096,L01806,2026-03-14,Rohan (AE),"Asked for enterprise pricing and SSO details, strong buying signal."
+N01097,L01808,2026-07-17,Aarav (AE),"Not the right contact, gatekeeper refused to share the decision maker."
+N01098,L01810,2026-07-26,Sara (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01099,L01810,2026-09-07,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N01100,L01812,2026-04-19,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N01101,L01817,2026-03-10,Sara (SDR),Project put on hold due to internal reorganisation.
+N01102,L01825,2026-05-23,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01103,L01828,2026-09-04,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N01104,L01828,2026-03-23,Sara (SDR),"Not the right contact, gatekeeper refused to share the decision maker."
+N01105,L01830,2026-04-04,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N01106,L01836,2026-07-07,Aarav (AE),Project put on hold due to internal reorganisation.
+N01107,L01836,2026-08-14,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01108,L01837,2026-06-10,Rohan (AE),"Decision maker joined the call, wants to start a pilot next month."
+N01109,L01841,2026-06-23,Sara (SDR),Wants to see integration with their existing ERP.
+N01110,L01842,2026-09-10,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01111,L01852,2026-06-06,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01112,L01853,2026-08-11,Sara (SDR),Asked for a follow-up call with their technical team.
+N01113,L01855,2026-09-24,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N01114,L01859,2026-07-01,Rohan (AE),Asked for a follow-up call with their technical team.
+N01115,L01860,2026-04-14,Rohan (AE),Asked for a follow-up call with their technical team.
+N01116,L01860,2026-05-25,Rohan (AE),Asked for a follow-up call with their technical team.
+N01117,L01863,2026-08-15,Sara (SDR),Asked for a follow-up call with their technical team.
+N01118,L01863,2026-06-15,Sara (SDR),"Client worried about price, says budget is tight this year."
+N01119,L01865,2026-03-22,Sara (SDR),Asked for a follow-up call with their technical team.
+N01120,L01866,2026-03-30,Sara (SDR),"Evaluating three vendors, we are on the shortlist."
+N01121,L01867,2026-03-19,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N01122,L01867,2026-05-20,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N01123,L01868,2026-06-01,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N01124,L01869,2026-06-18,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N01125,L01870,2026-09-26,Rohan (AE),No response after three follow-ups.
+N01126,L01871,2026-06-05,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01127,L01871,2026-05-04,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01128,L01873,2026-07-24,Sara (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01129,L01874,2026-08-19,Aarav (AE),"Pricing concerns raised again, asked for a steep discount."
+N01130,L01876,2026-05-15,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N01131,L01877,2026-07-27,Sara (SDR),Asked for a follow-up call with their technical team.
+N01132,L01879,2026-04-23,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N01133,L01879,2026-03-25,Meera (SDR),Asked for a follow-up call with their technical team.
+N01134,L01880,2026-08-04,Sara (SDR),Asked for a follow-up call with their technical team.
+N01135,L01883,2026-08-04,Sara (SDR),Project put on hold due to internal reorganisation.
+N01136,L01884,2026-03-20,Meera (SDR),Requested case studies from their industry.
+N01137,L01885,2026-04-17,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01138,L01889,2026-05-16,Aarav (AE),Wants to see integration with their existing ERP.
+N01139,L01891,2026-04-09,Meera (SDR),Requested case studies from their industry.
+N01140,L01891,2026-08-12,Rohan (AE),"Client worried about price, says budget is tight this year."
+N01141,L01895,2026-08-10,Aarav (AE),"Intro call went fine, will circle back after their planning cycle."
+N01142,L01895,2026-06-06,Sara (SDR),Wants to see integration with their existing ERP.
+N01143,L01898,2026-07-30,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01144,L01900,2026-04-13,Sara (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N01145,L01900,2026-05-21,Meera (SDR),"Went with a competitor, might revisit next year."
+N01146,L01901,2026-07-17,Aarav (AE),Wants to see integration with their existing ERP.
+N01147,L01902,2026-08-27,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N01148,L01903,2026-05-07,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01149,L01904,2026-05-12,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N01150,L01909,2026-09-21,Sara (SDR),Requested case studies from their industry.
+N01151,L01912,2026-08-05,Rohan (AE),Wants to see integration with their existing ERP.
+N01152,L01917,2026-04-06,Rohan (AE),"Renewal coming up, happy with the product and wants to add seats."
+N01153,L01918,2026-06-28,Aarav (AE),"Client worried about price, says budget is tight this year."
+N01154,L01918,2026-04-29,Sara (SDR),Wants to see integration with their existing ERP.
+N01155,L01926,2026-09-10,Rohan (AE),Project put on hold due to internal reorganisation.
+N01156,L01927,2026-03-19,Meera (SDR),No response after three follow-ups.
+N01157,L01927,2026-05-25,Rohan (AE),No response after three follow-ups.
+N01158,L01928,2026-07-06,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."
+N01159,L01931,2026-05-22,Sara (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01160,L01931,2026-08-16,Meera (SDR),"Decision maker joined the call, wants to start a pilot next month."
+N01161,L01932,2026-09-05,Rohan (AE),"Went with a competitor, might revisit next year."
+N01162,L01933,2026-05-22,Aarav (AE),"Very interested after the demo, asked about onboarding timelines."
+N01163,L01935,2026-05-28,Sara (SDR),Project put on hold due to internal reorganisation.
+N01164,L01938,2026-05-12,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N01165,L01938,2026-06-27,Meera (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01166,L01942,2026-09-08,Meera (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01167,L01945,2026-03-13,Aarav (AE),"Evaluating three vendors, we are on the shortlist."
+N01168,L01946,2026-08-01,Meera (SDR),"Went with a competitor, might revisit next year."
+N01169,L01948,2026-07-02,Meera (SDR),"Went with a competitor, might revisit next year."
+N01170,L01949,2026-05-12,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N01171,L01951,2026-04-12,Aarav (AE),Wants to see integration with their existing ERP.
+N01172,L01951,2026-04-26,Meera (SDR),Requested case studies from their industry.
+N01173,L01953,2026-04-30,Rohan (AE),Asked for a follow-up call with their technical team.
+N01174,L01956,2026-06-07,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N01175,L01956,2026-06-08,Meera (SDR),"Current contract with competitor ends soon, actively evaluating us."
+N01176,L01959,2026-05-25,Rohan (AE),"Intro call went fine, will circle back after their planning cycle."
+N01177,L01962,2026-09-20,Sara (SDR),Project put on hold due to internal reorganisation.
+N01178,L01964,2026-07-18,Rohan (AE),"Very interested after the demo, asked about onboarding timelines."
+N01179,L01964,2026-05-17,Sara (SDR),Requested case studies from their industry.
+N01180,L01967,2026-07-15,Aarav (AE),"Champion is pushing internally, needs a security questionnaire filled."
+N01181,L01967,2026-05-21,Rohan (AE),"Budget approved for this quarter, wants a proposal by end of month."
+N01182,L01968,2026-08-09,Aarav (AE),Asked for a follow-up call with their technical team.
+N01183,L01969,2026-07-21,Rohan (AE),Asked for a follow-up call with their technical team.
+N01184,L01969,2026-07-05,Rohan (AE),Asked for a follow-up call with their technical team.
+N01185,L01971,2026-09-23,Meera (SDR),"Asked for enterprise pricing and SSO details, strong buying signal."
+N01186,L01974,2026-04-20,Meera (SDR),Wants to see integration with their existing ERP.
+N01187,L01978,2026-05-14,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01188,L01978,2026-06-21,Meera (SDR),Requested case studies from their industry.
+N01189,L01979,2026-06-23,Sara (SDR),"Budget approved for this quarter, wants a proposal by end of month."
+N01190,L01979,2026-07-09,Rohan (AE),Wants to see integration with their existing ERP.
+N01191,L01981,2026-03-11,Meera (SDR),"Champion is pushing internally, needs a security questionnaire filled."
+N01192,L01982,2026-06-22,Sara (SDR),"Intro call went fine, will circle back after their planning cycle."
+N01193,L01985,2026-05-19,Rohan (AE),"Evaluating three vendors, we are on the shortlist."
+N01194,L01987,2026-05-02,Meera (SDR),Wants to see integration with their existing ERP.
+N01195,L01992,2026-08-19,Aarav (AE),"Decision maker joined the call, wants to start a pilot next month."
+N01196,L01993,2026-03-14,Sara (SDR),"Renewal coming up, happy with the product and wants to add seats."
+N01197,L01996,2026-03-10,Rohan (AE),Wants to see integration with their existing ERP.
+N01198,L01997,2026-04-07,Meera (SDR),"Very interested after the demo, asked about onboarding timelines."
+N01199,L01998,2026-05-01,Aarav (AE),"Went with a competitor, might revisit next year."
+N01200,L01999,2026-08-23,Meera (SDR),"Pricing concerns raised again, asked for a steep discount."

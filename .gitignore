@@ -1,0 +1,4 @@
+.env
+__pycache__/
+data/audit_log.csv
+.venv/
