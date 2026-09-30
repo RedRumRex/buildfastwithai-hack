@@ -51,8 +51,9 @@ Any OpenAI-compatible provider works: **Groq** and **Gemini** have free tiers, a
 
 | File | What it does |
 |---|---|
-| `data/generate_data.py` | Synthetic B2B SaaS CRM with **injected** duplicates, missing and bounced emails, stale records and conflicting values |
-| `core/clean.py` | Entity resolution (same email, or same company + fuzzy or initial name match), field merging, re-linking child records, stale flags, health report, merge log |
+| `data/generate_data.py` | Synthetic B2B SaaS CRM with **injected** duplicates (incl. renamed companies and email typos), missing, bounced and invalid emails, missing phones, stale records and conflicting values. Deterministic; writes the dedupe ground truth `data/truth_duplicates.csv` |
+| `core/ingest.py` | Upload validation: maps header variants (`Email`, `E-mail`, `Company Name`…), clear errors for missing columns / unreadable files / non-date columns, warnings for filled defaults, duplicate IDs and orphan rows |
+| `core/clean.py` | Entity resolution (same email · same company + fuzzy or initial name · same phone + name · mistyped email + name · name + same email name + same firmographics), a "possible duplicate: needs review" list for borderline pairs, field merging, re-linking child records, stale flags, before/after health report with field-level issues, merge log |
 | `core/scoring.py` | Decision agent: 7-component rubric (deal size, 30-day engagement, close urgency, momentum, ICP fit, call-note signals, data quality), plus the suggested next action |
 | `core/qa.py` | Analytics agent: question router, LLM text-to-SQL with a retry-on-error loop, read-only SQL guard, rule-based fallback queries, and TF-IDF retrieval over call notes |
 | `core/actions.py` | Grounded explanations, email drafts, audit trail (approve / reject / edit / undo) |
@@ -76,6 +77,15 @@ Any OpenAI-compatible provider works: **Groq** and **Gemini** have free tiers, a
 *Ask your data* re-rank instantly. Weights only change how much each fact counts; the facts and their source row IDs never change.
 Internally, `extract_signals()` reads the data once (~1 s) and `apply_weights()` turns signals into points (~15 ms).
 
+### Dedupe evaluation (precision / recall / false merges)
+```bash
+python data/generate_data.py      # also writes data/truth_duplicates.csv
+python data/plant_hot_leads.py    # re-plant the hot leads after regenerating
+python eval/eval_dedupe.py --seeds 10   # writes eval/results_dedupe.md (+ robustness on 10 fresh datasets)
+```
+Scored on pairs of raw records against the injected duplicates. Pairs that are only *possibly* the same person are not merged
+but listed for review; the report shows recall with and without that list. Target: recall ≥ 98%, 0 false merges.
+
 ### Ranking evaluation (precision@20)
 ```bash
 python data/plant_hot_leads.py    # plants 30 known hot leads + 16 decoys, writes data/truth_hot_leads.csv (idempotent)
@@ -89,7 +99,7 @@ The report also shows the strict number (planted leads only) and where each deco
 
 ## 3-minute demo script
 
-1. **Data health tab.** "We loaded 2,140 raw CRM records. LeadLens found and merged 137 duplicates, like 'M. Brown @ Bal Ltd' and 'Marc Brown @ Bal Corp', and flagged about 21% as stale." Point at the merge log and its evidence column.
+1. **Data health tab.** "We loaded 2,246 raw CRM records. LeadLens merged 196 duplicates with zero false merges, like 'Hayley Gibson @ dube' and 'Hayley Gibson @ Dube Group', or 'M. Briggs @ Davis Corp' and 'Michael Briggs @ Badal Corp', who share a phone number after a company rename. 12 borderline pairs are listed for a human to review instead of being merged, and about 21% of leads are stale or unreachable." Point at the before/after table, the merge log and its evidence column.
 2. **Action queue tab.** "Here's who to contact this week." Open #1 and read the *Why this lead* line.
 3. Flip **🔍 Why?** to show the actual deal, activity and note rows behind every point. "Nothing here is made up."
 4. Type in the refine box: `skip anyone contacted in the last 2 weeks, FinTech only, late-stage deals over $20k`. The queue re-ranks, and the parsed filters show as chips (with whether the AI or the rule-based parser understood it).
