@@ -126,9 +126,3 @@ Then delete `data/audit_log.csv` locally so the Audit log tab starts empty.
 
 ## Using your own data
 Choose **Upload my CSVs** in the sidebar and give it four files with the same columns as the files in `data/`. Your records are cleaned, scored and queryable immediately.
-
-## Ideas if you have extra time
-- Swap TF-IDF for embeddings (Chroma or pgvector) in `DataStore.search_notes`
-- Connect a real CRM (HubSpot or Salesforce API) instead of CSVs
-- "Send" approved emails through Gmail or SMTP, still only after approval
-- Learn the scoring weights from won/lost history, and show them next to the rules
