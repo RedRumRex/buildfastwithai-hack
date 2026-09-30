@@ -1394,45 +1394,45 @@ D01392,L01999,Barad - Renewal,31400,Closed Lost,2026-06-18,2026-05-17
 D01393,L01999,Barad - Expansion,15600,Proposal Sent,2026-08-30,2026-06-07
 D01394,L02000,Choudhry - Enterprise,169600,New,2026-08-16,2026-06-07
 D01395,L02000,Choudhry - Platform,16200,Qualified,2026-08-30,2026-09-15
-D01396,L02141,Browning - Pilot,169100,Negotiation,2026-10-03,2026-09-22
-D01397,L02142,Garcia - Pilot,123000,Negotiation,2026-10-20,2026-09-18
-D01398,L02143,Samra - Pilot,33500,Proposal Sent,2026-10-13,2026-09-08
-D01399,L02144,Yates - Platform,55100,Negotiation,2026-10-28,2026-09-09
-D01400,L02145,Duran - Expansion,32000,Demo Scheduled,2026-11-06,2026-09-08
-D01401,L02146,Vala - Platform,143100,Negotiation,2026-10-12,2026-09-16
-D01402,L02147,French - Pilot,80400,Negotiation,2026-10-26,2026-09-02
-D01403,L02148,Hodgson - Enterprise,39100,Negotiation,2026-10-11,2026-09-18
-D01404,L02149,Oliver - Enterprise,42700,Proposal Sent,2026-10-10,2026-09-15
-D01405,L02150,Sani - Expansion,21600,Demo Scheduled,2026-11-01,2026-09-22
-D01406,L02151,Parmer - Pilot,156100,Proposal Sent,2026-10-09,2026-09-23
-D01407,L02152,Gray - Pilot,89400,Negotiation,2026-10-22,2026-09-07
-D01408,L02153,Simmons - Enterprise,60100,Proposal Sent,2026-10-14,2026-09-11
-D01409,L02154,Parry - Platform,67600,Proposal Sent,2026-10-30,2026-09-02
-D01410,L02155,Rattan - Pilot,38900,Demo Scheduled,2026-11-14,2026-09-11
-D01411,L02156,Slater - Enterprise,172300,Negotiation,2026-10-09,2026-09-21
-D01412,L02157,Bullock - Expansion,100500,Proposal Sent,2026-10-23,2026-09-12
-D01413,L02158,Gardiner - Platform,45600,Negotiation,2026-10-23,2026-09-18
-D01414,L02159,Varty - Enterprise,42100,Negotiation,2026-10-19,2026-09-11
-D01415,L02160,Din - Platform,26200,Demo Scheduled,2026-10-25,2026-09-01
-D01416,L02161,Mckenzie - Enterprise,96100,Proposal Sent,2026-10-16,2026-09-23
-D01417,L02162,Reese - Platform,151900,Negotiation,2026-10-25,2026-09-04
-D01418,L02163,Daniel - Expansion,41100,Negotiation,2026-10-15,2026-09-13
-D01419,L02164,Hayer - Enterprise,41500,Negotiation,2026-10-26,2026-09-03
-D01420,L02165,Agarwal - Enterprise,42000,Demo Scheduled,2026-10-21,2026-09-20
-D01421,L02166,Dutt - Platform,169700,Proposal Sent,2026-10-02,2026-09-12
-D01422,L02167,Nanda - Pilot,112000,Proposal Sent,2026-10-13,2026-09-18
-D01423,L02168,Weeks - Expansion,70000,Negotiation,2026-10-20,2026-09-03
-D01424,L02169,Sethi - Enterprise,77300,Proposal Sent,2026-10-25,2026-09-13
-D01425,L02170,Malhotra - Expansion,42400,Proposal Sent,2026-11-10,2026-09-15
-D01426,L02171,Huerta - Enterprise,186400,Proposal Sent,2026-10-04,2026-09-19
-D01427,L02172,Rose - Platform,91000,Negotiation,2026-10-05,2026-09-17
-D01428,L02174,Parikh - Platform,98600,Qualified,2026-08-21,2026-09-01
-D01429,L02175,Chowdhury - Enterprise,173600,Proposal Sent,2026-10-13,2026-09-18
-D01430,L02176,Strong - Platform,75400,Negotiation,2026-10-06,2026-09-19
-D01431,L02178,Wilkins - Platform,129200,Qualified,2026-08-31,2026-09-03
-D01432,L02179,Stevenson - Enterprise,165000,Proposal Sent,2026-10-10,2026-09-14
-D01433,L02180,Talwar - Platform,90700,Negotiation,2026-10-01,2026-09-19
-D01434,L02182,Holloway - Platform,134700,Qualified,2026-08-11,2026-09-09
-D01435,L02183,Luthra - Enterprise,187600,Proposal Sent,2026-10-17,2026-09-10
-D01436,L02184,Goswami - Platform,91100,Negotiation,2026-10-16,2026-09-08
-D01437,L02186,Love - Platform,124300,Qualified,2026-08-06,2026-09-18
+D01396,L02201,Browning - Pilot,169100,Negotiation,2026-10-03,2026-09-22
+D01397,L02202,Garcia - Pilot,123000,Negotiation,2026-10-20,2026-09-18
+D01398,L02203,Samra - Pilot,33500,Proposal Sent,2026-10-13,2026-09-08
+D01399,L02204,Yates - Platform,55100,Negotiation,2026-10-28,2026-09-09
+D01400,L02205,Duran - Expansion,32000,Demo Scheduled,2026-11-06,2026-09-08
+D01401,L02206,Vala - Platform,143100,Negotiation,2026-10-12,2026-09-16
+D01402,L02207,French - Pilot,80400,Negotiation,2026-10-26,2026-09-02
+D01403,L02208,Hodgson - Enterprise,39100,Negotiation,2026-10-11,2026-09-18
+D01404,L02209,Oliver - Enterprise,42700,Proposal Sent,2026-10-10,2026-09-15
+D01405,L02210,Sani - Expansion,21600,Demo Scheduled,2026-11-01,2026-09-22
+D01406,L02211,Parmer - Pilot,156100,Proposal Sent,2026-10-09,2026-09-23
+D01407,L02212,Gray - Pilot,89400,Negotiation,2026-10-22,2026-09-07
+D01408,L02213,Simmons - Enterprise,60100,Proposal Sent,2026-10-14,2026-09-11
+D01409,L02214,Parry - Platform,67600,Proposal Sent,2026-10-30,2026-09-02
+D01410,L02215,Rattan - Pilot,38900,Demo Scheduled,2026-11-14,2026-09-11
+D01411,L02216,Slater - Enterprise,172300,Negotiation,2026-10-09,2026-09-21
+D01412,L02217,Bullock - Expansion,100500,Proposal Sent,2026-10-23,2026-09-12
+D01413,L02218,Gardiner - Platform,45600,Negotiation,2026-10-23,2026-09-18
+D01414,L02219,Varty - Enterprise,42100,Negotiation,2026-10-19,2026-09-11
+D01415,L02220,Din - Platform,26200,Demo Scheduled,2026-10-25,2026-09-01
+D01416,L02221,Mckenzie - Enterprise,96100,Proposal Sent,2026-10-16,2026-09-23
+D01417,L02222,Reese - Platform,151900,Negotiation,2026-10-25,2026-09-04
+D01418,L02223,Daniel - Expansion,41100,Negotiation,2026-10-15,2026-09-13
+D01419,L02224,Hayer - Enterprise,41500,Negotiation,2026-10-26,2026-09-03
+D01420,L02225,Agarwal - Enterprise,42000,Demo Scheduled,2026-10-21,2026-09-20
+D01421,L02226,Dutt - Platform,169700,Proposal Sent,2026-10-02,2026-09-12
+D01422,L02227,Nanda - Pilot,112000,Proposal Sent,2026-10-13,2026-09-18
+D01423,L02228,Weeks - Expansion,70000,Negotiation,2026-10-20,2026-09-03
+D01424,L02229,Sethi - Enterprise,77300,Proposal Sent,2026-10-25,2026-09-13
+D01425,L02230,Malhotra - Expansion,42400,Proposal Sent,2026-11-10,2026-09-15
+D01426,L02231,Huerta - Enterprise,186400,Proposal Sent,2026-10-04,2026-09-19
+D01427,L02232,Rose - Platform,91000,Negotiation,2026-10-05,2026-09-17
+D01428,L02234,Parikh - Platform,98600,Qualified,2026-08-21,2026-09-01
+D01429,L02235,Chowdhury - Enterprise,173600,Proposal Sent,2026-10-13,2026-09-18
+D01430,L02236,Strong - Platform,75400,Negotiation,2026-10-06,2026-09-19
+D01431,L02238,Wilkins - Platform,129200,Qualified,2026-08-31,2026-09-03
+D01432,L02239,Stevenson - Enterprise,165000,Proposal Sent,2026-10-10,2026-09-14
+D01433,L02240,Talwar - Platform,90700,Negotiation,2026-10-01,2026-09-19
+D01434,L02242,Holloway - Platform,134700,Qualified,2026-08-11,2026-09-09
+D01435,L02243,Luthra - Enterprise,187600,Proposal Sent,2026-10-17,2026-09-10
+D01436,L02244,Goswami - Platform,91100,Negotiation,2026-10-16,2026-09-08
+D01437,L02246,Love - Platform,124300,Qualified,2026-08-06,2026-09-18

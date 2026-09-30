@@ -8,6 +8,12 @@ Outputs (in this folder):
   notes.csv     - free-text sales call notes (used for RAG search)
   truth_duplicates.csv - ground truth for the dedupe evaluation (duplicate_id, original_id, mangle_type)
 
+Messiness injected on purpose (every duplicate is recorded in truth_duplicates.csv):
+  - 7% duplicates re-typed with a different company spelling, name spelling, upper-case or blank email
+  - 3% "hard" duplicates: company renamed (email on the new domain), email typos (some make the email
+    invalid), conflicting titles and phone numbers
+  - missing and bounced emails, invalid email formats, missing phone numbers, stale records
+
 Run:  python data/generate_data.py            (default 2000 leads, seed 42, "today" = 2026-09-26)
       python data/generate_data.py --leads 5000
       python data/generate_data.py --today 2026-10-01
@@ -63,30 +69,51 @@ NEGATIVE_NOTES = [
 ]
 
 
-def mangle_company(name: str) -> tuple[str, str]:
+def mangle_company(name: str, rng=random) -> tuple[str, str]:
     """Create a plausible duplicate spelling of a company name. Returns (value, mangle type)."""
     base = name
     for s in SUFFIXES:
         base = base.replace(" " + s, "")
-    choice = random.random()
+    choice = rng.random()
     if choice < 0.3:
-        return base.upper() + " " + random.choice(SUFFIXES), "company_upper_new_suffix"
+        return base.upper() + " " + rng.choice(SUFFIXES), "company_upper_new_suffix"
     if choice < 0.6:
-        return base + " " + random.choice(SUFFIXES), "company_new_suffix"
+        return base + " " + rng.choice(SUFFIXES), "company_new_suffix"
     if choice < 0.8:
         return base.lower(), "company_lower_no_suffix"
-    return base.replace(" ", "") + " " + random.choice(SUFFIXES), "company_nospace_new_suffix"
+    return base.replace(" ", "") + " " + rng.choice(SUFFIXES), "company_nospace_new_suffix"
 
 
-def mangle_name(name: str) -> tuple[str, str]:
+def mangle_name(name: str, rng=random) -> tuple[str, str]:
     """Create a plausible duplicate spelling of a person's name. Returns (value, mangle type)."""
     parts = name.split()
-    r = random.random()
+    r = rng.random()
     if r < 0.4 and len(parts) >= 2:
         return f"{parts[0][0]}. {parts[-1]}", "name_initial"   # "P. Sharma"
     if r < 0.7:
         return name.upper(), "name_upper"
     return name + " ", "name_trailing_space"
+
+
+def typo_email(email: str, rng, invalid: bool = False) -> tuple[str, str]:
+    """A mistyped copy of an email address. Returns (value, mangle type)."""
+    local, domain = email.split("@")
+    if invalid or rng.random() < 0.3:     # typos that also break the format
+        r = rng.random()
+        if r < 0.35:
+            return local + domain, "email_typo_invalid"                          # '@' dropped
+        if r < 0.7:
+            return f"{local}@{domain.rsplit('.', 1)[0]}", "email_typo_invalid"   # '.com' dropped
+        return f"{local}@@{domain}", "email_typo_invalid"
+    i = rng.randrange(len(local) - 1)
+    r = rng.random()
+    if r < 0.4:                           # two letters swapped
+        local = local[:i] + local[i + 1] + local[i] + local[i + 2:]
+    elif r < 0.7:                         # a letter dropped
+        local = local[:i] + local[i + 1:]
+    else:                                 # a letter doubled
+        local = local[:i] + local[i] + local[i:]
+    return f"{local}@{domain}", "email_typo"
 
 
 def main(n_leads: int, seed: int):
@@ -202,9 +229,10 @@ def main(n_leads: int, seed: int):
         dup["name"], name_mangle = mangle_name(src["name"])
         dup["email"] = src["email"].upper() if (src["email"] and random.random() < 0.6) else ""
         email_mangle = "email_upper" if dup["email"] else ("email_blank" if src["email"] else "email_missing_in_both")
-        truth_dups.append({"duplicate_id": dup_id, "original_id": src["lead_id"],
-                           "mangle_type": "|".join([company_mangle, name_mangle, email_mangle])})
         dup["phone"] = fake.phone_number() if random.random() < 0.3 else src["phone"]   # conflicting value
+        phone_mangle = "phone_same" if dup["phone"] == src["phone"] else "phone_changed"
+        truth_dups.append({"duplicate_id": dup_id, "original_id": src["lead_id"],
+                           "mangle_type": "|".join([company_mangle, name_mangle, email_mangle, phone_mangle])})
         dup["source"] = random.choice(SOURCES)
         dup["last_contact_date"] = (date.fromisoformat(src["last_contact_date"]) - timedelta(days=random.randint(5, 90))).isoformat()
         leads.append(dup)
@@ -219,6 +247,63 @@ def main(n_leads: int, seed: int):
             })
 
     random.shuffle(leads)
+
+    # ---- 6. harder messiness ---------------------------------------------------------
+    # Uses its own random generator and only runs after everything above, so steps 1-5 (and the
+    # committed sample data they produce) stay exactly the same.
+    rng = random.Random(seed + 1)
+    fake2 = Faker(["en_US", "en_IN", "en_GB"])
+    fake2.seed_instance(seed + 1)
+    base = sorted((l for l in leads if int(l["lead_id"][1:]) <= n_leads), key=lambda l: l["lead_id"])
+    used = {t["original_id"] for t in truth_dups}
+    extra = []
+    for src in rng.sample([l for l in base if l["lead_id"] not in used and l["email"]], int(n_leads * 0.03)):
+        next_id += 1
+        dup = dict(src)
+        dup["lead_id"] = f"L{next_id:05d}"
+        dup["name"], name_mangle = mangle_name(src["name"], rng)
+        kind = rng.choices(["renamed", "typo", "conflict"], weights=[4, 4, 2])[0]
+        if kind == "renamed":        # company rebranded / acquired -> new name, new email domain
+            dup["company"] = f"{fake2.last_name()} {rng.choice(SUFFIXES)}"
+            company_mangle = "company_renamed"
+            if rng.random() < 0.5:
+                dup["email"] = src["email"].split("@")[0] + "@" + dup["company"].split()[0].lower() + ".com"
+                email_mangle = "email_new_domain"
+            else:
+                dup["email"], email_mangle = "", "email_blank"
+            keep_phone = rng.random() < 0.8
+        else:
+            dup["company"], company_mangle = mangle_company(src["company"], rng)
+            if kind == "typo":
+                dup["email"], email_mangle = typo_email(src["email"], rng)
+                keep_phone = rng.random() < 0.5
+            else:                    # conflicting title + phone, email re-typed in capitals or left blank
+                dup["email"], email_mangle = (src["email"].upper(), "email_upper") if rng.random() < 0.5 else ("", "email_blank")
+                keep_phone = False
+        if kind == "conflict" or rng.random() < 0.3:
+            dup["title"] = rng.choice([t for t in TITLES if t != src["title"]])
+        dup["phone"] = src["phone"] if keep_phone else fake2.phone_number()
+        dup["source"] = rng.choice(SOURCES)
+        dup["last_contact_date"] = max(date.fromisoformat(src["created_at"]),
+                                       date.fromisoformat(src["last_contact_date"]) - timedelta(days=rng.randint(5, 90))).isoformat()
+        extra.append(dup)
+        truth_dups.append({"duplicate_id": dup["lead_id"], "original_id": src["lead_id"],
+                           "mangle_type": "|".join([company_mangle, name_mangle, email_mangle,
+                                                    "phone_same" if keep_phone else "phone_changed"])})
+        for _ in range(rng.randint(1, 4)):
+            a += 1
+            activity.append({"activity_id": f"A{a:06d}", "lead_id": dup["lead_id"],
+                             "type": rng.choices(types, weights=weights)[0],
+                             "activity_date": (TODAY - timedelta(days=rng.randint(0, 60))).isoformat()})
+    # field-level problems on existing records: missing phone numbers, badly formatted emails
+    for lead in rng.sample(base, int(n_leads * 0.03)):
+        lead["phone"] = ""
+    for lead in rng.sample([l for l in base if l["email"]], int(n_leads * 0.01)):
+        lead["email"], _ = typo_email(lead["email"], rng, invalid=True)
+    for dup in extra:                # scatter the new duplicates without reordering the other rows
+        leads.insert(rng.randint(0, len(leads)), dup)
+    n_dups += len(extra)
+
     pd.DataFrame(leads).to_csv(OUT / "leads.csv", index=False)
     pd.DataFrame(deals).to_csv(OUT / "deals.csv", index=False)
     pd.DataFrame(activity).to_csv(OUT / "activity.csv", index=False)
