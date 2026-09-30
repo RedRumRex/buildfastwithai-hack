@@ -5,6 +5,8 @@ Run:  streamlit run app.py
 import hashlib
 import io
 import json
+import os
+import threading
 import zipfile
 from pathlib import Path
 
@@ -23,6 +25,20 @@ TABLES = ["leads", "deals", "activity", "notes"]
 ID_COL = {"leads": "lead_id", "deals": "deal_id", "activity": "activity_id", "notes": "note_id"}
 
 st.set_page_config(page_title="LeadLens · AI Decision Engine", page_icon="🎯", layout="wide")
+
+
+def _secrets_to_env():
+    """On Streamlit Cloud the LLM key lives in the app's Secrets, not in .env – copy it into the environment
+    so core/llm.py finds it the same way locally and in the cloud. Silently does nothing without secrets."""
+    try:
+        for k in ("LLM_API_KEY", "LLM_BASE_URL", "LLM_MODEL"):
+            if not os.getenv(k) and k in st.secrets:
+                os.environ[k] = str(st.secrets[k])
+    except Exception:
+        pass
+
+
+_secrets_to_env()
 st.markdown("""
 <style>
 .block-container {padding-top: 1.6rem;}
@@ -35,6 +51,13 @@ st.markdown("""
 # ---------------------------------------------------------------------------
 # Data loading (cached on file contents)
 # ---------------------------------------------------------------------------
+@st.cache_resource
+def db_lock() -> threading.RLock:
+    """One DuckDB connection is shared by every visitor of the deployed app (st.cache_resource), and a DuckDB
+    connection must not be used from two threads at once – so every query goes through this lock."""
+    return threading.RLock()
+
+
 @st.cache_resource(show_spinner="Cleaning data, resolving duplicates and scoring leads…")
 def build(key: str, blobs: tuple):
     dfs = [pd.read_csv(io.BytesIO(b)) for b in blobs]
@@ -101,13 +124,17 @@ custom = weights_changed(weights)
 wkey = hashlib.md5(repr(sorted(custom.items())).encode()).hexdigest()[:8] if custom else "default"
 scores = default_scores if not custom else apply_weights(signals, weights)   # ≈15 ms
 
-# keep the SQL table used by "Ask your data" in sync with the weights on screen
-if getattr(store, "_weights_key", "default") != wkey:
-    cols = store.con.execute("SELECT * FROM lead_scores LIMIT 0").df().columns
-    store.con.register("_ls", scores[[c for c in cols if c in scores.columns]])
-    store.con.execute("CREATE OR REPLACE TABLE lead_scores AS SELECT * FROM _ls")
-    store.con.unregister("_ls")
-    store._weights_key = wkey
+
+
+def sync_lead_scores():
+    """Make the SQL table used by "Ask your data" match THIS visitor's weights. Call only while holding
+    db_lock(), right before querying – other visitors may be using different weights."""
+    if getattr(store, "_weights_key", "default") != wkey:
+        cols = store.con.execute("SELECT * FROM lead_scores LIMIT 0").df().columns
+        store.con.register("_ls", scores[[c for c in cols if c in scores.columns]])
+        store.con.execute("CREATE OR REPLACE TABLE lead_scores AS SELECT * FROM _ls")
+        store.con.unregister("_ls")
+        store._weights_key = wkey
 
 ss.setdefault("explanations", {})
 ss.setdefault("decisions", {})
@@ -124,8 +151,9 @@ def md(text) -> str:
 
 def source_rows(table: str, ids: list[str]) -> pd.DataFrame:
     col = ID_COL[table]
-    quoted = ",".join(f"'{i}'" for i in ids)
-    return store.run_sql(f"SELECT * FROM {table} WHERE {col} IN ({quoted})")
+    quoted = ",".join("'" + str(i).replace("'", "''") + "'" for i in ids)
+    with db_lock():
+        return store.run_sql(f"SELECT * FROM {table} WHERE {col} IN ({quoted})")
 
 
 @st.cache_data(show_spinner=False, max_entries=256)
@@ -403,7 +431,9 @@ with tab_ask:
     if question:
         with st.spinner("Thinking…"):
             try:
-                out = answer(store, question)
+                with db_lock():          # shared DB: one query at a time, with this visitor's weights
+                    sync_lead_scores()
+                    out = answer(store, question)
             except Exception as e:
                 out = {"type": "error", "answer": f"Sorry, I couldn't answer that: {e}", "table": pd.DataFrame(), "sql": None, "engine": "-"}
         ss["chat"].insert(0, {"q": question, **out})

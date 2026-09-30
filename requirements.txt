@@ -1,8 +1,10 @@
-streamlit>=1.40
-pandas>=2.2
-duckdb>=1.1
-faker>=30
-rapidfuzz>=3.9
-scikit-learn>=1.5
-openai>=1.50
-python-dotenv>=1.0
+# Tested on Python 3.10 (pandas 2.3) and Python 3.12 (pandas 3.0, the Streamlit Cloud default) – identical scores.
+# Upper bounds stop a surprise major release from breaking the demo; widen them after re-testing.
+streamlit>=1.50,<2          # width="stretch" on buttons/tables needs a recent Streamlit
+pandas>=2.2,<4
+duckdb>=1.1,<2
+faker>=30,<50
+rapidfuzz>=3.9,<4
+scikit-learn>=1.5,<2
+openai>=1.50,<4
+python-dotenv>=1.0,<2
