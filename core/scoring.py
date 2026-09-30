@@ -178,7 +178,8 @@ def extract_signals(leads: pd.DataFrame, deals: pd.DataFrame, activity: pd.DataF
         # 2. Engagement (raw counts; points depend on the event weights)
         a = ra.get(lid)
         if a is not None and len(a):
-            counts = a["type"].value_counts()
+            vc = a["type"].value_counts()
+            counts = pd.Series(dict(sorted(vc.items(), key=lambda kv: (-kv[1], kv[0]))))   # ties in a fixed order
             desc = ", ".join(f"{v}× {k.replace('_', ' ')}" for k, v in counts.items())
             sig.append({"key": "engagement", "component": "Engagement (last 30 days)", "value": counts.to_dict(),
                         "fact": f"{len(a)} interactions in the last 30 days: {desc}",
