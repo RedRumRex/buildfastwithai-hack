@@ -1,6 +1,6 @@
 # Ranking evaluation (precision@20)
 
-Dataset date 2026-09-27 · 2,049 clean leads · 30 planted hot leads · 16 planted decoys · target ≥ 80%
+Dataset date 2026-09-27 · 2,046 clean leads · 30 planted hot leads · 16 planted decoys · target ≥ 80%
 
 | Weights | **precision@20** | strict (planted only) | stale hidden | decoys in top 20 | planted hot in top 50 | median planted-hot rank |
 |---|---|---|---|---|---|---|

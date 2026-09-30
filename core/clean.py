@@ -17,11 +17,29 @@ STALE_DAYS = 180
 COMPANY_SUFFIXES = r"\b(inc|corp|corporation|ltd|llc|pvt|private|limited|technologies|solutions|group|co)\b\.?"
 
 
+# suffixes that can also appear glued onto the name ("WalshPvt Inc."); short ones like "co" are left out
+# on purpose, since stripping them from the end of a word would break real names ("Franco" -> "fran")
+GLUED_SUFFIXES = ("corporation", "technologies", "solutions", "limited", "private", "group", "corp", "pvt", "ltd", "llc", "inc")
+
+
 def norm_company(s: str) -> str:
     s = str(s or "").lower()
     s = re.sub(COMPANY_SUFFIXES, " ", s)
     s = re.sub(r"[^a-z0-9]", "", s)
     return s
+
+
+def company_key(s: str) -> str:
+    """Blocking key for dedupe: norm_company, plus suffixes glued to the end of the name are stripped."""
+    k = norm_company(s)
+    stripped = True
+    while stripped:
+        stripped = False
+        for suf in GLUED_SUFFIXES:
+            if k.endswith(suf) and len(k) - len(suf) >= 3:
+                k, stripped = k[: -len(suf)], True
+                break
+    return k
 
 
 def norm_name(s: str) -> str:
@@ -73,7 +91,7 @@ def clean(leads: pd.DataFrame, deals: pd.DataFrame, activity: pd.DataFrame, note
     # reference "today" = day after the latest recorded activity (keeps the demo stable)
     ref_date = max(activity["activity_date"].max(), leads["last_contact_date"].max()) + pd.Timedelta(days=1)
 
-    leads["_n_company"] = leads["company"].map(norm_company)
+    leads["_n_company"] = leads["company"].map(company_key)
     leads["_n_name"] = leads["name"].map(norm_name)
     leads["_n_email"] = leads["email"].map(norm_email)
     missing_email = int((leads["_n_email"] == "").sum())

@@ -6,9 +6,14 @@ Outputs (in this folder):
   deals.csv     - pipeline deals linked to leads
   activity.csv  - engagement events (email opens, pricing-page visits, calls, meetings, demo requests)
   notes.csv     - free-text sales call notes (used for RAG search)
+  truth_duplicates.csv - ground truth for the dedupe evaluation (duplicate_id, original_id, mangle_type)
 
-Run:  python data/generate_data.py            (default 2000 leads)
+Run:  python data/generate_data.py            (default 2000 leads, seed 42, "today" = 2026-09-26)
       python data/generate_data.py --leads 5000
+      python data/generate_data.py --today 2026-10-01
+
+The output is fully determined by --leads, --seed and --today, so the committed sample data can be
+reproduced exactly. After regenerating, re-run data/plant_hot_leads.py and eval/eval_ranking.py.
 """
 import argparse
 import random
@@ -19,7 +24,8 @@ import pandas as pd
 from faker import Faker
 
 OUT = Path(__file__).parent
-TODAY = date.today()
+DEFAULT_TODAY = "2026-09-26"   # the date the committed sample data was generated with
+TODAY = date.fromisoformat(DEFAULT_TODAY)
 
 INDUSTRIES = ["FinTech", "Healthcare", "E-commerce", "Manufacturing", "EdTech",
               "Logistics", "Retail", "Media", "Real Estate", "Telecom"]
@@ -57,29 +63,30 @@ NEGATIVE_NOTES = [
 ]
 
 
-def mangle_company(name: str) -> str:
-    """Create a plausible duplicate spelling of a company name."""
+def mangle_company(name: str) -> tuple[str, str]:
+    """Create a plausible duplicate spelling of a company name. Returns (value, mangle type)."""
     base = name
     for s in SUFFIXES:
         base = base.replace(" " + s, "")
     choice = random.random()
     if choice < 0.3:
-        return base.upper() + " " + random.choice(SUFFIXES)
+        return base.upper() + " " + random.choice(SUFFIXES), "company_upper_new_suffix"
     if choice < 0.6:
-        return base + " " + random.choice(SUFFIXES)
+        return base + " " + random.choice(SUFFIXES), "company_new_suffix"
     if choice < 0.8:
-        return base.lower()
-    return base.replace(" ", "") + " " + random.choice(SUFFIXES)
+        return base.lower(), "company_lower_no_suffix"
+    return base.replace(" ", "") + " " + random.choice(SUFFIXES), "company_nospace_new_suffix"
 
 
-def mangle_name(name: str) -> str:
+def mangle_name(name: str) -> tuple[str, str]:
+    """Create a plausible duplicate spelling of a person's name. Returns (value, mangle type)."""
     parts = name.split()
     r = random.random()
     if r < 0.4 and len(parts) >= 2:
-        return f"{parts[0][0]}. {parts[-1]}"          # "P. Sharma"
+        return f"{parts[0][0]}. {parts[-1]}", "name_initial"   # "P. Sharma"
     if r < 0.7:
-        return name.upper()
-    return name + " "                                # trailing whitespace
+        return name.upper(), "name_upper"
+    return name + " ", "name_trailing_space"
 
 
 def main(n_leads: int, seed: int):
@@ -185,14 +192,18 @@ def main(n_leads: int, seed: int):
     # ---- 5. inject DUPLICATES (same person, entered again with messy spelling) ----
     n_dups = int(n_leads * 0.07)
     next_id = n_leads
+    truth_dups = []
     for src in random.sample(leads, n_dups):
         next_id += 1
         dup_id = f"L{next_id:05d}"
         dup = dict(src)
         dup["lead_id"] = dup_id
-        dup["company"] = mangle_company(src["company"])
-        dup["name"] = mangle_name(src["name"])
+        dup["company"], company_mangle = mangle_company(src["company"])
+        dup["name"], name_mangle = mangle_name(src["name"])
         dup["email"] = src["email"].upper() if (src["email"] and random.random() < 0.6) else ""
+        email_mangle = "email_upper" if dup["email"] else ("email_blank" if src["email"] else "email_missing_in_both")
+        truth_dups.append({"duplicate_id": dup_id, "original_id": src["lead_id"],
+                           "mangle_type": "|".join([company_mangle, name_mangle, email_mangle])})
         dup["phone"] = fake.phone_number() if random.random() < 0.3 else src["phone"]   # conflicting value
         dup["source"] = random.choice(SOURCES)
         dup["last_contact_date"] = (date.fromisoformat(src["last_contact_date"]) - timedelta(days=random.randint(5, 90))).isoformat()
@@ -212,6 +223,7 @@ def main(n_leads: int, seed: int):
     pd.DataFrame(deals).to_csv(OUT / "deals.csv", index=False)
     pd.DataFrame(activity).to_csv(OUT / "activity.csv", index=False)
     pd.DataFrame(notes).to_csv(OUT / "notes.csv", index=False)
+    pd.DataFrame(truth_dups).to_csv(OUT / "truth_duplicates.csv", index=False)
     print(f"leads={len(leads)} (incl. {n_dups} hidden duplicates)  deals={len(deals)}  "
           f"activity={len(activity)}  notes={len(notes)}  -> {OUT}")
 
@@ -220,5 +232,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--leads", type=int, default=2000)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--today", default=DEFAULT_TODAY, help="reference date for the generated data (YYYY-MM-DD)")
     args = p.parse_args()
+    TODAY = date.fromisoformat(args.today)
     main(args.leads, args.seed)
