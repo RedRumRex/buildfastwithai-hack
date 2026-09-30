@@ -97,6 +97,32 @@ The report also shows the strict number (planted leads only) and where each deco
 
 ---
 
+## Deploy to Streamlit Community Cloud (free public link)
+
+1. Push `main` to GitHub (the repo must contain `app.py`, `requirements.txt` and the `data/` CSVs – it does).
+2. Go to **share.streamlit.io**, sign in with GitHub and allow access to the repo.
+3. **Create app → deploy from GitHub**: repository `RedRumRex/buildfastwithai-hack`, branch `main`, main file `app.py`.
+4. **Advanced settings**
+   - Python version: **3.12** (tested; 3.10–3.12 all give identical scores).
+   - Secrets: paste the three lines from `.streamlit/secrets.toml.example` with your real key. Leave empty to run on the
+     built-in rules only – the app still works end to end.
+5. **Deploy.** The first build takes a few minutes; later pushes to `main` redeploy automatically.
+
+Things to know about the hosted app:
+- Every visitor shares one server. Database access is serialised with a lock (8 simultaneous visitors tested:
+  no errors, each sees their own scoring weights).
+- The audit log lives on the server's disk: all visitors see the same log, and it resets when the app restarts.
+  Use **Export full log (CSV)** if you want to keep it.
+- Free apps go to sleep when nobody uses them. **Open the link a few minutes before the demo** to wake it up.
+
+## Before every demo or merge
+
+```bash
+python eval/demo_check.py      # clicks through the whole demo headlessly – must end with "DEMO READY"
+python eval/eval_ranking.py    # precision@20 must be >= 80%
+```
+Then delete `data/audit_log.csv` locally so the Audit log tab starts empty.
+
 ## 3-minute demo script
 
 1. **Data health tab.** "We loaded 2,246 raw CRM records. LeadLens merged 196 duplicates with zero false merges, like 'Hayley Gibson @ dube' and 'Hayley Gibson @ Dube Group', or 'M. Briggs @ Davis Corp' and 'Michael Briggs @ Badal Corp', who share a phone number after a company rename. 12 borderline pairs are listed for a human to review instead of being merged, and about 21% of leads are stale or unreachable." Point at the before/after table, the merge log and its evidence column.
@@ -110,9 +136,3 @@ The report also shows the strict number (planted leads only) and where each deco
 
 ## Using your own data
 Choose **Upload my CSVs** in the sidebar and give it four files with the same columns as the files in `data/`. Your records are cleaned, scored and queryable immediately.
-
-## Ideas if you have extra time
-- Swap TF-IDF for embeddings (Chroma or pgvector) in `DataStore.search_notes`
-- Connect a real CRM (HubSpot or Salesforce API) instead of CSVs
-- "Send" approved emails through Gmail or SMTP, still only after approval
-- Learn the scoring weights from won/lost history, and show them next to the rules
