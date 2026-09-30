@@ -145,7 +145,8 @@ def validate_tables(raw: dict) -> ValidationResult:
         return res
 
     for t, df in frames.items():
-        df = df.apply(lambda s: s.str.strip() if s.dtype == object else s)
+        # object dtype on pandas 2, "str" dtype on pandas 3 (Streamlit Cloud)
+        df = df.apply(lambda s: s.str.strip() if (s.dtype == object or pd.api.types.is_string_dtype(s)) else s)
         idc = ID_COL[t]
         blank = df[idc].astype(str).str.strip() == ""
         if blank.any():
