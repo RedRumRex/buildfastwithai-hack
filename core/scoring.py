@@ -65,7 +65,7 @@ WEIGHT_SPECS = {
     "fit_size": ("ICP fit: company size ≥ 200", 0, 20, "Company has at least 200 employees"),
     "note_positive": ("Call notes: buying signal (+)", 0, 30, "Most recent signal note in 90 days is positive"),
     "note_negative": ("Call notes: objection (−)", 0, 30, "Most recent signal note in 90 days is negative"),
-    "stale_penalty": ("Stale / unreachable (−)", 0, 40, "No contact 180d+, missing or bounced email"),
+    "stale_penalty": ("Stale / unreachable (−)", 0, 40, "No contact 180d+, missing, bounced or invalid email"),
     "no_contact_penalty": ("No contact in 60+ days (−)", 0, 20, "Not stale, but not contacted for 60+ days"),
 }
 
@@ -286,7 +286,7 @@ def suggest_action(row: dict) -> str:
     """Rule-based next-best-action for a lead (the human approves it).
     Uses the underlying facts, not the points, so it stays correct when weights change."""
     comps = {c["component"]: c for c in row["components"]}
-    if row.get("is_stale") and any(x in str(row.get("stale_reason", "")) for x in ("missing email", "bounced")):
+    if row.get("is_stale") and any(x in str(row.get("stale_reason", "")) for x in ("missing email", "bounced", "invalid email")):
         return "Find a working email or phone number before any outreach"
     if row.get("note_signal", 0) < 0:
         return "Send a re-engagement email addressing their concern"

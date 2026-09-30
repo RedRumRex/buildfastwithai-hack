@@ -1,47 +1,47 @@
 lead_id,company,label,profile,why
-L02141,Browning Corp,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02142,Garcia LLC,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02143,Samra Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02144,Yates Inc.,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02145,Duran Pvt Ltd,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02146,Vala Group,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02147,French Technologies,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02148,Hodgson Group,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02149,Oliver Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02150,Sani Group,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02151,Parmer Ltd,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02152,Gray Inc.,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02153,Simmons LLC,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02154,Parry Pvt Ltd,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02155,Rattan Corp,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02156,Slater Group,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02157,Bullock Solutions,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02158,Gardiner Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02159,Varty Ltd,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02160,Din Group,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02161,Mckenzie LLC,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02162,Reese Pvt Ltd,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02163,Daniel Ltd,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02164,Hayer Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02165,Agarwal LLC,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02166,Dutt Group,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02167,Nanda Technologies,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02168,Weeks Corp,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02169,Sethi Corp,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02170,Malhotra Corp,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
-L02171,Huerta Inc.,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
-L02172,Rose Pvt Ltd,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
-L02173,Romero Inc.,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
-L02174,Parikh Group,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
-L02175,Chowdhury LLC,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
-L02176,Strong LLC,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
-L02177,Cochran Inc.,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
-L02178,Wilkins LLC,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
-L02179,Stevenson LLC,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
-L02180,Talwar Solutions,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
-L02181,Ravel Technologies,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
-L02182,Holloway Group,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
-L02183,Luthra Ltd,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
-L02184,Goswami Inc.,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
-L02185,Patton Corp,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
-L02186,Love Group,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
+L02201,Browning Corp,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02202,Garcia LLC,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02203,Samra Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02204,Yates Inc.,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02205,Duran Pvt Ltd,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02206,Vala Group,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02207,French Technologies,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02208,Hodgson Group,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02209,Oliver Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02210,Sani Group,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02211,Parmer Ltd,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02212,Gray Inc.,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02213,Simmons LLC,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02214,Parry Pvt Ltd,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02215,Rattan Corp,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02216,Slater Group,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02217,Bullock Solutions,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02218,Gardiner Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02219,Varty Ltd,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02220,Din Group,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02221,Mckenzie LLC,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02222,Reese Pvt Ltd,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02223,Daniel Ltd,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02224,Hayer Solutions,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02225,Agarwal LLC,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02226,Dutt Group,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02227,Nanda Technologies,hot,hot_strong,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02228,Weeks Corp,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02229,Sethi Corp,hot,hot_medium,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02230,Malhotra Corp,hot,hot_moderate,multi-signal: reachable + open deal closing soon + high-intent activity + no objection
+L02231,Huerta Inc.,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
+L02232,Rose Pvt Ltd,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
+L02233,Romero Inc.,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
+L02234,Parikh Group,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
+L02235,Chowdhury LLC,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
+L02236,Strong LLC,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
+L02237,Cochran Inc.,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
+L02238,Wilkins LLC,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
+L02239,Stevenson LLC,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
+L02240,Talwar Solutions,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
+L02241,Ravel Technologies,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
+L02242,Holloway Group,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity
+L02243,Luthra Ltd,decoy,big_but_unreachable,"biggest deal size, but no contact in 200+ days and email bounced"
+L02244,Goswami Inc.,decoy,lost_to_competitor,"strong deal + activity, but latest call note says they went with a competitor"
+L02245,Patton Corp,decoy,email_opener,"many email opens only; no deal, no meeting, no demo"
+L02246,Love Group,decoy,slipping_deal,large deal but close date passed weeks ago and no recent activity

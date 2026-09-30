@@ -19,7 +19,7 @@ from . import llm
 SCHEMA = """
 Tables (DuckDB SQL):
 leads(lead_id, name, company, email, phone, title, industry, company_size INT, country, source,
-      created_at DATE, last_contact_date DATE, email_status ['valid','bounced'], merged_from, n_sources INT,
+      created_at DATE, last_contact_date DATE, email_status ['valid','bounced','invalid'], merged_from, n_sources INT,
       days_since_contact INT, is_stale BOOLEAN, stale_reason)
 deals(deal_id, lead_id, deal_name, amount_usd INT, stage, expected_close_date DATE, last_stage_change DATE, original_lead_id)
    stage values: 'New','Qualified','Demo Scheduled','Proposal Sent','Negotiation','Closed Won','Closed Lost'

@@ -16,6 +16,7 @@ import streamlit as st
 from core import actions, llm
 from core import filters as nl_filters
 from core.clean import clean
+from core.ingest import validate_tables
 from core.qa import DataStore, answer
 from core.scoring import (DEFAULT_WEIGHTS, OPEN_STAGES, PRESETS, TARGET_INDUSTRIES, WEIGHT_SPECS, apply_weights,
                           extract_signals, resolve_weights, rubric, suggest_action, weights_changed)
@@ -78,14 +79,27 @@ with st.sidebar:
     st.title("🎯 LeadLens")
     st.caption("AI decision engine for sales data")
     src = st.radio("Data source", ["Sample CRM (messy on purpose)", "Upload my CSVs"])
-    blobs = None
+    blobs, upload_errors, upload_notes = None, [], []
     if src.startswith("Upload"):
-        st.caption("Upload leads.csv, deals.csv, activity.csv, notes.csv (same columns as the sample files).")
+        st.caption("Upload leads.csv, deals.csv, activity.csv, notes.csv (same columns as the sample files). "
+                   "Header variants such as `Email`, `E-mail` or `Company Name` are recognised.")
         ups = {t: st.file_uploader(f"{t}.csv", type="csv", key=f"up_{t}") for t in TABLES}
         if all(ups.values()):
-            blobs = tuple(ups[t].getvalue() for t in TABLES)
+            check = validate_tables({t: ups[t].getvalue() for t in TABLES})
+            upload_notes = [f"{t}.csv: read '{a}' as '{b}'" for t, m in check.renamed.items() for a, b in m.items()]
+            upload_notes += check.warnings
+            if check.ok:
+                blobs = tuple(check.tables[t].to_csv(index=False).encode() for t in TABLES)
+                st.success("All 4 files passed the checks.")
+            else:
+                upload_errors = check.errors
+                st.error("Your files can't be used yet (see the details on the right). Showing sample data meanwhile.")
+            if upload_notes:
+                with st.expander(f"{len(upload_notes)} note(s) about your files"):
+                    st.markdown("\n".join(f"- {n}" for n in upload_notes))
         else:
             st.info("Waiting for all 4 files – showing sample data meanwhile.")
+    uploaded = blobs is not None
     if blobs is None:
         ensure_sample()
         blobs = tuple((DATA / f"{t}.csv").read_bytes() for t in TABLES)
@@ -97,9 +111,23 @@ with st.sidebar:
     else:
         st.warning("No LLM key set – running on built-in rules & templates. Add `LLM_API_KEY` in `.env` for AI answers.")
 
+if upload_errors:
+    st.error("**Your upload can't be used yet – fix these and upload again:**\n\n" +
+             "\n".join(f"- {e}" for e in upload_errors) + "\n\nThe app is showing the sample data meanwhile.")
 key = hashlib.md5(b"".join(blobs)).hexdigest()
-res, signals, default_scores, store = build(key, blobs)
-is_sample = src.startswith("Sample")
+try:
+    res, signals, default_scores, store = build(key, blobs)
+except Exception as e:   # passed the column checks but something deeper failed: never crash the demo
+    if not uploaded:
+        raise
+    st.error(f"Your files passed the checks but could not be processed ({type(e).__name__}: {str(e)[:200]}). "
+             "Showing the sample data instead.")
+    uploaded = False
+    ensure_sample()
+    blobs = tuple((DATA / f"{t}.csv").read_bytes() for t in TABLES)
+    key = hashlib.md5(b"".join(blobs)).hexdigest()
+    res, signals, default_scores, store = build(key, blobs)
+is_sample = not uploaded
 ss = st.session_state
 
 # ---------------------------------------------------------------------------
@@ -244,24 +272,60 @@ tab_health, tab_queue, tab_ask, tab_audit, tab_how = st.tabs(
 # 1. Data health
 # ---------------------------------------------------------------------------
 with tab_health:
-    c = st.columns(5)
+    c = st.columns(6)
     c[0].metric("Raw lead records", f"{h['raw_records']:,}")
     c[1].metric("Duplicates merged", f"{h['duplicates_merged']:,}", help=f"{100*h['duplicates_merged']/h['raw_records']:.1f}% of raw records were duplicates")
-    c[2].metric("Clean leads", f"{h['clean_records']:,}")
-    c[3].metric(f"Stale / unreachable ({h['stale_pct']}%)", f"{h['stale_records']:,}")
-    c[4].metric("Missing / bounced emails", f"{h['missing_email']} / {h['bounced_email']}")
+    c[2].metric("Possible duplicates", f"{h.get('possible_duplicates', 0):,}", help="Similar records NOT merged automatically – a person decides (list below)")
+    c[3].metric("Clean leads", f"{h['clean_records']:,}")
+    c[4].metric(f"Stale / unreachable ({h['stale_pct']}%)", f"{h['stale_records']:,}")
+    c[5].metric("Missing / bounced / invalid emails", f"{h['missing_email']} / {h['bounced_email']} / {h.get('invalid_email', 0)}",
+                help="Missing = raw records without an email; bounced and invalid = clean leads")
+
+    ba, fi = st.columns([2, 3])
+    with ba:
+        st.subheader("Before → after cleaning")
+        t = pd.DataFrame(h.get("before_after", []))
+        if len(t):
+            t["change"] = (t["after"] - t["before"]).map(lambda d: "" if pd.isna(d) else f"{d:+,.0f}")
+            st.dataframe(t, hide_index=True, width="stretch",
+                         column_config={"before": st.column_config.NumberColumn(format="%,d"),
+                                        "after": st.column_config.NumberColumn(format="%,d")})
+        conf = h.get("conflicts_resolved", {})
+        if conf:
+            st.caption(f"Merged records that disagreed: {conf.get('title', 0)} on job title, {conf.get('phone', 0)} on phone number. "
+                       "The oldest record's value is kept; a well-formed email beats a mistyped one, and missing phones are "
+                       "filled in from the duplicate.")
+    with fi:
+        st.subheader("Field-level issues")
+        t = pd.DataFrame(h.get("field_issues", []))
+        if len(t):
+            t = t[(t["before"] > 0) | (t["after"] > 0)]
+            t.insert(5, "fixed", t["before"] - t["after"])
+            st.dataframe(t, hide_index=True, width="stretch",
+                         column_config={"example_ids": st.column_config.TextColumn("example IDs", help="Look these up in Browse cleaned leads below")})
+            st.caption("Before = raw records, after = cleaned leads. Merging duplicates fixes many issues (a duplicate with a "
+                       "blank or mistyped email is folded into a record with a good one); the rest need fixing at the source.")
 
     left, right = st.columns([3, 2])
     with left:
         st.subheader("Duplicate records we merged")
-        st.caption("Entity resolution: same email, or same company (suffixes ignored) + fuzzy / initial name match. "
-                   "Their deals, activity and notes were re-linked to the surviving record.")
+        rules = res.merges["rule"].value_counts()
+        st.caption("Entity resolution: " + " · ".join(f"{r} ({n})" for r, n in rules.items()) +
+                   ". Their deals, activity and notes were re-linked to the surviving record.")
         st.dataframe(res.merges.sort_values("match_score"), hide_index=True, width="stretch", height=320)
     with right:
         st.subheader("Why records are stale")
         reasons = res.leads.loc[res.leads["is_stale"], "stale_reason"].str.split("; ").explode()
         reasons = reasons.str.replace(r"no contact in \d+ days", "no contact 180d+", regex=True)
         st.bar_chart(reasons.value_counts(), horizontal=True, height=320)
+
+    review = getattr(res, "review", None)
+    if review is not None and len(review):
+        st.subheader(f"Possible duplicates – needs review ({len(review)})")
+        st.caption("Similar enough to look like the same person, but without enough evidence to merge automatically "
+                   "(for example a similar name at a different company, with no shared email or phone). "
+                   "They are kept as separate leads; check them in the CRM.")
+        st.dataframe(review, hide_index=True, width="stretch")
     with st.expander("Browse cleaned leads"):
         st.dataframe(res.leads.drop(columns=["master_id"], errors="ignore"), hide_index=True, width="stretch")
 
