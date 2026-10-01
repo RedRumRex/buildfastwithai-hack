@@ -1,4 +1,4 @@
-# 📘 LeadLens — Instructions
+# LeadLens — Instructions
 
 How to use LeadLens, upload your own data, run it on your computer and deploy it to Streamlit Cloud.
 For what LeadLens is and how it works, see the [README](README.md).
@@ -19,13 +19,13 @@ For what LeadLens is and how it works, see the [README](README.md).
 ## 1. Using the app in 5 minutes
 
 1. Open the app. It starts on the **Sample CRM** — a deliberately messy dataset of 2,246 lead records.
-2. **🩺 Data health** — see what was cleaned: 196 duplicates merged, stale leads flagged, the merge log.
-3. **🎯 Action queue** — the ranked list of who to contact. Open the first card, read *Why this lead*, switch on **🔍 Why?** to see the source rows.
+2. ** Data health** — see what was cleaned: 196 duplicates merged, stale leads flagged, the merge log.
+3. ** Action queue** — the ranked list of who to contact. Open the first card, read *Why this lead*, switch on **🔍 Why?** to see the source rows.
 4. Type in **Refine in plain English**: `skip anyone contacted in the last 2 weeks, FinTech only, over $20k`.
-5. **✅ Approve** a lead → an email draft appears. Edit it, **💾 Save edits**, **⬇️ Download .eml**.
-6. **💬 Ask your data** — click *Which deals over $50k are stuck?* (shows the SQL) and *Who complained about pricing?* (cites call notes).
-7. **🧾 Audit log** — every decision you just made, with its evidence.
-8. **⚙️ How scoring works** — drag a slider and watch the queue re-rank.
+5. ** Approve** a lead → an email draft appears. Edit it, ** Save edits**, ** Download .eml**.
+6. ** Ask your data** — click *Which deals over $50k are stuck?* (shows the SQL) and *Who complained about pricing?* (cites call notes).
+7. ** Audit log** — every decision you just made, with its evidence.
+8. ** How scoring works** — drag a slider and watch the queue re-rank.
 
 The sidebar shows **"LLM connected"** when an API key is set. Without one, everything still works using built-in rules.
 
@@ -252,7 +252,7 @@ python data/plant_hot_leads.py      # re-plant the known hot leads + decoys (alw
 ### 🩺 Data health
 Read top to bottom: headline numbers → **Before → after cleaning** → **Field-level issues** (example IDs can be looked up in *Browse cleaned leads*) → **Duplicate records we merged** (rule + evidence for each merge) → **Why records are stale** → **Possible duplicates – needs review** (similar records that were *not* merged; check them in your CRM).
 
-### 🎯 Action queue
+### Action queue
 - **Plain-English filter** examples:
   - `skip anyone contacted in the last 2 weeks`
   - `FinTech and Healthcare only, over $20k`
@@ -261,22 +261,22 @@ Read top to bottom: headline numbers → **Before → after cleaning** → **Fie
   - `deals above 5 lakh` (lakh / crore understood)
 
   The chips underneath show what was understood and whether the AI or the rule-based parser did it. You can also set the filters by hand.
-- **Approve one lead:** open the card → optionally edit the action and add a note → **✅ Approve**. An email draft appears.
-- **Edit the email:** change subject/body → **💾 Save edits** (logged) → **⬇️ Download .eml** (downloads the last *saved* version). **Download all approved email drafts** gives a zip.
-- **Bulk:** select leads (or **Select all**) in *Bulk review*, add an optional note → **✅ Approve N** / **❌ Reject N**. Each lead is logged separately.
-- **Undo:** **↩️ Undo decision** on any reviewed card.
+- **Approve one lead:** open the card → optionally edit the action and add a note → ** Approve**. An email draft appears.
+- **Edit the email:** change subject/body → ** Save edits** (logged) → ** Download .eml** (downloads the last *saved* version). **Download all approved email drafts** gives a zip.
+- **Bulk:** select leads (or **Select all**) in *Bulk review*, add an optional note → ** Approve N** / ** Reject N**. Each lead is logged separately.
+- **Undo:** ** Undo decision** on any reviewed card.
 - **Reviewer name:** set it in the sidebar; it is written to the audit log.
 
-### 💬 Ask your data
+###  Ask your data
 Click an example or type a question.
 - **Numbers / lists** ("How many open deals do we have?", "Which Negotiation deals close this month?") → answer + **SQL** + result rows.
 - **What customers said** ("Who complained about pricing?", "Which customers mentioned a competitor?") → answer citing note IDs + the source notes.
 - The **engine** line says what answered: `text-to-SQL · model`, `RAG (tfidf) · model`, or `built-in query templates` / `retrieval` when the AI is off.
 
-### 🧾 Audit log
+###  Audit log
 Filter by decision, reviewer, free text (lead ID, company, note…), date range or **Only bulk decisions**. **Export filtered** or **Export full log** as CSV.
 
-### ⚙️ How scoring works
+###  How scoring works
 Pick a **preset** → **Apply preset**, or drag sliders; **↺ Reset to default** restores the defaults. *Engagement event weights* (expander) sets how much each activity type counts. The **Live effect on the ranking** table shows how the top 15 moved. With the sample data, the precision@20 metric updates live.
 
 ## 8. Troubleshooting
