@@ -1,0 +1,189 @@
+Opportunity ID,Lead,Opportunity Name,Deal Value,Deal Stage,Close Date,Stage Changed
+OPP-0001,CRM-0001,Thakkar – Enterprise,"$130,000",NEGOTIATION,2026-10-23,2026-09-21
+OPP-0002,CRM-0002,Agate – Enterprise,"$92,000",NEGOTIATION,2026-10-16,2026-09-22
+OPP-0003,CRM-0003,Parikh – Enterprise,"$99,000",proposal sent,2026-10-16,2026-09-23
+OPP-0004,CRM-0004,Pillay – Enterprise,"$132,000",NEGOTIATION,2026-10-21,2026-09-20
+OPP-0005,CRM-0005,Vohra – Enterprise,"$121,000",proposal sent,2026-10-08,2026-09-18
+OPP-0006,CRM-0006,Singhal – Enterprise,"$115,000",proposal sent,2026-10-14,2026-09-24
+OPP-0007,CRM-0007,Ratti – Enterprise,"$158,000",NEGOTIATION,2026-10-18,2026-09-20
+OPP-0008,CRM-0008,Lad – Enterprise,"$180,000",proposal sent,2026-10-25,2026-09-24
+OPP-0009,CRM-0012,Chad – Platform,"$32,900",proposal sent,2026-12-18,2026-08-19
+OPP-0010,CRM-0013,Cherian – Platform,"$26,100",qualified,2026-12-31,2026-07-20
+OPP-0011,CRM-0013,Cherian – Platform,"$17,500",proposal sent,2027-01-04,2026-07-11
+OPP-0012,CRM-0016,Bahri – Platform,"$9,000",qualified,2026-10-26,2026-07-10
+OPP-0013,CRM-0018,Subramaniam – Platform,"$66,600",Demo scheduled,2027-01-17,2026-07-02
+OPP-0014,CRM-0019,Gopal – Platform,"$16,500",qualified,2026-11-20,2026-06-12
+OPP-0015,CRM-0019,Gopal – Platform,"$31,600",Closed Won,2026-05-09,2026-09-20
+OPP-0016,CRM-0025,Hora – Platform,"$77,100",Closed Won,2026-03-16,2026-06-11
+OPP-0017,CRM-0025,Hora – Platform,"$7,800",Demo scheduled,2027-01-05,2026-08-13
+OPP-0018,CRM-0026,Samra – Platform,"$8,900",qualified,2026-09-22,2026-08-31
+OPP-0019,CRM-0026,Samra – Platform,"$9,000",closed lost,2026-09-16,2026-07-12
+OPP-0020,CRM-0027,Kumer – Platform,"$16,900",Closed Won,2026-07-18,2026-06-01
+OPP-0021,CRM-0027,Kumer – Platform,"$5,800",qualified,2027-02-13,2026-04-29
+OPP-0022,CRM-0030,Dutt – Platform,"$50,600",NEGOTIATION,2026-12-05,2026-09-24
+OPP-0023,CRM-0030,Dutt – Platform,"$34,500",new,2026-10-16,2026-07-21
+OPP-0024,CRM-0032,Trivedi – Platform,"$103,400",Closed Won,2026-07-23,2026-07-02
+OPP-0025,CRM-0032,Trivedi – Platform,"$12,300",Demo scheduled,2026-11-17,2026-05-25
+OPP-0026,CRM-0035,Kalita – Platform,"$28,000",proposal sent,2027-01-04,2026-08-20
+OPP-0027,CRM-0035,Kalita – Platform,"$27,700",NEGOTIATION,2027-01-09,2026-08-22
+OPP-0028,CRM-0038,Rau – Platform,"$6,900",qualified,2026-10-03,2026-05-24
+OPP-0029,CRM-0040,Dhar – Platform,"$12,500",new,2027-01-08,2026-09-25
+OPP-0030,CRM-0044,Dugal – Platform,"$25,300",NEGOTIATION,2026-12-20,2026-09-23
+OPP-0031,CRM-0045,Bala – Platform,"$15,800",new,2027-01-12,2026-09-08
+OPP-0032,CRM-0045,Bala – Platform,"$14,600",NEGOTIATION,2026-10-03,2026-08-31
+OPP-0033,CRM-0047,Vala – Platform,"$22,200",NEGOTIATION,2027-01-17,2026-09-14
+OPP-0034,CRM-0047,Vala – Platform,"$10,700",NEGOTIATION,2026-11-19,2026-09-05
+OPP-0035,CRM-0048,Upadhyay – Platform,"$19,000",Closed Won,2026-04-26,2026-09-08
+OPP-0036,CRM-0048,Upadhyay – Platform,"$46,200",Closed Won,2026-09-22,2026-08-20
+OPP-0037,CRM-0049,Verma – Platform,"$42,300",Demo scheduled,2027-01-20,2026-05-05
+OPP-0038,CRM-0052,Ganguly – Platform,"$5,900",closed lost,2026-04-26,2026-08-06
+OPP-0039,CRM-0054,Narasimhan – Platform,"$35,800",Closed Won,2026-08-09,2026-04-24
+OPP-0040,CRM-0056,Hayre – Platform,"$17,800",proposal sent,2026-09-30,2026-09-20
+OPP-0041,CRM-0059,Vora – Platform,"$16,900",NEGOTIATION,2026-10-23,2026-08-15
+OPP-0042,CRM-0059,Vora – Platform,"$39,000",new,2026-09-26,2026-07-23
+OPP-0043,CRM-0060,Shan – Platform,"$34,800",Demo scheduled,2026-12-04,2026-06-28
+OPP-0044,CRM-0063,Raj – Platform,"$4,900",new,2027-02-18,2026-05-12
+OPP-0045,CRM-0064,Murthy – Platform,"$75,200",closed lost,2026-08-04,2026-07-16
+OPP-0046,CRM-0066,Gara – Platform,"$15,600",qualified,2026-12-18,2026-09-08
+OPP-0047,CRM-0067,Sibal – Platform,"$15,800",Closed Won,2026-07-12,2026-08-13
+OPP-0048,CRM-0067,Sibal – Platform,"$4,900",Demo scheduled,2026-12-20,2026-08-01
+OPP-0049,CRM-0071,Borde – Platform,"$12,900",Closed Won,2026-08-26,2026-08-01
+OPP-0050,CRM-0074,Shanker – Platform,"$59,300",closed lost,2026-06-21,2026-07-09
+OPP-0051,CRM-0076,Karan – Platform,"$9,600",new,2027-01-26,2026-09-26
+OPP-0052,CRM-0077,Minhas – Platform,"$18,300",new,2026-11-24,2026-07-10
+OPP-0053,CRM-0082,Patla – Platform,"$32,100",new,2026-12-07,2026-05-23
+OPP-0054,CRM-0083,Dugar – Platform,"$7,700",NEGOTIATION,2026-10-03,2026-08-24
+OPP-0055,CRM-0087,Sen – Platform,"$24,500",NEGOTIATION,2026-11-29,2026-07-23
+OPP-0056,CRM-0087,Sen – Platform,"$18,800",qualified,2026-09-22,2026-07-08
+OPP-0057,CRM-0088,Chopra – Platform,"$13,600",NEGOTIATION,2026-11-22,2026-09-08
+OPP-0058,CRM-0089,Roy – Platform,"$23,900",new,2026-09-11,2026-08-29
+OPP-0059,CRM-0089,Roy – Platform,"$38,700",closed lost,2026-07-22,2026-08-24
+OPP-0060,CRM-0090,Saini – Platform,"$31,400",new,2026-11-03,2026-08-15
+OPP-0061,CRM-0092,Das – Platform,"$16,600",new,2027-01-14,2026-07-22
+OPP-0062,CRM-0096,Mann – Platform,"$22,300",new,2027-01-13,2026-06-15
+OPP-0063,CRM-0099,Madan – Platform,"$11,800",closed lost,2026-05-08,2026-04-26
+OPP-0064,CRM-0100,Raju – Platform,"$102,400",qualified,2027-01-12,2026-06-24
+OPP-0065,CRM-0101,Kunda – Platform,"$14,300",proposal sent,2026-10-15,2026-09-19
+OPP-0066,CRM-0101,Kunda – Platform,"$41,300",Closed Won,2026-07-01,2026-09-27
+OPP-0067,CRM-0102,Doctor – Platform,"$39,200",new,2026-10-13,2026-07-23
+OPP-0068,CRM-0103,Som – Platform,"$31,000",proposal sent,2026-11-18,2026-08-24
+OPP-0069,CRM-0104,Mody – Platform,"$10,500",Closed Won,2026-05-11,2026-05-06
+OPP-0070,CRM-0110,Gera – Platform,"$9,400",NEGOTIATION,2026-11-15,2026-05-31
+OPP-0071,CRM-0111,Chakraborty – Platform,"$49,000",Demo scheduled,2026-11-21,2026-05-15
+OPP-0072,CRM-0111,Chakraborty – Platform,"$29,000",qualified,2027-02-22,2026-05-12
+OPP-0073,CRM-0113,Basak – Platform,"$30,000",proposal sent,2026-12-28,2026-04-30
+OPP-0074,CRM-0116,Lata – Platform,"$56,200",Demo scheduled,2026-10-17,2026-06-13
+OPP-0075,CRM-0118,Issac – Platform,"$7,500",NEGOTIATION,2026-11-26,2026-05-30
+OPP-0076,CRM-0121,More – Platform,"$13,700",Demo scheduled,2026-09-13,2026-07-05
+OPP-0077,CRM-0123,Ghose – Platform,"$13,200",Demo scheduled,2027-01-11,2026-06-30
+OPP-0078,CRM-0124,Pillai – Platform,"$9,800",closed lost,2026-09-19,2026-08-10
+OPP-0079,CRM-0125,Bhalla – Platform,"$25,600",Demo scheduled,2026-10-21,2026-08-11
+OPP-0080,CRM-0126,Kumar – Platform,"$45,200",qualified,2026-12-06,2026-07-21
+OPP-0081,CRM-0127,Varughese – Platform,"$48,800",Demo scheduled,2026-09-28,2026-07-03
+OPP-0082,CRM-0129,Apte – Platform,"$18,300",Closed Won,2026-04-13,2026-06-09
+OPP-0083,CRM-0129,Apte – Platform,"$10,900",Closed Won,2026-03-29,2026-08-26
+OPP-0084,CRM-0130,Rajagopalan – Platform,"$19,300",proposal sent,2026-10-31,2026-08-03
+OPP-0085,CRM-0130,Rajagopalan – Platform,"$15,600",Closed Won,2026-05-01,2026-07-30
+OPP-0086,CRM-0131,Gill – Platform,"$44,400",Closed Won,2026-09-20,2026-08-30
+OPP-0087,CRM-0132,Ramaswamy – Platform,"$7,200",closed lost,2026-07-14,2026-05-23
+OPP-0088,CRM-0133,Pathak – Platform,"$15,300",Closed Won,2026-07-01,2026-05-27
+OPP-0089,CRM-0135,Nair – Platform,"$6,400",NEGOTIATION,2026-08-23,2026-05-09
+OPP-0090,CRM-0135,Nair – Platform,"$244,700",Demo scheduled,2027-02-02,2026-09-18
+OPP-0091,CRM-0136,Pandya – Platform,"$22,800",new,2027-02-14,2026-05-30
+OPP-0092,CRM-0140,Bobal – Platform,"$47,500",proposal sent,2026-11-22,2026-06-03
+OPP-0093,CRM-0140,Bobal – Platform,"$11,300",Demo scheduled,2026-12-14,2026-05-12
+OPP-0094,CRM-0141,Kapur – Platform,"$75,000",closed lost,2026-05-21,2026-05-23
+OPP-0095,CRM-0142,Sachar – Platform,"$20,800",proposal sent,2026-09-19,2026-07-10
+OPP-0096,CRM-0143,Shetty – Platform,"$11,600",proposal sent,2027-02-09,2026-06-13
+OPP-0097,CRM-0144,Sharaf – Platform,"$4,100",Closed Won,2026-09-10,2026-08-14
+OPP-0098,CRM-0146,Golla – Platform,"$28,900",Demo scheduled,2026-12-19,2026-09-24
+OPP-0099,CRM-0148,Badal – Platform,"$7,800",proposal sent,2026-10-06,2026-08-30
+OPP-0100,CRM-0152,Bora – Platform,"$34,700",Demo scheduled,2026-08-29,2026-09-02
+OPP-0101,CRM-0153,Mahajan – Platform,"$80,100",new,2026-12-26,2026-08-29
+OPP-0102,CRM-0154,Nayar – Platform,"$13,500",NEGOTIATION,2027-02-19,2026-08-10
+OPP-0103,CRM-0155,Dora – Platform,"$26,900",NEGOTIATION,2026-11-13,2026-06-22
+OPP-0104,CRM-0156,Bali – Platform,"$13,600",proposal sent,2026-12-18,2026-09-16
+OPP-0105,CRM-0157,Mane – Platform,"$13,900",Demo scheduled,2026-09-21,2026-09-01
+OPP-0106,CRM-0159,Lall – Platform,"$25,000",new,2026-11-24,2026-06-02
+OPP-0107,CRM-0160,Panchal – Platform,"$71,600",qualified,2026-12-20,2026-05-11
+OPP-0108,CRM-0165,Mangat – Platform,"$66,100",Demo scheduled,2026-11-12,2026-07-07
+OPP-0109,CRM-0166,Swamy – Platform,"$22,300",Closed Won,2026-06-01,2026-05-11
+OPP-0110,CRM-0167,Magar – Platform,"$34,200",NEGOTIATION,2026-09-21,2026-09-06
+OPP-0111,CRM-0167,Magar – Platform,"$6,500",qualified,2026-08-28,2026-09-01
+OPP-0112,CRM-0170,Dave – Platform,"$28,600",Closed Won,2026-09-15,2026-07-31
+OPP-0113,CRM-0170,Dave – Platform,"$14,500",new,2026-09-29,2026-08-11
+OPP-0114,CRM-0172,Swaminathan – Platform,"$26,100",proposal sent,2026-09-18,2026-06-13
+OPP-0115,CRM-0175,Jayaraman – Platform,"$64,800",NEGOTIATION,2026-11-27,2026-07-23
+OPP-0116,CRM-0175,Jayaraman – Platform,"$3,100",NEGOTIATION,2026-12-04,2026-09-11
+OPP-0117,CRM-0176,Pandit – Platform,"$58,800",qualified,2026-10-28,2026-07-29
+OPP-0118,CRM-0176,Pandit – Platform,"$19,900",Closed Won,2026-04-27,2026-08-21
+OPP-0119,CRM-0180,Baral – Platform,"$7,300",Closed Won,2026-09-10,2026-05-13
+OPP-0120,CRM-0183,Brar – Platform,"$13,700",Demo scheduled,2027-02-02,2026-09-04
+OPP-0121,CRM-0183,Brar – Platform,"$4,800",closed lost,2026-05-28,2026-07-02
+OPP-0122,CRM-0184,Patel – Platform,"$20,000",qualified,2026-10-05,2026-05-21
+OPP-0123,CRM-0188,Sastry – Platform,"$79,200",new,2026-11-27,2026-07-07
+OPP-0124,CRM-0190,Chand – Platform,"$40,800",new,2026-08-23,2026-09-27
+OPP-0125,CRM-0193,Anand – Platform,"$51,700",proposal sent,2026-11-29,2026-05-23
+OPP-0126,CRM-0194,Kara – Platform,"$29,200",qualified,2026-10-04,2026-09-20
+OPP-0127,CRM-0196,Parmer – Platform,"$114,900",Closed Won,2026-08-25,2026-08-07
+OPP-0128,CRM-0200,Ramachandran – Platform,"$12,300",NEGOTIATION,2026-09-06,2026-05-17
+OPP-0129,CRM-0203,Wason – Platform,"$20,300",Closed Won,2026-04-17,2026-06-22
+OPP-0130,CRM-0203,Wason – Platform,"$71,400",Demo scheduled,2026-10-02,2026-07-10
+OPP-0131,CRM-0204,Thaman – Platform,"$35,300",closed lost,2026-03-17,2026-08-15
+OPP-0132,CRM-0204,Thaman – Platform,"$28,600",Closed Won,2026-03-22,2026-09-07
+OPP-0133,CRM-0206,Baria – Platform,"$64,800",proposal sent,2026-09-07,2026-06-30
+OPP-0134,CRM-0206,Baria – Platform,"$13,500",qualified,2026-10-26,2026-07-30
+OPP-0135,CRM-0208,Mallick – Platform,"$55,200",Demo scheduled,2026-11-21,2026-05-02
+OPP-0136,CRM-0209,Anne – Platform,"$8,900",closed lost,2026-05-22,2026-06-06
+OPP-0137,CRM-0210,Banik – Platform,"$19,400",qualified,2027-01-16,2026-07-08
+OPP-0138,CRM-0211,Sridhar – Platform,"$24,600",Closed Won,2026-06-26,2026-06-13
+OPP-0139,CRM-0211,Sridhar – Platform,"$28,500",NEGOTIATION,2026-10-15,2026-05-13
+OPP-0140,CRM-0213,Desai – Platform,"$84,700",new,2026-10-31,2026-07-25
+OPP-0141,CRM-0214,Nigam – Platform,"$12,800",NEGOTIATION,2026-10-19,2026-05-30
+OPP-0142,CRM-0214,Nigam – Platform,"$63,400",closed lost,2026-04-26,2026-07-28
+OPP-0143,CRM-0219,Borah – Platform,"$21,400",new,2026-12-19,2026-06-18
+OPP-0144,CRM-0221,Kothari – Platform,"$6,100",NEGOTIATION,2027-02-19,2026-07-08
+OPP-0145,CRM-0222,Babu – Platform,"$10,000",Demo scheduled,2026-12-16,2026-08-30
+OPP-0146,CRM-0225,Basu – Platform,"$5,300",Closed Won,2026-07-17,2026-06-22
+OPP-0147,CRM-0225,Basu – Platform,"$5,800",qualified,2026-12-15,2026-05-17
+OPP-0148,CRM-0226,Yadav – Platform,"$20,000",Demo scheduled,2026-11-28,2026-08-25
+OPP-0149,CRM-0227,Koshy – Platform,"$21,900",qualified,2027-02-11,2026-06-20
+OPP-0150,CRM-0230,Palla – Platform,"$84,200",proposal sent,2026-09-29,2026-06-15
+OPP-0151,CRM-0230,Palla – Platform,"$6,900",Demo scheduled,2026-10-19,2026-04-26
+OPP-0152,CRM-0231,Mittal – Platform,"$26,500",proposal sent,2026-09-17,2026-09-09
+OPP-0153,CRM-0232,Lala – Platform,"$7,400",qualified,2026-10-13,2026-06-23
+OPP-0154,CRM-0232,Lala – Platform,"$7,300",closed lost,2026-07-14,2026-04-30
+OPP-0155,CRM-0233,Balay – Platform,"$41,300",proposal sent,2026-08-28,2026-05-18
+OPP-0156,CRM-0234,Mahal – Platform,"$5,300",proposal sent,2026-10-27,2026-07-27
+OPP-0157,CRM-0234,Mahal – Platform,"$3,500",proposal sent,2026-09-10,2026-07-29
+OPP-0158,CRM-0238,Prasad – Platform,"$5,100",Closed Won,2026-03-25,2026-09-19
+OPP-0159,CRM-0244,Raval – Platform,"$11,700",proposal sent,2026-10-28,2026-06-09
+OPP-0160,CRM-0245,Oak – Platform,"$16,300",proposal sent,2027-02-27,2026-06-01
+OPP-0161,CRM-0245,Oak – Platform,"$22,700",Closed Won,2026-09-13,2026-08-29
+OPP-0162,CRM-0248,Ranganathan – Platform,"$8,900",Demo scheduled,2027-02-24,2026-04-30
+OPP-0163,CRM-0250,Chauhan – Platform,"$12,100",NEGOTIATION,2027-01-08,2026-06-24
+OPP-0164,CRM-0251,Wadhwa – Platform,"$32,500",closed lost,2026-09-25,2026-06-29
+OPP-0165,CRM-0252,Dey – Platform,"$13,500",closed lost,2026-03-28,2026-04-27
+OPP-0166,CRM-0253,Sha – Platform,"$23,500",proposal sent,2026-08-31,2026-09-18
+OPP-0167,CRM-0254,Kamdar – Platform,"$12,400",Closed Won,2026-05-17,2026-05-06
+OPP-0168,CRM-0255,Mand – Platform,"$68,000",closed lost,2026-08-25,2026-05-01
+OPP-0169,CRM-0256,Goswami – Platform,"$68,500",closed lost,2026-04-06,2026-06-13
+OPP-0170,CRM-0256,Goswami – Platform,"$24,600",qualified,2026-09-12,2026-09-01
+OPP-0171,CRM-0258,Sani – Platform,"$4,800",qualified,2027-02-07,2026-07-29
+OPP-0172,CRM-0263,Chatterjee – Platform,"$21,400",qualified,2027-01-24,2026-07-29
+OPP-0173,CRM-0265,Bedi – Platform,"$9,400",closed lost,2026-09-23,2026-06-13
+OPP-0174,CRM-0270,Bhatt – Platform,"$31,400",Demo scheduled,2026-09-22,2026-05-17
+OPP-0175,CRM-0271,Comar – Platform,"$16,800",NEGOTIATION,2027-02-05,2026-05-02
+OPP-0176,CRM-0271,Comar – Platform,"$36,000",qualified,2026-10-19,2026-07-04
+OPP-0177,CRM-0277,Kadakia – Platform,"$8,700",closed lost,2026-07-31,2026-07-19
+OPP-0178,CRM-0280,Ghosh – Platform,"$19,900",qualified,2027-02-26,2026-09-11
+OPP-0179,CRM-0282,Dyal – Platform,"$6,800",Closed Won,2026-07-27,2026-08-26
+OPP-0180,CRM-0293,Jha – Platform,"$7,600",closed lost,2026-05-09,2026-06-30
+OPP-0181,CRM-0293,Jha – Platform,"$7,800",Demo scheduled,2026-09-24,2026-05-10
+OPP-0182,CRM-0295,Bajaj – Platform,"$69,500",Closed Won,2026-09-22,2026-05-21
+OPP-0183,CRM-0295,Bajaj – Platform,"$9,600",NEGOTIATION,2026-12-14,2026-07-30
+OPP-0184,CRM-0298,Korpal – Platform,"$29,700",new,2026-12-14,2026-06-02
+OPP-0185,CRM-0298,Korpal – Platform,"$47,900",qualified,2026-12-29,2026-05-03
+OPP-0186,CRM-0300,Munshi – Platform,"$37,200",closed lost,2026-05-10,2026-07-30
+OPP-0187,CRM-0300,Munshi – Platform,"$28,700",closed lost,2026-08-17,2026-08-17
+OPP-9999,CRM-9999,Orphan – no such lead,"$15,000",qualified,2026-11-15,2026-09-01

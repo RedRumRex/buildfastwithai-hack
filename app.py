@@ -32,7 +32,8 @@ def _secrets_to_env():
     """On Streamlit Cloud the LLM key lives in the app's Secrets, not in .env – copy it into the environment
     so core/llm.py finds it the same way locally and in the cloud. Silently does nothing without secrets."""
     try:
-        for k in ("LLM_API_KEY", "LLM_BASE_URL", "LLM_MODEL"):
+        for k in ("LLM_API_KEY", "LLM_BASE_URL", "LLM_MODEL", "LLM_TIMEOUT", "LLM_COOLDOWN", "LLM_REASONING_EFFORT",
+                  "RAG_BACKEND", "RAG_MIN_RELEVANCE", "EMBED_MODEL"):
             if not os.getenv(k) and k in st.secrets:
                 os.environ[k] = str(st.secrets[k])
     except Exception:

@@ -1,0 +1,150 @@
+Note ID,Lead,Date,Owner,Note
+NT-0001,CRM-0001,2026-09-25,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0002,CRM-0002,2026-09-24,Ananya (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0003,CRM-0003,2026-09-20,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0004,CRM-0004,2026-09-27,Ananya (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0005,CRM-0005,2026-09-15,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0006,CRM-0006,2026-09-20,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0007,CRM-0007,2026-09-24,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0008,CRM-0008,2026-09-18,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0009,CRM-0009,2026-07-22,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0010,CRM-0011,2026-09-20,Ananya (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0011,CRM-0012,2026-09-04,Meher (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0012,CRM-0014,2026-07-22,Meher (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0013,CRM-0015,2026-08-05,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0014,CRM-0016,2026-07-20,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0015,CRM-0017,2026-06-17,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0016,CRM-0019,2026-08-20,Ananya (AE),"Budget is tight, pricing concerns raised again."
+NT-0017,CRM-0026,2026-09-21,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0018,CRM-0027,2026-06-15,Ananya (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0019,CRM-0028,2026-07-18,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0020,CRM-0029,2026-08-15,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0021,CRM-0030,2026-07-11,Kabir (SDR),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0022,CRM-0032,2026-06-18,Kabir (SDR),Wants an integration with their ERP before deciding.
+NT-0023,CRM-0033,2026-08-20,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0024,CRM-0034,2026-06-12,Meher (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0025,CRM-0037,2026-08-15,Meher (AE),Project on hold after a reorg.
+NT-0026,CRM-0042,2026-08-20,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0027,CRM-0044,2026-06-11,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0028,CRM-0046,2026-09-21,Kabir (SDR),Asked for a case study from their industry.
+NT-0029,CRM-0047,2026-09-18,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0030,CRM-0049,2026-09-26,Kabir (SDR),Project on hold after a reorg.
+NT-0031,CRM-0051,2026-08-19,Kabir (SDR),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0032,CRM-0054,2026-08-08,Ananya (AE),Project on hold after a reorg.
+NT-0033,CRM-0055,2026-08-06,Kabir (SDR),Went with a competitor this year.
+NT-0034,CRM-0058,2026-09-22,Kabir (SDR),Wants an integration with their ERP before deciding.
+NT-0035,CRM-0059,2026-07-13,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0036,CRM-0060,2026-08-17,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0037,CRM-0063,2026-06-10,Kabir (SDR),Asked for a case study from their industry.
+NT-0038,CRM-0064,2026-09-10,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0039,CRM-0066,2026-09-01,Kabir (SDR),"Intro call went fine, follow up after their planning cycle."
+NT-0040,CRM-0067,2026-07-05,Kabir (SDR),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0041,CRM-0068,2026-07-22,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0042,CRM-0071,2026-06-19,Meher (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0043,CRM-0077,2026-09-20,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0044,CRM-0078,2026-08-21,Ananya (AE),"Budget is tight, pricing concerns raised again."
+NT-0045,CRM-0080,2026-06-09,Ananya (AE),Asked for a case study from their industry.
+NT-0046,CRM-0081,2026-07-17,Meher (AE),Went with a competitor this year.
+NT-0047,CRM-0082,2026-06-29,Ananya (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0048,CRM-0084,2026-09-16,Ananya (AE),Asked for a case study from their industry.
+NT-0049,CRM-0088,2026-07-11,Ananya (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0050,CRM-0094,2026-08-08,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0051,CRM-0099,2026-08-05,Meher (AE),Asked for a case study from their industry.
+NT-0052,CRM-0101,2026-06-27,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0053,CRM-0102,2026-06-04,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0054,CRM-0106,2026-06-20,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0055,CRM-0107,2026-08-03,Kabir (SDR),Asked for a case study from their industry.
+NT-0056,CRM-0109,2026-07-03,Kabir (SDR),Project on hold after a reorg.
+NT-0057,CRM-0112,2026-09-08,Ananya (AE),Went with a competitor this year.
+NT-0058,CRM-0113,2026-06-11,Kabir (SDR),Went with a competitor this year.
+NT-0059,CRM-0114,2026-06-11,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0060,CRM-0120,2026-06-18,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0061,CRM-0128,2026-08-10,Meher (AE),Asked for a case study from their industry.
+NT-0062,CRM-0130,2026-08-10,Ananya (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0063,CRM-0132,2026-08-07,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0064,CRM-0135,2026-09-10,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0065,CRM-0137,2026-07-19,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0066,CRM-0140,2026-09-20,Ananya (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0067,CRM-0141,2026-08-30,Kabir (SDR),Asked for a case study from their industry.
+NT-0068,CRM-0142,2026-08-06,Ananya (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0069,CRM-0143,2026-06-07,Kabir (SDR),"Intro call went fine, follow up after their planning cycle."
+NT-0070,CRM-0144,2026-06-20,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0071,CRM-0145,2026-09-23,Ananya (AE),Went with a competitor this year.
+NT-0072,CRM-0152,2026-08-31,Ananya (AE),Asked for a case study from their industry.
+NT-0073,CRM-0153,2026-08-03,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0074,CRM-0154,2026-09-26,Ananya (AE),Project on hold after a reorg.
+NT-0075,CRM-0156,2026-09-10,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0076,CRM-0157,2026-09-05,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0077,CRM-0158,2026-08-13,Kabir (SDR),Asked for a case study from their industry.
+NT-0078,CRM-0161,2026-07-30,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0079,CRM-0163,2026-07-13,Kabir (SDR),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0080,CRM-0166,2026-08-21,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0081,CRM-0167,2026-07-03,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0082,CRM-0169,2026-06-07,Ananya (AE),Went with a competitor this year.
+NT-0083,CRM-0171,2026-06-15,Kabir (SDR),Wants an integration with their ERP before deciding.
+NT-0084,CRM-0178,2026-09-14,Ananya (AE),Asked for a case study from their industry.
+NT-0085,CRM-0179,2026-06-04,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0086,CRM-0180,2026-09-23,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0087,CRM-0181,2026-07-27,Kabir (SDR),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0088,CRM-0182,2026-09-29,Kabir (SDR),Wants an integration with their ERP before deciding.
+NT-0089,CRM-0184,2026-08-28,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0090,CRM-0186,2026-09-02,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0091,CRM-0189,2026-06-09,Kabir (SDR),Asked for a case study from their industry.
+NT-0092,CRM-0190,2026-06-26,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0093,CRM-0193,2026-06-26,Ananya (AE),Went with a competitor this year.
+NT-0094,CRM-0198,2026-06-02,Kabir (SDR),Went with a competitor this year.
+NT-0095,CRM-0199,2026-08-28,Ananya (AE),Asked for a case study from their industry.
+NT-0096,CRM-0201,2026-07-09,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0097,CRM-0202,2026-06-09,Ananya (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0098,CRM-0204,2026-09-18,Ananya (AE),Asked for a case study from their industry.
+NT-0099,CRM-0206,2026-07-27,Ananya (AE),Asked for a case study from their industry.
+NT-0100,CRM-0207,2026-07-12,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0101,CRM-0208,2026-09-10,Kabir (SDR),"Intro call went fine, follow up after their planning cycle."
+NT-0102,CRM-0209,2026-09-29,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0103,CRM-0211,2026-07-11,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0104,CRM-0212,2026-06-20,Kabir (SDR),"Intro call went fine, follow up after their planning cycle."
+NT-0105,CRM-0213,2026-09-07,Kabir (SDR),Wants an integration with their ERP before deciding.
+NT-0106,CRM-0214,2026-06-13,Meher (AE),"Budget approved, wants the proposal this week."
+NT-0107,CRM-0215,2026-06-22,Kabir (SDR),Asked for a case study from their industry.
+NT-0108,CRM-0217,2026-07-02,Kabir (SDR),"Intro call went fine, follow up after their planning cycle."
+NT-0109,CRM-0219,2026-08-11,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0110,CRM-0220,2026-06-08,Ananya (AE),Asked for a case study from their industry.
+NT-0111,CRM-0221,2026-08-15,Kabir (SDR),Asked for a case study from their industry.
+NT-0112,CRM-0225,2026-08-06,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0113,CRM-0228,2026-08-01,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0114,CRM-0230,2026-06-27,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0115,CRM-0231,2026-08-12,Ananya (AE),Wants an integration with their ERP before deciding.
+NT-0116,CRM-0232,2026-07-08,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0117,CRM-0233,2026-09-27,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0118,CRM-0234,2026-09-16,Kabir (SDR),Asked for a case study from their industry.
+NT-0119,CRM-0235,2026-06-27,Meher (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0120,CRM-0239,2026-06-22,Meher (AE),Asked for a case study from their industry.
+NT-0121,CRM-0240,2026-06-28,Kabir (SDR),"Pilot agreed for next month, champion pushing internally."
+NT-0122,CRM-0244,2026-07-11,Meher (AE),Asked for a case study from their industry.
+NT-0123,CRM-0246,2026-06-29,Kabir (SDR),"Budget is tight, pricing concerns raised again."
+NT-0124,CRM-0247,2026-06-19,Meher (AE),Asked for a case study from their industry.
+NT-0125,CRM-0248,2026-07-19,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0126,CRM-0250,2026-07-18,Meher (AE),"Pilot agreed for next month, champion pushing internally."
+NT-0127,CRM-0252,2026-09-06,Kabir (SDR),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0128,CRM-0253,2026-08-23,Meher (AE),Asked for a case study from their industry.
+NT-0129,CRM-0256,2026-09-08,Meher (AE),Asked for a case study from their industry.
+NT-0130,CRM-0257,2026-06-04,Ananya (AE),"Budget approved, wants the proposal this week."
+NT-0131,CRM-0258,2026-07-12,Meher (AE),Project on hold after a reorg.
+NT-0132,CRM-0259,2026-09-06,Meher (AE),Asked for a case study from their industry.
+NT-0133,CRM-0260,2026-07-05,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0134,CRM-0262,2026-06-11,Kabir (SDR),Went with a competitor this year.
+NT-0135,CRM-0265,2026-06-22,Meher (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0136,CRM-0267,2026-08-04,Ananya (AE),"CFO joined the call – strong buying signal, asked for enterprise pricing."
+NT-0137,CRM-0269,2026-07-06,Meher (AE),Asked for a case study from their industry.
+NT-0138,CRM-0271,2026-09-12,Kabir (SDR),"Budget approved, wants the proposal this week."
+NT-0139,CRM-0273,2026-09-26,Meher (AE),Asked for a case study from their industry.
+NT-0140,CRM-0275,2026-06-22,Ananya (AE),"Intro call went fine, follow up after their planning cycle."
+NT-0141,CRM-0277,2026-06-30,Kabir (SDR),Wants an integration with their ERP before deciding.
+NT-0142,CRM-0280,2026-07-04,Ananya (AE),Project on hold after a reorg.
+NT-0143,CRM-0283,2026-07-17,Meher (AE),Project on hold after a reorg.
+NT-0144,CRM-0284,2026-07-19,Meher (AE),Wants an integration with their ERP before deciding.
+NT-0145,CRM-0287,2026-08-06,Meher (AE),Asked for a case study from their industry.
+NT-0146,CRM-0290,2026-06-24,Kabir (SDR),Went with a competitor this year.
+NT-0147,CRM-0292,2026-06-23,Ananya (AE),Project on hold after a reorg.
+NT-0148,CRM-0297,2026-09-29,Kabir (SDR),"Intro call went fine, follow up after their planning cycle."
+NT-0149,CRM-0300,2026-08-30,Meher (AE),Wants an integration with their ERP before deciding.
