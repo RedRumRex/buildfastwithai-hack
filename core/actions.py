@@ -16,9 +16,11 @@ AUDIT_FILE = Path(os.getenv("LEADLENS_AUDIT_FILE") or Path(__file__).resolve().p
 # decision is one of: approved · rejected · edited (email draft changed) · undone
 AUDIT_FIELDS = ["timestamp", "reviewer", "lead_id", "name", "company", "score", "decision",
                 "action", "reviewer_note", "evidence_ids", "email_subject", "email_body", "weights", "details"]
-AUDIT_FILE.open(newline="", encoding="utf-8")        # the 3 reads
-AUDIT_FILE.open("w", newline="", encoding="utf-8")   # in _migrate_header
-AUDIT_FILE.open("a", newline="", encoding="utf-8")   # in log_decision
+ENC = "utf-8"
+
+
+def _clean_ws(s: str) -> str:
+    return str(s).replace("\u202f", " ").replace("\u00a0", " ")
 
 
 def evidence_ids(components: list[dict]) -> list[str]:
@@ -55,9 +57,8 @@ def explain_checked(row: dict) -> tuple[str, dict]:
             max_tokens=160)
     except Exception:
         return template_explanation(row), empty
-    # prefixes from every id type in the data so a made-up N99999 is caught too
     pre = prefixes_of(allowed) | {"L", "D", "A", "N"}
-    txt, rep = check_citations(txt, allowed, mode="drop", prefixes=pre)
+    txt, rep = check_citations(_clean_ws(txt), allowed, mode="drop", prefixes=pre)
     rep["engine"] = llm.model_name()
     return txt, rep
 
@@ -78,10 +79,8 @@ def draft_email(row: dict, action: str, sender: str = "Your Account Executive") 
                 f"Recipient: {row['name']}, {row.get('title', '')} at {row['company']}\nGoal: {action}\nFacts:\n{facts}\n"
                 f"Sender: {sender}\nReturn {{\"subject\": \"...\", \"body\": \"...\"}}")
             pre = prefixes_of(evidence_ids(row["components"])) | {"L", "D", "A", "N"}
-            subject, _ = check_citations(str(out["subject"]), set(), mode="strip", prefixes=pre)
-            body, _ = check_citations(str(out["body"]), set(), mode="strip", prefixes=pre)  # no internal ids in customer emails
-            subject = subject.replace("\u202f", " ").replace("\u00a0", " ")
-            body = body.replace("\u202f", " ").replace("\u00a0", " ")
+            subject, _ = check_citations(_clean_ws(out["subject"]), set(), mode="strip", prefixes=pre)
+            body, _ = check_citations(_clean_ws(out["body"]), set(), mode="strip", prefixes=pre)
             if subject and body:
                 return subject, body
         except Exception:
@@ -112,13 +111,13 @@ def _migrate_header():
     """Older logs had fewer columns – rewrite them once with the current header so rows stay aligned."""
     if not AUDIT_FILE.exists() or AUDIT_FILE.stat().st_size == 0:
         return
-    with AUDIT_FILE.open(newline="") as f:
+    with AUDIT_FILE.open(newline="", encoding=ENC, errors="replace") as f:
         header = next(csv.reader(f), [])
     if header == AUDIT_FIELDS:
         return
-    with AUDIT_FILE.open(newline="") as f:
+    with AUDIT_FILE.open(newline="", encoding=ENC, errors="replace") as f:
         rows = list(csv.DictReader(f))
-    with AUDIT_FILE.open("w", newline="") as f:
+    with AUDIT_FILE.open("w", newline="", encoding=ENC) as f:
         w = csv.DictWriter(f, fieldnames=AUDIT_FIELDS, extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
@@ -138,7 +137,7 @@ def log_decision(row: dict, decision: str, action: str, reviewer: str, note: str
     AUDIT_FILE.parent.mkdir(parents=True, exist_ok=True)
     _migrate_header()
     new = not AUDIT_FILE.exists() or AUDIT_FILE.stat().st_size == 0
-    with AUDIT_FILE.open("a", newline="") as f:
+    with AUDIT_FILE.open("a", newline="", encoding=ENC) as f:
         w = csv.DictWriter(f, fieldnames=AUDIT_FIELDS)
         if new:
             w.writeheader()
@@ -150,5 +149,5 @@ def read_audit() -> list[dict]:
     if not AUDIT_FILE.exists() or AUDIT_FILE.stat().st_size == 0:
         return []
     _migrate_header()
-    with AUDIT_FILE.open(newline="") as f:
+    with AUDIT_FILE.open(newline="", encoding=ENC, errors="replace") as f:
         return list(csv.DictReader(f))
