@@ -1,6 +1,6 @@
 # 🎯 LeadLens — AI Decision Engine for Sales Data
 
-**AI Build Challenge 2026 · PS-04: AI Decision Engine for Business Data**
+**AI Build Challenge 2026 · PS-04: AI Decision Engine for Business Data · Team Evex**
 *"Build an AI system that analyses business data, generates traceable insights, and recommends decisions or actions grounded in the underlying data."*
 
 LeadLens turns a sales team's messy CRM export into one clear answer:
@@ -9,7 +9,7 @@ LeadLens turns a sales team's messy CRM export into one clear answer:
 
 It cleans the data, ranks every lead with a transparent scoring rubric, explains each recommendation with links to the exact rows behind it, answers plain-English questions about the pipeline, and keeps a human in charge of every action.
 
-**▶ Live app:** _add your Streamlit Cloud link here_  ·  **📘 How to use, upload and deploy:** [INSTRUCTIONS.md](INSTRUCTIONS.md)
+**▶ Live app:** [leadlens.streamlit.app](https://leadlens.streamlit.app)  ·  **📘 How to use, upload and deploy:** [INSTRUCTIONS.md](INSTRUCTIONS.md)
 
 ---
 
@@ -255,8 +255,12 @@ Open http://localhost:8501. The app works without an API key; to switch on the A
 
 ## 15. Team
 
-| Role | Owned |
-|---|---|
-| Member 1 — Data & Cleaning Engineer | `core/clean.py`, `core/ingest.py`, sample data generator, Data health tab, dedupe evaluation |
-| Member 2 — AI / LLM Engineer | `core/llm.py`, `core/qa.py`, `core/rag.py`, `core/citations.py`, Ask your data tab, Q&A evaluation |
-| Member 3 — Decision Engine & Product Engineer | `core/scoring.py`, `core/filters.py`, `app.py`, approval + audit flow, ranking evaluation, test suites, deployment |
+**Team Evex** · Thapar Institute of Engineering & Technology · final year
+
+| Member | Role | Owned |
+|---|---|---|
+| **Krish Kumar** | Machine Learning · AI / LLM Engineer | LLM client, text-to-SQL agent, RAG, citation checker, QA evaluation — `core/llm.py`, `core/qa.py`, `core/rag.py`, `core/citations.py`, *Ask your data* tab, `eval/eval_qa.py` |
+| **Yashraj Sharma** | Backend · Data Cleaning Engineer | Sample data, entity resolution, upload validation, dedupe evaluation, deployment — `data/generate_data.py`, `core/clean.py`, `core/ingest.py`, *Data health* tab, `eval/eval_dedupe.py`, Streamlit Cloud |
+| **Purunjay Bhardwaj** | Frontend · Decision & Product Engineer | Scoring rubric, Streamlit UI, approval & audit flow — `core/scoring.py`, `core/filters.py`, `app.py`, `core/actions.py` (audit), `eval/eval_ranking.py` |
+
+**Thank you · Try it live → [leadlens.streamlit.app](https://leadlens.streamlit.app)**
