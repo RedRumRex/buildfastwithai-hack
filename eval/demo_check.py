@@ -40,6 +40,16 @@ def step(name, fn):
     return ok
 
 
+def has_download(*keys):
+    """Download buttons with these keys exist. Older Streamlit test tools (1.50) don't expose widget keys
+    for download buttons – then fall back to counting them."""
+    els = at.get("download_button")
+    found = {getattr(e, "key", None) for e in els}
+    if found - {None}:
+        return set(keys) <= found
+    return len(els) >= len(keys)
+
+
 def queue():
     return [x for x in at.expander if x.label[:1] in "#✅❌"]
 
@@ -89,7 +99,7 @@ def s_edit():
     at.text_area(key=f"body_{lid}").input(at.text_area(key=f"body_{lid}").value + "\n\nP.S. demo check").run()
     at.button(key=f"save_{lid}").click().run()
     assert at.session_state["decisions"][lid]["body"].endswith("demo check")
-    assert any(b.key == f"dl_{lid}" for b in at.get("download_button")), "no .eml download"
+    assert has_download(f"dl_{lid}"), "no .eml download"
     return "edit saved + .eml download ready"
 
 
@@ -125,7 +135,7 @@ def s_audit():
     at.multiselect(key="aud_dec").select("approved").run()
     cap = [c.value for c in at.caption if c.value.startswith("Showing")]
     at.multiselect(key="aud_dec").unselect("approved").run()
-    assert {"aud_dl_f", "aud_dl_all"} <= {b.key for b in at.get("download_button")}, "export buttons missing"
+    assert has_download("aud_dl_f", "aud_dl_all"), "export buttons missing"
     return cap[0] if cap else ""
 
 

@@ -66,6 +66,12 @@ def norm_phone(s) -> str:
     return digits[-10:] if len(digits) >= 7 else ""
 
 
+def _lookup(ids: pd.Series, by_id: pd.Series) -> pd.Series:
+    """ids.map(by_id) that keeps by_id's dtype. On pandas 3 (Streamlit Cloud) .map() with an EMPTY date
+    Series crashes (e.g. an upload with no calls or meetings at all); reindex works on every version."""
+    return pd.Series(by_id.reindex(ids.to_numpy()).to_numpy(), index=ids.index)
+
+
 def same_person(a: str, b: str) -> tuple[bool, int]:
     """Fuzzy person match that also understands initials ('P Sharma' vs 'Priya Sharma')."""
     score = fuzz.token_sort_ratio(a, b)
@@ -264,11 +270,11 @@ def clean(leads: pd.DataFrame, deals: pd.DataFrame, activity: pd.DataFrame, note
 
     # ---- staleness flags ---------------------------------------------------------
     last_act = activity.groupby("lead_id")["activity_date"].max()
-    clean_leads["last_activity_date"] = clean_leads["lead_id"].map(last_act)
+    clean_leads["last_activity_date"] = _lookup(clean_leads["lead_id"], last_act)
     # a logged call or meeting is also a contact -> reconcile CRM field with activity log
     touch = activity[activity["type"].isin(["call", "meeting"])].groupby("lead_id")["activity_date"].max()
     clean_leads["last_contact_date"] = pd.concat(
-        [clean_leads["last_contact_date"], clean_leads["lead_id"].map(touch)], axis=1).max(axis=1)
+        [clean_leads["last_contact_date"], _lookup(clean_leads["lead_id"], touch)], axis=1).max(axis=1)
     clean_leads["days_since_contact"] = (ref_date - clean_leads["last_contact_date"]).dt.days
 
     def stale_reason(r):
