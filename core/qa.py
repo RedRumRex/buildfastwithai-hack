@@ -61,6 +61,11 @@ class DataStore:
             self.con.register(f"_{name}", df)
             self.con.execute(f"CREATE TABLE {name} AS SELECT * FROM _{name}")
             self.con.unregister(f"_{name}")
+        # SECURITY: the data is loaded, so cut DuckDB off from the file system / network for good. Without this a
+        # plain SELECT (e.g. an LLM-written query after prompt injection) can read files on the server –
+        # read_text('.streamlit/secrets.toml') would show the API key. lock_configuration stops SQL undoing it.
+        self.con.execute("SET enable_external_access = false")
+        self.con.execute("SET lock_configuration = true")
 
         # notes retrieval index: embeddings + Chroma (auto-falls back to TF-IDF)
         self.notes = notes.merge(leads[["lead_id", "name", "company"]], on="lead_id", how="left")
@@ -169,6 +174,33 @@ def rule_sql(q: str) -> tuple[str, str]:
         return ("Lead counts", "SELECT COUNT(*) AS total_leads, SUM(CASE WHEN is_stale THEN 1 ELSE 0 END) AS stale_leads FROM leads")
     return ("Open pipeline summary",
             f"SELECT COUNT(*) AS open_deals, SUM(amount_usd) AS open_pipeline_usd, ROUND(AVG(amount_usd)) AS avg_deal_usd FROM deals WHERE {OPEN}")
+
+
+_NUM = re.compile(r"(?<![A-Za-z\d])\d[\d,]*(?:\.\d+)?")
+
+
+def _nums(text: str) -> set[float]:
+    out = set()
+    for m in _NUM.findall(str(text)):
+        try:
+            out.add(round(float(m.replace(",", "")), 2))
+        except ValueError:
+            pass
+    return out
+
+
+def ungrounded_numbers(summary: str, df: pd.DataFrame, question: str) -> list[str]:
+    """Numbers in an LLM summary that appear neither in the SQL result nor in the question.
+    The plan's rule: numbers come from executed SQL, never from the LLM – so such a summary is not shown."""
+    allowed = _nums(question) | _nums(df.head(200).to_csv(index=False)) | {float(len(df)), float(df.attrs.get("total_rows", len(df)))}
+    for v in df.head(200).select_dtypes("number").to_numpy().ravel():      # rounded variants of real values
+        try:
+            allowed |= {round(float(v), 2), round(float(v), 1), float(round(float(v))), round(float(v) / 1000, 1),
+                        round(float(v) / 1e6, 1), round(float(v) / 1e6, 2)}
+        except (TypeError, ValueError):
+            pass
+    text = re.sub(r"\b[A-Z]{1,3}\d{3,}\b", " ", str(summary))   # record ids are checked by the citation checker
+    return [m for m in _NUM.findall(text) if round(float(m.replace(",", "")), 2) not in allowed]
 
 
 def _fmt(df: pd.DataFrame, n: int = 25) -> str:
@@ -286,7 +318,7 @@ def answer(store: DataStore, question: str, summarize: bool = True) -> dict:
     if use_llm:
         try:
             sql, title, df = llm_sql(store, question)
-            ans, rep = None, no_cite
+            ans, rep, hidden = None, no_cite, None
             if summarize:
                 try:
                     ans = llm.chat(
@@ -294,11 +326,22 @@ def answer(store: DataStore, question: str, summarize: bool = True) -> dict:
                         "Mention ids (lead_id / deal_id) for specific records. 2-5 sentences or short bullets. Never invent data.",
                         f"Question: {question}\nSQL: {sql}\nResult ({len(df)} rows, first 25 shown):\n{_fmt(df)}")
                     ans, rep = check_citations(ans, store.known_ids())
+                    bad = ungrounded_numbers(ans, df, question)
+                    if bad:
+                        ans, hidden = None, (f"_AI summary hidden: it mentioned number(s) not in the query result "
+                                             f"({', '.join(bad[:3])}). Showing the result itself._")
                 except Exception:
                     ans = None
             if ans is None:
                 total = df.attrs.get("total_rows", len(df))
-                ans = f"**{title}** — **{total:,}** row(s). See the table and SQL below."
+                if len(df) == 1 and len(df.columns) <= 4:
+                    ans = f"**{title}:** " + ", ".join(
+                        f"{c.replace('_', ' ')} = {v:,.0f}" if isinstance(v, (int, float)) and not isinstance(v, bool)
+                        else f"{c} = {v}" for c, v in df.iloc[0].items())
+                else:
+                    ans = f"**{title}** — **{total:,}** row(s). See the table and SQL below."
+                if hidden:
+                    ans += "\n\n" + hidden
             return {"type": "sql", "answer": ans, "title": title, "sql": sql, "table": df,
                     "engine": f"text-to-SQL · {llm.model_name()}", "fallback": False, "citations": rep}
         except Exception as e:
