@@ -1,4 +1,4 @@
-# 🎯 LeadLens — AI Decision Engine for Sales Data
+#  LeadLens — AI Decision Engine for Sales Data
 
 **AI Build Challenge 2026 · PS-04: AI Decision Engine for Business Data · Team Evex**
 *"Build an AI system that analyses business data, generates traceable insights, and recommends decisions or actions grounded in the underlying data."*
@@ -9,7 +9,7 @@ LeadLens turns a sales team's messy CRM export into one clear answer:
 
 It cleans the data, ranks every lead with a transparent scoring rubric, explains each recommendation with links to the exact rows behind it, answers plain-English questions about the pipeline, and keeps a human in charge of every action.
 
-**▶ Live app:** [leadlens.streamlit.app](https://leadlens.streamlit.app)  ·  **📘 How to use, upload and deploy:** [INSTRUCTIONS.md](INSTRUCTIONS.md)
+**▶ Live app:** [leadlens.streamlit.app](https://leadlens.streamlit.app)  ·  ** How to use, upload and deploy:** [INSTRUCTIONS.md](INSTRUCTIONS.md)
 
 ---
 
@@ -110,14 +110,14 @@ B2B sales teams sit on thousands of CRM records but still decide who to call by 
 
 **Sidebar** — choose *Sample CRM* or *Upload my CSVs*, set the reviewer name used in the audit log, and see whether the LLM is connected.
 
-### 🩺 Data health
+###  Data health
 Proves the data was cleaned and shows what changed.
 - Headline numbers: raw records, duplicates merged, possible duplicates, clean leads, stale/unreachable leads, missing/bounced/invalid emails.
 - **Before → after cleaning** table and **field-level issues** (missing emails, invalid formats, ALL-CAPS names, stale dates…) with example IDs.
 - **Merge log** — every duplicate that was merged, the rule that matched it and the evidence (e.g. `'R. Brown' @ 'BROWN PVT LTD' ~ 'Roger Brown' @ 'Brown Pvt Ltd'`).
 - **Why records are stale** chart and a **possible duplicates — needs review** list for borderline pairs a person should decide on.
 
-### 🎯 Action queue
+###  Action queue
 The heart of the app: who to contact, why, and what to do.
 - **Plain-English filter** — e.g. *"skip anyone contacted in the last 2 weeks, FinTech only, late-stage deals over $20k, top 15"*. Parsed by the LLM (validated) or by built-in rules; the understood filters appear as chips. Manual filters: top N, skip recently contacted, industries, deal stage, minimum deal, hide stale.
 - **One card per lead** with the score, an AI explanation, the suggested action and a points breakdown.
@@ -125,13 +125,13 @@ The heart of the app: who to contact, why, and what to do.
 - **Approve / Reject** (with an editable action and a note), or **bulk approve / reject** several leads at once.
 - Approving drafts an **email** you can edit, save (logged) and download as `.eml` (opens as an unsent draft in Mail/Outlook), or download all drafts as a zip. **Undo** any decision.
 
-### 💬 Ask your data
+###  Ask your data
 Plain-English questions about the pipeline, with six one-click examples. Number questions show the **SQL** and the **result rows**; "what did customers say" questions show the **source call notes** with their IDs. Each answer says which engine produced it (text-to-SQL, notes search, or built-in fallback).
 
-### 🧾 Audit log
+###  Audit log
 Every approve, reject, edit and undo — append-only. Shows who, when, the lead, score, action, note, email subject and body, the **evidence IDs** and the **scoring weights** in force. Filter by decision, reviewer, text, date range or bulk-only; export the filtered view or the full log as CSV.
 
-### ⚙️ How scoring works
+###  How scoring works
 The scoring rubric, fully editable. Sliders for every component, engagement event weights, four presets (*Balanced*, *Close this quarter*, *Engagement first*, *Big deals only*) and reset. Every tab re-ranks instantly. Shows the rubric with the current weights, how the top 15 moved versus the defaults, and — on the sample data — the live **precision@20** of the ranking.
 
 ## 7. How scoring works
