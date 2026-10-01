@@ -142,7 +142,7 @@ def main():
     lines += [f"| {r['rank']} | {r['lead_id']} | {r['profile']} | {r['score']} |"
               for r in d["_decoy_ranks"].sort_values("rank").to_dict("records")]
     report = "\n".join(lines) + "\n"
-    (ROOT / "eval" / "results_ranking.md").write_text(report)
+    (ROOT / "eval" / "results_ranking.md").write_text(report, encoding="utf-8")
     print(report)
     ok = d["precision@20"] >= TARGET and d["decoys in top 20"] == 0
     print(f"{'PASS' if ok else 'FAIL'}: default precision@20 = {d['precision@20']:.0%} (target {TARGET:.0%}), "

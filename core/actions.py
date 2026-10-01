@@ -1,6 +1,7 @@
 """
 Explanations, outreach drafts and the human-approval audit trail.
 The LLM only writes words here; it never changes a score or takes an action on its own.
+Every id the LLM cites is checked against the ids it was actually given (core/citations.py).
 """
 import csv
 import json
@@ -9,11 +10,15 @@ from datetime import datetime
 from pathlib import Path
 
 from . import llm
+from .citations import check_citations, prefixes_of
 
 AUDIT_FILE = Path(os.getenv("LEADLENS_AUDIT_FILE") or Path(__file__).resolve().parent.parent / "data" / "audit_log.csv")
 # decision is one of: approved · rejected · edited (email draft changed) · undone
 AUDIT_FIELDS = ["timestamp", "reviewer", "lead_id", "name", "company", "score", "decision",
                 "action", "reviewer_note", "evidence_ids", "email_subject", "email_body", "weights", "details"]
+AUDIT_FILE.open(newline="", encoding="utf-8")        # the 3 reads
+AUDIT_FILE.open("w", newline="", encoding="utf-8")   # in _migrate_header
+AUDIT_FILE.open("a", newline="", encoding="utf-8")   # in log_decision
 
 
 def evidence_ids(components: list[dict]) -> list[str]:
@@ -33,20 +38,33 @@ def template_explanation(row: dict) -> str:
     return txt + "."
 
 
-def explain(row: dict) -> str:
-    """One-to-two sentence reason for prioritising this lead, grounded in the scored facts."""
+def explain_checked(row: dict) -> tuple[str, dict]:
+    """Explanation + citation report. Allowed ids = exactly the ids shown to the LLM (+ the lead id)."""
+    allowed = set(evidence_ids(row["components"])) | {str(row["lead_id"])}
+    empty = {"cited": [], "valid": [], "invalid": [], "engine": "template"}
     if not llm.available():
-        return template_explanation(row)
+        return template_explanation(row), empty
     facts = "\n".join(f"- ({c['points']:+} pts) {c['fact']} [source: {c['source_table']} {', '.join(c['source_ids'][:3])}]"
                       for c in row["components"])
     try:
-        return llm.chat(
+        txt = llm.chat(
             "You explain to a sales rep why a lead is prioritised. Use ONLY the facts given. "
-            "Max 2 sentences, plain language, mention the most important numbers and cite ids in brackets like [D00123].",
-            f"Lead: {row['name']} ({row['title']}) at {row['company']}. Priority score {row['score']}.\nFacts:\n{facts}",
+            "Max 2 sentences, plain language, mention the most important numbers. "
+            "Cite ids in square brackets exactly as written in the facts, e.g. [D00123]. Never invent an id.",
+            f"Lead: {row['name']} ({row.get('title', '')}) at {row['company']}. Priority score {row['score']}.\nFacts:\n{facts}",
             max_tokens=160)
     except Exception:
-        return template_explanation(row)
+        return template_explanation(row), empty
+    # prefixes from every id type in the data so a made-up N99999 is caught too
+    pre = prefixes_of(allowed) | {"L", "D", "A", "N"}
+    txt, rep = check_citations(txt, allowed, mode="drop", prefixes=pre)
+    rep["engine"] = llm.model_name()
+    return txt, rep
+
+
+def explain(row: dict) -> str:
+    """One-to-two sentence reason for prioritising this lead, grounded in the scored facts."""
+    return explain_checked(row)[0]
 
 
 def draft_email(row: dict, action: str, sender: str = "Your Account Executive") -> tuple[str, str]:
@@ -56,10 +74,16 @@ def draft_email(row: dict, action: str, sender: str = "Your Account Executive") 
         try:
             out = llm.chat_json(
                 "Write a short, friendly B2B sales email (under 120 words). Use ONLY the facts provided; do not invent "
-                "discounts, dates or features. Don't mention internal scores or tracking (e.g. 'you opened our email').",
-                f"Recipient: {row['name']}, {row['title']} at {row['company']}\nGoal: {action}\nFacts:\n{facts}\n"
+                "discounts, dates or features. Don't mention internal scores, record ids or tracking (e.g. 'you opened our email').",
+                f"Recipient: {row['name']}, {row.get('title', '')} at {row['company']}\nGoal: {action}\nFacts:\n{facts}\n"
                 f"Sender: {sender}\nReturn {{\"subject\": \"...\", \"body\": \"...\"}}")
-            return out["subject"], out["body"]
+            pre = prefixes_of(evidence_ids(row["components"])) | {"L", "D", "A", "N"}
+            subject, _ = check_citations(str(out["subject"]), set(), mode="strip", prefixes=pre)
+            body, _ = check_citations(str(out["body"]), set(), mode="strip", prefixes=pre)  # no internal ids in customer emails
+            subject = subject.replace("\u202f", " ").replace("\u00a0", " ")
+            body = body.replace("\u202f", " ").replace("\u00a0", " ")
+            if subject and body:
+                return subject, body
         except Exception:
             pass
     a = action.lower()

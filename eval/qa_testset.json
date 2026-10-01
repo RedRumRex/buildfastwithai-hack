@@ -1,0 +1,265 @@
+{
+  "note": "Gold SQL uses {ref} = dataset reference date. Gold returns the minimal columns; the prediction may return extra columns.",
+  "sql_questions": [
+    {
+      "id": 1,
+      "question": "How many leads are there in total?",
+      "gold_sql": "SELECT COUNT(*) FROM leads"
+    },
+    {
+      "id": 2,
+      "question": "How many leads are stale?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE is_stale"
+    },
+    {
+      "id": 3,
+      "question": "How many leads have a bounced email address?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE email_status = 'bounced'"
+    },
+    {
+      "id": 4,
+      "question": "How many leads have an invalid email address?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE email_status = 'invalid'"
+    },
+    {
+      "id": 5,
+      "question": "How many deals are there in total?",
+      "gold_sql": "SELECT COUNT(*) FROM deals"
+    },
+    {
+      "id": 6,
+      "question": "How many open deals do we have?",
+      "gold_sql": "SELECT COUNT(*) FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost')"
+    },
+    {
+      "id": 7,
+      "question": "What is the total value of all open deals?",
+      "gold_sql": "SELECT SUM(amount_usd) FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost')"
+    },
+    {
+      "id": 8,
+      "question": "What is our total closed-won revenue?",
+      "gold_sql": "SELECT SUM(amount_usd) FROM deals WHERE stage = 'Closed Won'"
+    },
+    {
+      "id": 9,
+      "question": "What is the average size of a closed-won deal?",
+      "gold_sql": "SELECT AVG(amount_usd) FROM deals WHERE stage = 'Closed Won'"
+    },
+    {
+      "id": 10,
+      "question": "How many deals are in each stage?",
+      "gold_sql": "SELECT stage, COUNT(*) FROM deals GROUP BY stage"
+    },
+    {
+      "id": 11,
+      "question": "What is the total deal value in each stage?",
+      "gold_sql": "SELECT stage, SUM(amount_usd) FROM deals GROUP BY stage"
+    },
+    {
+      "id": 12,
+      "question": "How many leads are there per industry?",
+      "gold_sql": "SELECT industry, COUNT(*) FROM leads GROUP BY industry"
+    },
+    {
+      "id": 13,
+      "question": "How many leads are there per country?",
+      "gold_sql": "SELECT country, COUNT(*) FROM leads GROUP BY country"
+    },
+    {
+      "id": 14,
+      "question": "How many leads came from each source?",
+      "gold_sql": "SELECT source, COUNT(*) FROM leads GROUP BY source"
+    },
+    {
+      "id": 15,
+      "question": "What is the open pipeline value per industry?",
+      "gold_sql": "SELECT l.industry, SUM(d.amount_usd) FROM deals d JOIN leads l USING (lead_id) WHERE d.stage NOT IN ('Closed Won','Closed Lost') GROUP BY l.industry"
+    },
+    {
+      "id": 16,
+      "question": "Show the top 10 leads by priority score.",
+      "gold_sql": "SELECT lead_id FROM lead_scores ORDER BY rank LIMIT 10"
+    },
+    {
+      "id": 17,
+      "question": "What are the 5 largest open deals?",
+      "gold_sql": "SELECT deal_id FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') ORDER BY amount_usd DESC, deal_id LIMIT 5"
+    },
+    {
+      "id": 18,
+      "question": "Which open deals are worth more than $50,000?",
+      "gold_sql": "SELECT deal_id FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') AND amount_usd > 50000"
+    },
+    {
+      "id": 19,
+      "question": "Which open deals are expected to close in the next 30 days?",
+      "gold_sql": "SELECT deal_id FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') AND expected_close_date BETWEEN DATE '{ref}' AND DATE '{ref}' + INTERVAL 30 DAY"
+    },
+    {
+      "id": 20,
+      "question": "Which open deals are past their expected close date?",
+      "gold_sql": "SELECT deal_id FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') AND expected_close_date < DATE '{ref}'"
+    },
+    {
+      "id": 21,
+      "question": "Which open deals have been in the same stage for 45 days or more?",
+      "gold_sql": "SELECT deal_id FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') AND date_diff('day', last_stage_change, DATE '{ref}') >= 45"
+    },
+    {
+      "id": 22,
+      "question": "Which deals in Negotiation are worth more than $30,000?",
+      "gold_sql": "SELECT deal_id FROM deals WHERE stage = 'Negotiation' AND amount_usd > 30000"
+    },
+    {
+      "id": 23,
+      "question": "How many deals are in the Negotiation stage?",
+      "gold_sql": "SELECT COUNT(*) FROM deals WHERE stage = 'Negotiation'"
+    },
+    {
+      "id": 24,
+      "question": "What is the total value of deals in Proposal Sent?",
+      "gold_sql": "SELECT SUM(amount_usd) FROM deals WHERE stage = 'Proposal Sent'"
+    },
+    {
+      "id": 25,
+      "question": "What is the largest single deal amount?",
+      "gold_sql": "SELECT MAX(amount_usd) FROM deals"
+    },
+    {
+      "id": 26,
+      "question": "How many demo requests happened in the last 30 days?",
+      "gold_sql": "SELECT COUNT(*) FROM activity WHERE type = 'demo_request' AND activity_date >= DATE '{ref}' - INTERVAL 30 DAY"
+    },
+    {
+      "id": 27,
+      "question": "How many activities of each type are there?",
+      "gold_sql": "SELECT type, COUNT(*) FROM activity GROUP BY type"
+    },
+    {
+      "id": 28,
+      "question": "Which leads had a meeting in the last 30 days?",
+      "gold_sql": "SELECT DISTINCT lead_id FROM activity WHERE type = 'meeting' AND activity_date >= DATE '{ref}' - INTERVAL 30 DAY"
+    },
+    {
+      "id": 29,
+      "question": "How many pricing page visits have there been in total?",
+      "gold_sql": "SELECT COUNT(*) FROM activity WHERE type = 'pricing_page_visit'"
+    },
+    {
+      "id": 30,
+      "question": "How many leads have no activity at all?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE lead_id NOT IN (SELECT lead_id FROM activity WHERE lead_id IS NOT NULL)"
+    },
+    {
+      "id": 31,
+      "question": "How many leads have no deals?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE lead_id NOT IN (SELECT lead_id FROM deals WHERE lead_id IS NOT NULL)"
+    },
+    {
+      "id": 32,
+      "question": "How many duplicate records were merged?",
+      "gold_sql": "SELECT COUNT(*) FROM merges"
+    },
+    {
+      "id": 33,
+      "question": "How many merges were made by each matching rule?",
+      "gold_sql": "SELECT rule, COUNT(*) FROM merges GROUP BY rule"
+    },
+    {
+      "id": 34,
+      "question": "Which leads have not been contacted in more than 90 days?",
+      "gold_sql": "SELECT lead_id FROM leads WHERE days_since_contact > 90"
+    },
+    {
+      "id": 35,
+      "question": "What is the average company size per industry?",
+      "gold_sql": "SELECT industry, AVG(company_size) FROM leads GROUP BY industry"
+    },
+    {
+      "id": 36,
+      "question": "How many leads work at companies with more than 1000 employees?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE company_size > 1000"
+    },
+    {
+      "id": 37,
+      "question": "How many call notes does each author have?",
+      "gold_sql": "SELECT author, COUNT(*) FROM notes GROUP BY author"
+    },
+    {
+      "id": 38,
+      "question": "How many call notes are there in total?",
+      "gold_sql": "SELECT COUNT(*) FROM notes"
+    },
+    {
+      "id": 39,
+      "question": "Which leads have at least 10 activities?",
+      "gold_sql": "SELECT lead_id FROM activity GROUP BY lead_id HAVING COUNT(*) >= 10"
+    },
+    {
+      "id": 40,
+      "question": "How many deals are Closed Lost?",
+      "gold_sql": "SELECT COUNT(*) FROM deals WHERE stage = 'Closed Lost'"
+    },
+    {
+      "id": 41,
+      "question": "What is the average open deal amount per stage?",
+      "gold_sql": "SELECT stage, AVG(amount_usd) FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') GROUP BY stage"
+    },
+    {
+      "id": 42,
+      "question": "Which countries have more than 100 leads?",
+      "gold_sql": "SELECT country FROM leads GROUP BY country HAVING COUNT(*) > 100"
+    },
+    {
+      "id": 43,
+      "question": "How many leads were created in the last 90 days?",
+      "gold_sql": "SELECT COUNT(*) FROM leads WHERE created_at >= DATE '{ref}' - INTERVAL 90 DAY"
+    },
+    {
+      "id": 44,
+      "question": "What is the total open pipeline belonging to stale leads?",
+      "gold_sql": "SELECT SUM(d.amount_usd) FROM deals d JOIN leads l USING (lead_id) WHERE d.stage NOT IN ('Closed Won','Closed Lost') AND l.is_stale"
+    },
+    {
+      "id": 45,
+      "question": "How many leads have more than one deal?",
+      "gold_sql": "SELECT COUNT(*) FROM (SELECT lead_id FROM deals GROUP BY lead_id HAVING COUNT(*) > 1) t"
+    },
+    {
+      "id": 46,
+      "question": "What is the average priority score per industry?",
+      "gold_sql": "SELECT industry, AVG(score) FROM lead_scores GROUP BY industry"
+    },
+    {
+      "id": 47,
+      "question": "Which open deals belong to the top 20 ranked leads?",
+      "gold_sql": "SELECT d.deal_id FROM deals d JOIN lead_scores s USING (lead_id) WHERE s.rank <= 20 AND d.stage NOT IN ('Closed Won','Closed Lost')"
+    },
+    {
+      "id": 48,
+      "question": "What is the total value of open deals closing within the next 60 days?",
+      "gold_sql": "SELECT SUM(amount_usd) FROM deals WHERE stage NOT IN ('Closed Won','Closed Lost') AND expected_close_date BETWEEN DATE '{ref}' AND DATE '{ref}' + INTERVAL 60 DAY"
+    },
+    {
+      "id": 49,
+      "question": "Which industries have more than $1,000,000 in open pipeline?",
+      "gold_sql": "SELECT l.industry FROM deals d JOIN leads l USING (lead_id) WHERE d.stage NOT IN ('Closed Won','Closed Lost') GROUP BY l.industry HAVING SUM(d.amount_usd) > 1000000"
+    },
+    {
+      "id": 50,
+      "question": "How many closed-won deals and how much revenue does each industry have?",
+      "gold_sql": "SELECT l.industry, COUNT(*), SUM(d.amount_usd) FROM deals d JOIN leads l USING (lead_id) WHERE d.stage = 'Closed Won' GROUP BY l.industry"
+    }
+  ],
+  "notes_questions": [
+    "Who complained about pricing?",
+    "Which customers mentioned a competitor?",
+    "What concerns did customers raise about onboarding or implementation?",
+    "Who said they need budget approval?",
+    "What feedback did we get about integrations?",
+    "Which customers are worried about security?",
+    "Who asked about a free trial or pilot?",
+    "What did customers say about their timelines?"
+  ]
+}

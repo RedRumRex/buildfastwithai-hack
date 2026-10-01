@@ -1,89 +1,24 @@
+"""Applies the Member-2 patch to core/qa.py. Backup -> core/qa.py.bak
+Run from the repo root:  python apply_qa_patch.py
 """
-Analytics agent + RAG over notes.
+import re, shutil, sys
+from pathlib import Path
 
-Question router:
-  - numeric / structured questions  -> text-to-SQL over DuckDB (the SQL is shown to the user)
-  - "what did customers say" style  -> retrieval over call notes (note ids are cited)
+P = Path(__file__).resolve().parent / "core" / "qa.py"
+src = P.read_text(encoding="utf-8")
+if "def known_ids" in src:
+    sys.exit("qa.py is already patched.")
+shutil.copy(P, P.with_suffix(".py.bak"))
+src = src.replace("\r\n", "\n")
 
-Numbers ALWAYS come from executed SQL, never from the LLM's imagination.
-"""
-import re
-
-import duckdb
-import pandas as pd
-
-from . import llm
-from .citations import check_citations
-from .rag import NotesIndex
-
-SCHEMA = """
-Tables (DuckDB SQL):
-leads(lead_id, name, company, email, phone, title, industry, company_size INT, country, source,
-      created_at DATE, last_contact_date DATE, email_status ['valid','bounced','invalid'], merged_from, n_sources INT,
-      days_since_contact INT, is_stale BOOLEAN, stale_reason)
-deals(deal_id, lead_id, deal_name, amount_usd INT, stage, expected_close_date DATE, last_stage_change DATE, original_lead_id)
-   stage values: 'New','Qualified','Demo Scheduled','Proposal Sent','Negotiation','Closed Won','Closed Lost'
-   open deals = stage NOT IN ('Closed Won','Closed Lost')
-activity(activity_id, lead_id, type, activity_date DATE, original_lead_id)
-   type values: 'email_open','email_click','pricing_page_visit','call','meeting','demo_request'
-notes(note_id, lead_id, note_date DATE, author, text, original_lead_id)
-lead_scores(lead_id, rank INT, score DOUBLE, name, company, industry, top_deal_id, top_deal_amount, top_deal_stage, is_stale)
-merges(duplicate_id, kept_id, rule, evidence, match_score)
-Join everything on lead_id. Today's date for this dataset is {ref}.
-"""
-
-NOTES_HINTS = ["said", "mention", "complain", "concern", "worried", "note", "feedback", "competitor",
-               "objection", "asked about", "interested in", "told", "call notes", "what are customers"]
-
-FORBIDDEN = re.compile(r"\b(insert|update|delete|drop|alter|create|attach|copy|pragma|install|load|export|call)\b", re.I)
-
-
-class DataStore:
-    """Holds the cleaned data in an in-memory DuckDB database + a notes search index."""
-
-    def __init__(self, clean_result, scores: pd.DataFrame):
-        self.ref_date = clean_result.ref_date
-        self.con = duckdb.connect(":memory:")
-        leads = clean_result.leads.copy()
-        leads["created_at"] = leads["created_at"].dt.date
-        leads["last_contact_date"] = leads["last_contact_date"].dt.date
-        leads = leads.drop(columns=["master_id", "last_activity_date"], errors="ignore")
-        deals = clean_result.deals.copy()
-        for c in ["expected_close_date", "last_stage_change"]:
-            deals[c] = deals[c].dt.date
-        act = clean_result.activity.copy()
-        act["activity_date"] = act["activity_date"].dt.date
-        notes = clean_result.notes.copy()
-        notes["note_date"] = notes["note_date"].dt.date
-        sc = scores.drop(columns=["components", "email", "title", "company_size", "days_since_contact", "merged_from"], errors="ignore")
-        for name, df in [("leads", leads), ("deals", deals), ("activity", act), ("notes", notes),
-                         ("lead_scores", sc), ("merges", clean_result.merges)]:
-            self.con.register(f"_{name}", df)
-            self.con.execute(f"CREATE TABLE {name} AS SELECT * FROM _{name}")
-            self.con.unregister(f"_{name}")
-
-        # notes retrieval index: embeddings + Chroma (auto-falls back to TF-IDF)
+DATASTORE = r'''        # notes retrieval index: embeddings + Chroma (auto-falls back to TF-IDF)
         self.notes = notes.merge(leads[["lead_id", "name", "company"]], on="lead_id", how="left")
         self.index = NotesIndex(self.notes)
         self.rag_engine = self.index.engine
         self._known_ids = None
+'''
 
-    # ---------------- SQL -----------------
-    def run_sql(self, sql: str, limit: int = 200) -> pd.DataFrame:
-        sql = sql.strip().rstrip(";")
-        if ";" in sql or FORBIDDEN.search(sql) or not re.match(r"^\s*(select|with)\b", sql, re.I):
-            raise ValueError("Only a single read-only SELECT query is allowed.")
-        df = self.con.execute(f"SELECT * FROM ({sql}) AS q LIMIT {limit}").df()
-        for c in df.columns:  # show pure dates without 00:00:00
-            if pd.api.types.is_datetime64_any_dtype(df[c]) and (df[c].dropna().dt.normalize() == df[c].dropna()).all():
-                df[c] = df[c].dt.date
-        df.attrs["total_rows"] = self.con.execute(f"SELECT COUNT(*) FROM ({sql}) AS q").fetchone()[0]
-        return df
-
-    def schema(self) -> str:
-        return SCHEMA.format(ref=self.ref_date.date())
-
-    def known_ids(self) -> set[str]:
+METHODS = r'''    def known_ids(self) -> set[str]:
         """Every record id that exists in the cleaned data (used by the citation checker)."""
         if self._known_ids is None:
             q = ("SELECT lead_id FROM leads UNION SELECT deal_id FROM deals "
@@ -95,87 +30,9 @@ class DataStore:
     def search_notes(self, query: str, k: int = 8) -> pd.DataFrame:
         res = self.index.search(query, k)
         return res[["note_id", "lead_id", "name", "company", "note_date", "author", "text", "relevance"]]
+'''
 
-
-# ---------------------------------------------------------------------------
-# Rule-based fallback (works with no API key)
-# ---------------------------------------------------------------------------
-def _money(q: str):
-    q = q.lower().replace(",", "")
-    m = (re.search(r"\$\s*(\d+(?:\.\d+)?)\s*(k|m|thousand|lakh)?\b", q)
-         or re.search(r"(\d+(?:\.\d+)?)\s*(k|m|thousand|lakh)\b", q)
-         or re.search(r"(?:over|above|than|>)\s*(\d{4,})()", q))
-    if not m:
-        return None
-    v = float(m.group(1))
-    unit = m.group(2) or ""
-    return int(v * {"k": 1e3, "thousand": 1e3, "m": 1e6, "lakh": 1e5}.get(unit, 1))
-
-
-def rule_sql(q: str) -> tuple[str, str]:
-    ql = q.lower()
-    OPEN = "stage NOT IN ('Closed Won','Closed Lost')"
-    n = re.search(r"\btop\s+(\d+)", ql)
-    top = int(n.group(1)) if n else 10
-    # ---- composable filters over open deals (e.g. "deals over $50k that are stuck and close this month")
-    where, parts = [f"d.{OPEN}"], []
-    if "stuck" in ql or "stalled" in ql:
-        where.append("date_diff('day', d.last_stage_change, DATE '{ref}') >= 45")
-        parts.append("stuck in the same stage 45+ days")
-    amt = _money(ql) if any(w in ql for w in ["over", "above", "more than", "greater", ">", "bigger"]) else None
-    if amt:
-        where.append(f"d.amount_usd > {amt}")
-        parts.append(f"worth more than ${amt:,}")
-    if "clos" in ql and any(w in ql for w in ["this month", "30 days", "soon", "next month", "this week"]):
-        days = 7 if "week" in ql else 30
-        where.append(f"d.expected_close_date BETWEEN DATE '{{ref}}' AND DATE '{{ref}}' + INTERVAL {days} DAY")
-        parts.append(f"closing in the next {days} days")
-    if "overdue" in ql or "slipp" in ql or "past close" in ql:
-        where.append("d.expected_close_date < DATE '{ref}'")
-        parts.append("past their expected close date")
-    for stg in ["negotiation", "proposal sent", "demo scheduled", "qualified"]:
-        if stg in ql:
-            where.append(f"lower(d.stage) = '{stg}'")
-            parts.append(f"in {stg.title()}")
-    if parts:
-        return ("Open deals " + ", ".join(parts),
-                "SELECT d.deal_id, d.lead_id, l.name, l.company, d.stage, d.amount_usd, d.expected_close_date, d.last_stage_change, "
-                "date_diff('day', d.last_stage_change, DATE '{ref}') AS days_in_stage FROM deals d JOIN leads l USING(lead_id) "
-                "WHERE " + " AND ".join(where) + " ORDER BY d.amount_usd DESC")
-    if "industry" in ql:
-        return ("Open pipeline by industry",
-                f"SELECT l.industry, COUNT(DISTINCT l.lead_id) AS leads, COUNT(d.deal_id) AS open_deals, COALESCE(SUM(d.amount_usd),0) AS open_pipeline_usd "
-                f"FROM leads l LEFT JOIN deals d ON d.lead_id = l.lead_id AND d.{OPEN} GROUP BY l.industry ORDER BY open_pipeline_usd DESC")
-    if "country" in ql or "region" in ql:
-        return ("Leads and pipeline by country",
-                f"SELECT l.country, COUNT(DISTINCT l.lead_id) AS leads, COALESCE(SUM(d.amount_usd),0) AS open_pipeline_usd "
-                f"FROM leads l LEFT JOIN deals d ON d.lead_id = l.lead_id AND d.{OPEN} GROUP BY l.country ORDER BY open_pipeline_usd DESC")
-    if "stage" in ql or "pipeline" in ql or "funnel" in ql:
-        return ("Pipeline by stage",
-                "SELECT stage, COUNT(*) AS deals, SUM(amount_usd) AS total_value_usd, ROUND(AVG(amount_usd)) AS avg_deal_usd "
-                "FROM deals GROUP BY stage ORDER BY total_value_usd DESC")
-    if "stale" in ql or "bounced" in ql or "missing" in ql or "dead" in ql:
-        return ("Stale or unreachable leads",
-                "SELECT lead_id, name, company, email, days_since_contact, stale_reason FROM leads WHERE is_stale ORDER BY days_since_contact DESC")
-    if "duplicate" in ql or "merged" in ql:
-        return ("Duplicate records that were merged", "SELECT * FROM merges ORDER BY match_score")
-    if "won" in ql or "revenue" in ql:
-        return ("Closed-won revenue",
-                "SELECT COUNT(*) AS won_deals, SUM(amount_usd) AS revenue_usd, ROUND(AVG(amount_usd)) AS avg_deal_usd FROM deals WHERE stage = 'Closed Won'")
-    if "lead" in ql and any(w in ql for w in ["top", "best", "priorit", "hot", "contact", "call"]):
-        return (f"Top {top} leads by priority score",
-                f"SELECT rank, lead_id, name, company, industry, score, top_deal_amount, top_deal_stage FROM lead_scores ORDER BY rank LIMIT {top}")
-    if "how many" in ql and "lead" in ql:
-        return ("Lead counts", "SELECT COUNT(*) AS total_leads, SUM(CASE WHEN is_stale THEN 1 ELSE 0 END) AS stale_leads FROM leads")
-    return ("Open pipeline summary",
-            f"SELECT COUNT(*) AS open_deals, SUM(amount_usd) AS open_pipeline_usd, ROUND(AVG(amount_usd)) AS avg_deal_usd FROM deals WHERE {OPEN}")
-
-
-def _fmt(df: pd.DataFrame, n: int = 25) -> str:
-    return df.head(n).to_csv(index=False)
-
-
-# ---------------------------------------------------------------------------
+ANSWER = r'''# ---------------------------------------------------------------------------
 # Text-to-SQL prompt: conventions + few-shot examples (none of them are in eval/qa_testset.json)
 # ---------------------------------------------------------------------------
 SQL_RULES = """Rules:
@@ -322,3 +179,17 @@ def answer(store: DataStore, question: str, summarize: bool = True) -> dict:
         ans += f"\n\n_{fallback_note}_"
     return {"type": "sql", "answer": ans, "title": title, "sql": sql, "table": df,
             "engine": "built-in query templates", "fallback": True, "citations": no_cite}
+'''
+
+src = re.sub(r"^from sklearn\.[^\n]*\n", "", src, flags=re.M)
+src, n1 = re.subn(r"^from \. import llm[ \t]*$", "from . import llm\nfrom .citations import check_citations\nfrom .rag import NotesIndex", src, count=1, flags=re.M)
+src, n2 = re.subn(r"^[ \t]*# notes retrieval index.*?self\.mat = self\.vec\.fit_transform\(docs\)[^\n]*\n", lambda m: DATASTORE, src, count=1, flags=re.M | re.S)
+src, n3 = re.subn(r"^[ \t]*# -+ Notes RAG -+[^\n]*\n[ \t]*def search_notes.*?^[ \t]*return res\[\[[^\n]*\n", lambda m: METHODS, src, count=1, flags=re.M | re.S)
+if not n3:
+    src, n3 = re.subn(r"^[ \t]*def search_notes.*?^[ \t]*return res\[\[[^\n]*\n", lambda m: METHODS, src, count=1, flags=re.M | re.S)
+m = re.search(r"^# -+[ \t]*\n# Main entry point[^\n]*\n# -+[ \t]*\n", src, flags=re.M) or re.search(r"^def answer\(", src, flags=re.M)
+if not (n1 and n2 and n3 and m):
+    sys.exit(f"Patch failed (imports={n1}, index={n2}, search_notes={n3}, answer={bool(m)}). qa.py NOT changed.")
+src = src[:m.start()] + ANSWER
+P.write_text(src, encoding="utf-8")
+print("Patched core/qa.py  (backup: core/qa.py.bak)")
