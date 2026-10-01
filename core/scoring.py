@@ -215,17 +215,22 @@ def extract_signals(leads: pd.DataFrame, deals: pd.DataFrame, activity: pd.DataF
                     break
 
         # 7. Data quality / recency
+        dsc = lead.days_since_contact
+        contact_known = pd.notna(dsc)   # an uploaded CRM can have leads with no (readable) contact date
         if lead.is_stale:
             sig.append({"key": "stale_penalty", "component": "Data quality / recency", "value": -1.0,
                         "fact": f"Stale record: {lead.stale_reason}", "source_table": "leads", "source_ids": [lid]})
-        elif lead.days_since_contact > 60:
+        elif not contact_known:         # unknown is NOT the same as recent: same penalty as 60+ days
+            sig.append({"key": "no_contact_penalty", "component": "Data quality / recency", "value": -1.0,
+                        "fact": "No last-contact date on record", "source_table": "leads", "source_ids": [lid]})
+        elif dsc > 60:
             sig.append({"key": "no_contact_penalty", "component": "Data quality / recency", "value": -1.0,
                         "fact": f"No contact in {int(lead.days_since_contact)} days", "source_table": "leads", "source_ids": [lid]})
 
         out.append({
             "lead_id": lid, "name": lead.name, "company": lead.company, "title": lead.title,
             "email": lead.email, "industry": lead.industry, "company_size": lead.company_size,
-            "days_since_contact": int(lead.days_since_contact), "is_stale": bool(lead.is_stale),
+            "days_since_contact": int(dsc) if contact_known else None, "is_stale": bool(lead.is_stale),
             "stale_reason": getattr(lead, "stale_reason", ""),
             "top_deal_id": top_deal["deal_id"] if top_deal is not None else None,
             "top_deal_amount": float(top_deal["amount_usd"]) if top_deal is not None else 0.0,

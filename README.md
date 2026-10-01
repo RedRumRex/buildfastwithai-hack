@@ -120,6 +120,8 @@ Things to know about the hosted app:
 ```bash
 python eval/demo_check.py      # clicks through the whole demo headlessly – must end with "DEMO READY"
 python eval/eval_ranking.py    # precision@20 must be >= 80%
+python eval/test_data_layer.py # 43 independent checks on cleaning, dedupe and upload validation – no FAIL allowed
+python eval/test_ai_layer.py   # 29 checks on Q&A, SQL safety, citations, fallbacks (add --live 15 with an API key)
 ```
 Then delete `data/audit_log.csv` locally so the Audit log tab starts empty.
 

@@ -358,7 +358,7 @@ with tab_queue:
 
     q = scores.copy()
     if excl:
-        q = q[q["days_since_contact"] >= excl]
+        q = q[~(q["days_since_contact"] < excl)]   # keeps leads with an unknown contact date (not "recently contacted")
     if inds:
         q = q[q["industry"].isin(inds)]
     if stages:
@@ -432,7 +432,7 @@ with tab_queue:
             a, b = st.columns([3, 2])
             with a:
                 st.markdown(f"**{row['title']}** · {row['industry']} · {row['company_size']:,} employees · "
-                            f"last contact {row['days_since_contact']} days ago")
+                            + (f"last contact {int(row['days_since_contact'])} days ago" if pd.notna(row['days_since_contact']) else "no contact date on record"))
                 st.markdown(f"**Why this lead:** {md(ss['explanations'][ekey])}")
                 st.markdown(f"**Suggested action:** {action_default}")
                 if row["merged_from"]:
