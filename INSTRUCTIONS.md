@@ -12,7 +12,6 @@ For what LeadLens is and how it works, see the [README](README.md).
 6. [Running on your own computer](#6-running-on-your-own-computer)
 7. [Using each tab](#7-using-each-tab)
 8. [Troubleshooting](#8-troubleshooting)
-9. [Before a demo](#9-before-a-demo)
 
 ---
 
@@ -249,7 +248,7 @@ python data/plant_hot_leads.py      # re-plant the known hot leads + decoys (alw
 
 ## 7. Using each tab
 
-### 🩺 Data health
+### Data health
 Read top to bottom: headline numbers → **Before → after cleaning** → **Field-level issues** (example IDs can be looked up in *Browse cleaned leads*) → **Duplicate records we merged** (rule + evidence for each merge) → **Why records are stale** → **Possible duplicates – needs review** (similar records that were *not* merged; check them in your CRM).
 
 ### Action queue
@@ -292,15 +291,3 @@ Pick a **preset** → **Apply preset**, or drag sliders; **↺ Reset to default*
 | `externally-managed-environment` | Create and activate `.venv` (section 6). |
 | Bulk approve is slow | With the AI on, an email is written for each lead (~4 s each). Approve fewer at once, or accept the wait. |
 | Audit log is empty after a while on Streamlit Cloud | The server restarted; export the log regularly. |
-
-## 9. Before a demo
-
-```bash
-python eval/demo_check.py          # must end with "13/13 … DEMO READY"
-python eval/test_data_layer.py     # 0 failed
-python eval/test_ai_layer.py       # 0 failed (add --live 15 to test the real LLM)
-python eval/eval_ranking.py        # PASS
-```
-- Delete `data/audit_log.csv` if you demo locally, so the audit log starts empty.
-- Switch the sidebar to **Sample CRM** — the demo numbers (196 duplicates, 95% precision@20) are for the sample data.
-- Open the hosted link a few minutes early to wake it up, and check **"LLM connected"**.
