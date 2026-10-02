@@ -26,7 +26,7 @@ It cleans the data, ranks every lead with a transparent scoring rubric, explains
 10. [Results](#10-results)
 11. [Testing](#11-testing)
 12. [Repository layout](#12-repository-layout)
-13. [Quick start](#13-quick-start)
+13. [Setup, Installation and how to run](#13-Setup-Installation-and-how-to-run)
 14. [Team](#14-team)
 
 ---
@@ -232,7 +232,7 @@ eval/                      evaluation scripts, test sets, results reports, test 
 INSTRUCTIONS.md            how to use, upload and deploy
 ```
 
-## 13. Quick start
+## 13. Setup, Installation and how to run
 
 ```bash
 git clone https://github.com/RedRumRex/buildfastwithai-hack.git
