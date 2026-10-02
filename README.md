@@ -27,8 +27,7 @@ It cleans the data, ranks every lead with a transparent scoring rubric, explains
 11. [Testing](#11-testing)
 12. [Repository layout](#12-repository-layout)
 13. [Quick start](#13-quick-start)
-14. [Known limitations](#14-known-limitations)
-15. [Team](#15-team)
+14. [Team](#14-team)
 
 ---
 
@@ -121,7 +120,7 @@ Proves the data was cleaned and shows what changed.
 The heart of the app: who to contact, why, and what to do.
 - **Plain-English filter** — e.g. *"skip anyone contacted in the last 2 weeks, FinTech only, late-stage deals over $20k, top 15"*. Parsed by the LLM (validated) or by built-in rules; the understood filters appear as chips. Manual filters: top N, skip recently contacted, industries, deal stage, minimum deal, hide stale.
 - **One card per lead** with the score, an AI explanation, the suggested action and a points breakdown.
-- **🔍 Why?** — shows the actual deal, activity and note rows behind every point.
+- ** Why?** — shows the actual deal, activity and note rows behind every point.
 - **Approve / Reject** (with an editable action and a note), or **bulk approve / reject** several leads at once.
 - Approving drafts an **email** you can edit, save (logged) and download as `.eml` (opens as an unsent draft in Mail/Outlook), or download all drafts as a zip. **Undo** any decision.
 
@@ -244,16 +243,7 @@ streamlit run app.py
 ```
 Open http://localhost:8501. The app works without an API key; to switch on the AI, add a key as described in **[INSTRUCTIONS.md](INSTRUCTIONS.md)**, which also covers uploading your own CSVs and deploying to Streamlit Cloud.
 
-## 14. Known limitations
-
-- **Audit log on the hosted app** lives on the server's disk: all visitors share it and it resets when the app restarts. Export it as CSV to keep it.
-- **Call-note search** uses TF-IDF on the hosted app; the embeddings upgrade activates only if `sentence-transformers` and `chromadb` are installed.
-- **Without an API key**, questions that match no built-in query fall back to a general pipeline summary (it is labelled, but it is not an answer to the question).
-- **Citation checking** recognises IDs like `D00123`; uploads with dashed IDs (e.g. `NT-0009`) are not checked for invented IDs.
-- **Call-note signals** are keyword-based (e.g. "budget approved", "went with a competitor"), not sentiment analysis.
-- **Recall is exactly at target (98%)**: the 4 missed duplicates are companies that were renamed; all 4 appear in the review list.
-
-## 15. Team
+## 14. Team
 
 **Team Evex** · Thapar Institute of Engineering & Technology · final year
 
