@@ -1,6 +1,6 @@
 #  LeadLens — AI Decision Engine for Sales Data
 
-**AI Build Challenge 2026 · PS-04: AI Decision Engine for Business Data · Team Evex**
+** AI Build Challenge 2026 · PS-04: AI Decision Engine for Business Data **
 *"Build an AI system that analyses business data, generates traceable insights, and recommends decisions or actions grounded in the underlying data."*
 
 LeadLens turns a sales team's messy CRM export into one clear answer:
